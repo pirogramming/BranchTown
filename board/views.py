@@ -63,4 +63,7 @@ def survey_finish(request):
 
 
 def survey_recent(request):
-    pass
+    surveys = Survey.objects.all().order_by('-id')  # TODO 너무 많아지면 slicing
+    return render(request, 'board/survey_recent.html', {
+        'surveys': surveys,
+    })
