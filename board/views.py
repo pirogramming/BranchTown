@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from survey.models import Survey, Field
 from tag.models import Tag
@@ -22,6 +23,7 @@ def survey_detail(request, pk):
     })
 
 
+@login_required
 def survey_interest(request):
     if request.user.is_authenticated:
         tags = request.user.profile.tag.all()
@@ -61,4 +63,4 @@ def survey_finish(request):
 
 
 def survey_recent(request):
-    surveys = Survey.objects.
+    pass
