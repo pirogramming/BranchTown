@@ -23,6 +23,10 @@ def survey_detail(request, pk):
     })
 
 
+def main(request):
+    return render(request, 'board/main.html')
+
+
 @login_required
 def survey_interest(request):
     if request.user.is_authenticated:
