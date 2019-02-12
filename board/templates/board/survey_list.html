@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1> form_list page </h1>
+    <h2> form_list를 관리하는 페이지. 클릭하면 detail view로 이동</h2>
+
+    <form action="" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="검색" />
+    </form>
+
+
+     <table class="table table-hover table-bordered">
+         <thead>
+         <tr>
+             <th>id</th>
+             <th>title</th>
+             <th>subtitle</th>
+             <th>created_at</th>
+         </tr>
+         </thead>
+         {% for form in form_list %}
+             <tr>
+                 <td>{{ form.id }}</td>
+                 <td><a href='{% url "board:survey_detail" form.id %}'>
+                     {{ form.title }}
+                    </a></td>
+                    <td><small>{{ form.subtitle }}</small></td>
+                    <td><small>at {{ form.created_at }}</small></td>
+             </tr>
+         {% endfor %}
+     </table>
+</body>
+</html>

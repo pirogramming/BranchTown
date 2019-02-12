@@ -1,0 +1,17 @@
+{% extends "accounts/layout.html" %}
+
+{% block content %}
+    <div class="container">
+        <h2>{{ user }}'s Profile</h2>
+
+        <ul class="list-group">
+            <li class="list-group-item">Username: {{ user.username }}</li>
+            <li class="list-group-item">Email: {{ user.email }}</li>
+            <li class="list-group-item">Date joined: {{ user.date_joined }}</li>
+            <li class="list-group-item">Address: {{ user.profile.address }}</li>
+            <li class="list-group-item">Phone: {{ user.profile.phone_number }}</li>
+        </ul>
+    </div>
+
+    <img src="{{ user.socialaccount_set.all.first.get_avatar_url }}" style="width:200px; margin-left:207px; margin-top : 20px;"/>
+{% endblock %}

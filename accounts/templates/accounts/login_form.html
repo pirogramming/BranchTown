@@ -1,0 +1,30 @@
+{%  extends "accounts/layout.html" %}
+{%  load socialaccount %}
+{% load bootstrap4 %}
+
+{% bootstrap_css %}
+    {% block content %}
+    <div class="container">
+        <form action="" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <ul class="external" style="text-align: center; list-style:none;">
+        {% for provider in providers %}
+            <li class="btn btn-primary" style="margin: 15px 15px 0 0; display : block; width : 400px; margin-left: auto; margin-right: auto;">
+                {%  if provider.social_app %}
+                     <a href="{% provider_login_url provider.id %}" style="color: white;">
+                        Login with {{ provider.name }}
+                     </a>
+                {% else %}
+                     <a>
+                        Provider {{ provider.name }} 설정이 필요합니다.
+                     </a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
