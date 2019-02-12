@@ -10,6 +10,11 @@
             <li class="list-group-item">Date joined: {{ user.date_joined }}</li>
             <li class="list-group-item">Address: {{ user.profile.address }}</li>
             <li class="list-group-item">Phone: {{ user.profile.phone_number }}</li>
+            <li class="list-group-item">Tags:
+                {% for tag in user.profile.tag.all %}
+                    <a href="{% url 'board:survey_tag' tag.id %}">#{{ tag }}</a>
+                {% endfor %}
+            </li>
         </ul>
     </div>
 
