@@ -6,15 +6,15 @@
 </head>
 <body>
     <h1> 폼에 대한 detail을 보여주는 곳 </h1>
-    <h2> {{ form.id }} 번째 폼에 대한 detail</h2>
-    {{ form.title }} <hr>
-    {{ form.subtitle }}
+    <h2> {{ survey.id }} 번째 폼에 대한 detail</h2>
+    {{ survey.title }} <hr>
+    {{ survey.subtitle }}
 
     <hr>
     <h2> 설문 문항 </h2>
     <ol>
-    {% for field in field_set %}
-        <li>{{ field.title }}</li> <br>
+    {% for field in fields %}
+        <li>{{ field.question }}</li> <br>
     {% endfor %}
     </ol>
 </body>
