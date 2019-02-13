@@ -36,8 +36,8 @@
                         <a class="dropdown-item" href="#">참여한 설문</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{% url 'board:survey_recent' %}">최신 설문</a>
-                        <a class="dropdown-item" href="#">진행 중인 설문</a>
-                        <a class="dropdown-item" href="#">종료된 설문</a>
+                        <a class="dropdown-item" href="{% url 'board:survey_ongoing' %}">진행 중인 설문</a>
+                        <a class="dropdown-item" href="{% url 'board:survey_complete' %}">종료된 설문</a>
                     </div>
                 </li>
             </ul>

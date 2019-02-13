@@ -13,6 +13,6 @@ urlpatterns = [
     path('hot/', views.survey_hot, name='survey_hot'),
     path('ongoing/', views.survey_ongoing, name='survey_ongoing'),
     path('answer/', views.survey_answer, name='survey_answer'),
-    path('finish/', views.survey_finish, name='survey_finish'),
+    path('complete/', views.survey_complete, name='survey_complete'),
     path('recent/', views.survey_recent, name='survey_recent'),
 ]

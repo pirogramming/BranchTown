@@ -4,11 +4,17 @@ from tag.models import Tag
 
 
 class Survey(models.Model):
+    STATUS_CHOICES = (
+        ('o', 'ongoing'),
+        ('c', 'complete'),
+        # TODO 다른 다양한 status 추가
+    )
     title = models.CharField(max_length=100)
     subtitle = models.TextField()
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     created_at = models.DateField(auto_now_add=True)
     tag = models.ManyToManyField(Tag)
+    status = models.CharField(max_length=1, choices=STATUS_CHOICES)
 
     def __str__(self):
         return self.title

@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="middle_title">
+        <b>◈ {{ category }} 설문</b>
+    </div>
+    <div class="container">
+        <div class="row">
+            {% for survey in surveys %}
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="card">
+                        <img src="{% static 'images/logo.jpg' %}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ survey.title }}</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p>
+                                {% for tag in  survey.tag.all %}
+                                    <a href="{% url 'board:survey_tag' tag.id %}" style="text-decoration: none">
+                                        #{{ tag }}
+                                    </a>
+                                {% endfor %}
+                            </p>
+                            <a href="{% url 'board:survey_detail' survey.id %}" class="btn btn-primary">설문 응답하기</a>
+                            <a href="#">
+                                <img src="{% static 'images/share.png' %}" alt="" width="30">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

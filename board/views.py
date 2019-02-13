@@ -35,7 +35,8 @@ def survey_interest(request):
     else:
         surveys = Survey.objects.none()
 
-    return render(request, 'board/survey_interest.html', {
+    return render(request, 'board/survey_base.html', {
+        'category': 'interest',
         'surveys': surveys,
     })
 
@@ -43,8 +44,8 @@ def survey_interest(request):
 def survey_tag(request, pk):
     tag = Tag.objects.get(pk=pk)
     surveys = tag.survey_set.all()
-    return render(request, 'board/survey_tag.html', {
-        'tag': tag,
+    return render(request, 'board/survey_base.html', {
+        'category': tag.name,
         'surveys': surveys,
     })
 
@@ -54,19 +55,28 @@ def survey_hot(request):
 
 
 def survey_ongoing(request):
-    pass
+    surveys = Survey.objects.filter(status='o')
+    return render(request, 'board/survey_base.html', {
+        'category': 'ongoing',
+        'surveys': surveys,
+    })
 
 
 def survey_answer(request):
     pass
 
 
-def survey_finish(request):
-    pass
+def survey_complete(request):
+    surveys = Survey.objects.filter(status='c')
+    return render(request, 'board/survey_base.html', {
+        'category': 'complete',
+        'surveys': surveys,
+    })
 
 
 def survey_recent(request):
     surveys = Survey.objects.all().order_by('-id')  # TODO 너무 많아지면 slicing
-    return render(request, 'board/survey_recent.html', {
+    return render(request, 'board/survey_base.html', {
+        'category': 'recent',
         'surveys': surveys,
     })
