@@ -11,4 +11,4 @@ class SurveyForm(forms.ModelForm):
 class FieldForm(forms.ModelForm):
     class Meta:
         model = Field
-        fields = ['type', 'question']   # 'form']
+        fields = ['type', 'form']   # 'form']

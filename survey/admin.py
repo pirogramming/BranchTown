@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Survey, Field, Multiple_Choice
+from .models import Survey, Field, Question, Choice
 
 
 @admin.register(Survey)
@@ -9,11 +9,16 @@ class SurveyAdmin(admin.ModelAdmin):
 
 @admin.register(Field)
 class FieldAdmin(admin.ModelAdmin):
-    list_display = ['question', 'type', 'form']
+    list_display = ['type', 'form']
 
 
-@admin.register(Multiple_Choice)
-class Multiple_ChoiceAdmin(admin.ModelAdmin):
-    pass
+@admin.register(Question)
+class Question(admin.ModelAdmin):
+    list_display = ['question_text', 'pub_date']
+
+
+@admin.register(Choice)
+class ChoiceAdmin(admin.ModelAdmin):
+    list_display = ['question', 'choice_text', 'votes']
 
 

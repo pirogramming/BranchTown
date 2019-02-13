@@ -57,7 +57,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.kakao',
     'allauth.socialaccount.providers.naver',
+
+    'crispy_forms'
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"
 
