@@ -32,7 +32,6 @@ def survey_interest(request):
     if request.user.is_authenticated:
         tags = request.user.profile.tag.all()
         surveys = Survey.objects.filter(tag__in=tags).distinct()
-        print(surveys)
     else:
         surveys = Survey.objects.none()
 
