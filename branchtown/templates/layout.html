@@ -25,8 +25,20 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Survey</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'board:main' %}">Board</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Board
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'board:main' %}">main</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'board:survey_interest' %}">추천 설문</a>
+                        <a class="dropdown-item" href="#">참여한 설문</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'board:survey_recent' %}">최신 설문</a>
+                        <a class="dropdown-item" href="#">진행 중인 설문</a>
+                        <a class="dropdown-item" href="#">종료된 설문</a>
+                    </div>
                 </li>
             </ul>
             <ul class="navbar-nav navbar-right">
