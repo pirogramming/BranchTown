@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django_extensions',
     'bootstrap4',
+    'rest_framework',
 
     # app
     'accounts',
