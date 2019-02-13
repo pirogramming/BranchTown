@@ -36,10 +36,12 @@ class Field(models.Model):
 
 class Multiple_Choice(models.Model):
     field = models.ForeignKey(Field, on_delete=models.CASCADE)
+
     choice1 = models.CharField(max_length=30)
     choice2 = models.CharField(max_length=30)
     choice3 = models.CharField(max_length=30)
 
     def __str__(self):
         return self.field.question
+
 

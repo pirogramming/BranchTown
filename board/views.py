@@ -15,11 +15,11 @@ def survey_list(request):
 
 
 def survey_detail(request, pk):
-    form = get_object_or_404(Survey, pk=pk)
-    field = Survey.objects.get(pk=pk).field_set.all()
+    survey = get_object_or_404(Survey, pk=pk)
+    field = survey.field_set.all()
     return render(request, 'board/survey_detail.html', {
-        'form': form,
-        'field_set': field
+        'survey': survey,
+        'fields': field,
     })
 
 
