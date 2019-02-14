@@ -12,3 +12,5 @@ class FieldForm(forms.ModelForm):
     class Meta:
         model = Field
         fields = ['type', 'question']
+
+
