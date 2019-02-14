@@ -1,0 +1,21 @@
+{% load bootstrap4 %}
+{% bootstrap_css %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            {% if field_list %}
+                <ul>
+                    {%  for field in field_list %}
+                        <li><a href="/survey/{{ field.id }}/">{{ field.question }}</a></li>
+                    {% endfor %}
+                </ul>   
+            {% else %}
+                <p>No surveys are available</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<input type="button" value="설문 문항 추가" id="create_field" class="btn btn-success mt-5 mb-5">
+

@@ -20,18 +20,24 @@ class Survey(models.Model):
         return self.title
 
 
+class Index(models.Model):
+    survey = models.OneToOneField(Survey, on_delete=models.CASCADE)
+    count = models.IntegerField(default=0)
+
+
 class Field(models.Model):
     FIELD_TYPE = (
         ('1', '객관식'),
         ('2', '주관식'),
         ('3', '단답식'),
     )
+    survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
     type = models.CharField(max_length=10, choices=FIELD_TYPE)
     question = models.CharField(max_length=100)
-    form = models.ForeignKey(Survey, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.question
+
 
 
 class Multiple_Choice(models.Model):

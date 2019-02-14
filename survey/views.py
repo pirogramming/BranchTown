@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from .models import Survey
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Survey, Field
 from .forms import SurveyForm, FieldForm
 
 
@@ -12,13 +12,21 @@ def make_survey(request):
             form = form.save(commit=False)
             form.author = request.user
             form.save()
-            return redirect('survey:make_field', form.pk)
+            return redirect('survey:make_index.html', form.pk)
     else:
         form = SurveyForm()
 
     return render(request, 'survey/make_survey.html', {
         'form': form,
     })
+
+
+@login_required
+def make_index(request, pk):
+    # context = get_object_or_404(Survey, pk=pk)
+    field_list = Field.objects.all()
+    context = {'field_list': field_list}
+    return render(request, 'survey/make_index.html', context)
 
 
 @login_required
