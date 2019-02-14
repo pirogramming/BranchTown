@@ -1,5 +1,5 @@
 from django import forms
-from .models import Survey, Field
+from .models import Survey, Question, Choice
 
 
 class SurveyForm(forms.ModelForm):
@@ -8,7 +8,5 @@ class SurveyForm(forms.ModelForm):
         fields = ['title', 'subtitle']  # , 'author']
 
 
-class FieldForm(forms.ModelForm):
-    class Meta:
-        model = Field
-        fields = ['type', 'form']   # 'form']
+
+

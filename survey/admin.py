@@ -1,15 +1,15 @@
 from django.contrib import admin
-from .models import Survey, Field, Question, Choice
+from .models import Survey,  Question, Choice
 
 
 @admin.register(Survey)
 class SurveyAdmin(admin.ModelAdmin):
     pass
 
-
-@admin.register(Field)
-class FieldAdmin(admin.ModelAdmin):
-    list_display = ['type', 'form']
+#
+# @admin.register(Field)
+# class FieldAdmin(admin.ModelAdmin):
+#     list_display = ['type', 'form']
 
 
 @admin.register(Question)

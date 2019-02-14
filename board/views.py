@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
-from survey.models import Survey, Field
+from survey.models import Survey
 from tag.models import Tag
 
 
@@ -16,10 +16,10 @@ def survey_list(request):
 
 def survey_detail(request, pk):
     form = get_object_or_404(Survey, pk=pk)
-    field = Survey.objects.get(pk=pk).field_set.all()
+    # field = Survey.objects.get(pk=pk).field_set.all()
     return render(request, 'board/survey_detail.html', {
         'form': form,
-        'field_set': field
+        # 'field_set': field
     })
 
 

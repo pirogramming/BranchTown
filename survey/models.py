@@ -19,8 +19,20 @@ class Survey(models.Model):
     def __str__(self):
         return self.title
 
+# class Field(models.Model):
+#     FIELD_TYPE = (
+#         ('1', '객관식'),
+#         ('2', '주관식'),
+#         ('3', '단답식'),
+#     )
+#     type = models.CharField(max_length=10, choices=FIELD_TYPE)
+#     form = models.ForeignKey(Survey, on_delete=models.CASCADE)
+#
+#     def __str__(self):
+#         return self.type
 
-class Field(models.Model):
+
+class Question(models.Model):
     FIELD_TYPE = (
         ('1', '객관식'),
         ('2', '주관식'),
@@ -28,12 +40,6 @@ class Field(models.Model):
     )
     type = models.CharField(max_length=10, choices=FIELD_TYPE)
     form = models.ForeignKey(Survey, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.type
-
-
-class Question(models.Model):
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
 
@@ -48,5 +54,14 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
+
+
+class TextAnswer(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    answer_text = models.TextField
+
+    def __str__(self):
+        return self.answer_text
+
 
 
