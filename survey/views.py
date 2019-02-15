@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from .models import Survey, Field, MultipleChoice
-from .forms import SurveyForm, FieldForm
+from .forms import SurveyForm, FieldForm, FieldModelFormset
 
 
 @login_required
@@ -68,3 +68,20 @@ def multiple_choice(request, pk):
 def results(request, pk):
     field = get_object_or_404(Field, pk=pk)
     return render(request, 'survey/results.html', {'field': field})
+
+
+def make_field_new(request, pk):
+    if request.method == 'POST':
+        formset = FieldModelFormset(request.POST)
+        if formset.is_valid():
+            for form in formset:
+                if form.cleaned_data.get('question'):
+                    form.save(commit=False)
+                    form.survey = Survey.objects.get(pk=pk)
+                    form.save()
+            return redirect('root')
+    else:
+        formset = FieldModelFormset(queryset=Field.objects.none())
+    return render(request, 'survey/make_index.html', {
+        'formset': formset,
+    })
