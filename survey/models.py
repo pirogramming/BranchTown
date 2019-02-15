@@ -40,6 +40,8 @@ class Multiple_Choice(models.Model):
     choice1 = models.CharField(max_length=30)
     choice2 = models.CharField(max_length=30)
     choice3 = models.CharField(max_length=30)
+    choice4 = models.CharField(max_length=20)
+    choice5 = models.CharField(max_length=20)
 
     def __str__(self):
         return self.field.question

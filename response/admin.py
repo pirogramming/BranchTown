@@ -4,4 +4,4 @@ from .models import Response
 
 @admin.register(Response)
 class ResponseAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['question', 'answer', 'respondent']

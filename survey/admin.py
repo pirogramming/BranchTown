@@ -14,6 +14,6 @@ class FieldAdmin(admin.ModelAdmin):
 
 @admin.register(Multiple_Choice)
 class Multiple_ChoiceAdmin(admin.ModelAdmin):
-    list_display = ['field', 'choice1', 'choice2', 'choice3']
+    list_display = ['field', 'choice1', 'choice2', 'choice3', 'choice4', 'choice5']
 
 
