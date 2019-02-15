@@ -2,7 +2,6 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-
 from .models import Survey, Field, MultipleChoice
 from .forms import SurveyForm, FieldForm
 
@@ -12,10 +11,10 @@ def make_survey(request):
     if request.method == "POST":
         form = SurveyForm(request.POST, request.FILES)
         if form.is_valid():
-            form = form.save(commit=False)
-            form.author = request.user
-            form.save()
-            return redirect('survey:make_index.html', form.pk)
+            survey = form.save(commit=False)
+            survey.author = request.user
+            survey.save()
+            return redirect('survey:make_index', survey.pk)
     else:
         form = SurveyForm()
 
@@ -25,8 +24,9 @@ def make_survey(request):
 
 
 @login_required
-def make_index(request):
-    field_list = Field.objects.all()
+def make_index(request, pk):
+    # field_list = Field.objects.all()
+    field_list = Survey.objects.get(pk=pk).field_set.all()
     context = {'field_list': field_list}
     return render(request, 'survey/make_index.html', context)
 
@@ -55,7 +55,7 @@ def multiple_choice(request, pk):
     except (KeyError, MultipleChoice.DoesNotExist):
         return render(request, 'survey/multiple_choice.html', {'field': field,
                                                                'error_message':
-                                                               "You didn't select a choice",})
+                                                               "You didn't select a choice", })
     else:
         selected_choice += 1
         selected_choice.save()

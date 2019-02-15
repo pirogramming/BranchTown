@@ -20,11 +20,6 @@ class Survey(models.Model):
         return self.title
 
 
-class Index(models.Model):
-    survey = models.OneToOneField(Survey, on_delete=models.CASCADE)
-    count = models.IntegerField(default=0)
-
-
 class Field(models.Model):
     FIELD_TYPE = (
         ('1', '객관식'),
@@ -32,7 +27,6 @@ class Field(models.Model):
         ('3', '단답식'),
     )
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
-    index = models.ForeignKey(Index, on_delete=models.CASCADE)
     type = models.CharField(max_length=10, choices=FIELD_TYPE)
     question = models.CharField(max_length=100)
 
@@ -57,4 +51,10 @@ class TextAnswer(models.Model):
         return self.answer
 
 
-
+# class Response(models.Model):
+#     respondent = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+#     survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#
+#     def __str__(self):
+#         return self.respondent

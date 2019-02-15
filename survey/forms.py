@@ -5,7 +5,7 @@ from .models import Survey, Field
 class SurveyForm(forms.ModelForm):
     class Meta:
         model = Survey
-        fields = ['title', 'subtitle']
+        fields = ['title', 'subtitle', 'tag', 'status']
 
 
 class FieldForm(forms.ModelForm):

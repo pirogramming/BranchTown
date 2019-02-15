@@ -1,14 +1,9 @@
 from django.contrib import admin
-from .models import Survey, Field, MultipleChoice, Index, TextAnswer
+from .models import Survey, Field, MultipleChoice, TextAnswer
 
 
 @admin.register(Survey)
 class SurveyAdmin(admin.ModelAdmin):
-    pass
-
-
-@admin.register(Index)
-class IndexAdmin(admin.ModelAdmin):
     pass
 
 
