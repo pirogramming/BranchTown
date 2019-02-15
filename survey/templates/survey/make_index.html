@@ -14,7 +14,7 @@
                 <p>No surveys are available</p>
             {% endif %}
 
-            <input type="button" value="설문 문항 추가" id="create_field" class="btn btn-success mt-5 mb-5">
+            <a href="{% url 'survey:make_field' survey.id %}"><input type="button" value="설문 문항 추가" id="create_field" class="btn btn-success mt-5 mb-5"></a>
         </div>
     </div>
 </div>

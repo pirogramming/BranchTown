@@ -25,26 +25,29 @@ def make_survey(request):
 
 @login_required
 def make_index(request, pk):
-    # field_list = Field.objects.all()
+    survey = Survey.objects.get(pk=pk)
     field_list = Survey.objects.get(pk=pk).field_set.all()
-    context = {'field_list': field_list}
+    context = {
+        'survey': survey,
+        'field_list': field_list,
+    }
     return render(request, 'survey/make_index.html', context)
 
 
 @login_required
 def make_field(request, pk):
     if request.method == "POST":
-        field = FieldForm(request.POST, request.FILES)
-        if field.is_valid():
-            field = field.save(commit=False)
-            field.form = Survey.objects.get(pk=pk)
+        form = FieldForm(request.POST, request.FILES)
+        if form.is_valid():
+            field = form.save(commit=False)
+            field.survey = Survey.objects.get(pk=pk)
             field.save()
             return redirect('/board/')
     else:
-        field = FieldForm()
+        form = FieldForm()
 
     return render(request, 'survey/make_field.html', {
-        'field': field,
+        'field': form,
     })
 
 
