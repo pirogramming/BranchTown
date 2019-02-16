@@ -5,17 +5,19 @@
 {% bootstrap_css %}
 {% block content %}
 
+
+<body style="height : 100%;">
     <div class="container">
-        <form action="" method="post">
+        <form action="" method="post" style="margin-top : 50px;">
             {% csrf_token %}
             {% bootstrap_form form %}
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-outline-primary" style="margin-top : 15px;margin-bottom: 15px;">로그인</button>
         </form>
     </div>
 
-    <ul class="external" style="text-align: center; list-style:none;">
+    <ul class="external" style="text-align: center; list-style:none; margin-bottom: 100px;">
             <li class="social-login-list" style="margin: 15px 15px 0 0; display : block; width : 400px; margin-left: auto; margin-right: auto;">
-                {%  if providers.0.social_app %}
+                {% if providers.0.social_app %}
                      <a href="{% provider_login_url providers.0.id %}">
                      <img src="{% static 'accounts/images/kakao_account_login_btn_medium_narrow.png' %}" alt="#">
                      </a>
@@ -48,4 +50,5 @@
                 {% endif %}
             </li>
     </ul>
+</body>
 {% endblock %}
