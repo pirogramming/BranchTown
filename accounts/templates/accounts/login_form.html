@@ -1,9 +1,10 @@
 {%  extends "accounts/layout.html" %}
 {%  load socialaccount %}
 {% load bootstrap4 %}
-
+{% load static %}
 {% bootstrap_css %}
-    {% block content %}
+{% block content %}
+
     <div class="container">
         <form action="" method="post">
             {% csrf_token %}
@@ -13,18 +14,38 @@
     </div>
 
     <ul class="external" style="text-align: center; list-style:none;">
-        {% for provider in providers %}
-            <li class="btn btn-primary" style="margin: 15px 15px 0 0; display : block; width : 400px; margin-left: auto; margin-right: auto;">
-                {%  if provider.social_app %}
-                     <a href="{% provider_login_url provider.id %}" style="color: white;">
-                        Login with {{ provider.name }}
+            <li class="social-login-list" style="margin: 15px 15px 0 0; display : block; width : 400px; margin-left: auto; margin-right: auto;">
+                {%  if providers.0.social_app %}
+                     <a href="{% provider_login_url providers.0.id %}">
+                     <img src="{% static 'accounts/images/kakao_account_login_btn_medium_narrow.png' %}" alt="#">
                      </a>
                 {% else %}
                      <a>
-                        Provider {{ provider.name }} 설정이 필요합니다.
+                        Provider {{ providers.0.name }} 설정이 필요합니다.
                      </a>
                 {% endif %}
             </li>
-        {% endfor %}
+            <li class="social-login-list" style="margin: 15px 15px 0 0; display : block; width : 400px; margin-left: auto; margin-right: auto;">
+                {%  if providers.1.social_app %}
+                     <a href="{% provider_login_url providers.0.id %}">
+                     <img src="{% static 'accounts/images/네이버 아이디로 로그인_완성형_Green.PNG' %}" alt="#" width="222" height="49">
+                     </a>
+                {% else %}
+                     <a>
+                        Provider {{ providers.1.name }} 설정이 필요합니다.
+                     </a>
+                {% endif %}
+            </li>
+            <li class="social-login-list" style="margin: 15px 15px 0 0; display : block; width : 400px; margin-left: auto; margin-right: auto;">
+                {%  if providers.2.social_app %}
+                     <a href="{% provider_login_url providers.2.id %}">
+                     <img src="{% static 'accounts/images/btn_google_signin_light_normal_web.png' %}" alt="#" width="230" height="55" >
+                     </a>
+                {% else %}
+                     <a>
+                        Provider {{ providers.2.name }} 설정이 필요합니다.
+                     </a>
+                {% endif %}
+            </li>
     </ul>
 {% endblock %}

@@ -4,14 +4,24 @@ html {
 }
 
 body {
-    margin-bottom : 60px;
+    margin-bottom : 40px;
 }
 
-#page-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-    background-color: floralwhite;
+/*#page-footer {*/
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*width: 100%;*/
+    /*line-height : 40px;*/
+    /*background-color: rgb(222,218,187);*/
+/*}*/
+
+.navbar-nav {
+    margin-left : 20px;
+}
+
+.navbar-nav li a{
+    font-family: '배달의민족 주아';
+    font-size : 20px;
+    margin-left : 10px;
+    text-align : center;
 }
