@@ -26,16 +26,35 @@ class Field(models.Model):
         ('2', '주관식'),
         ('3', '단답식'),
     )
+    survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
     type = models.CharField(max_length=10, choices=FIELD_TYPE)
     question = models.CharField(max_length=100)
-    form = models.ForeignKey(Survey, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.question
 
 
-class Multiple_Choice(models.Model):
+class MultipleChoice(models.Model):
     field = models.ForeignKey(Field, on_delete=models.CASCADE)
-    choice = models.CharField(max_length=30)
+    choice_text = models.CharField(max_length=200)
+    votes = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.choice_text
 
 
+class TextAnswer(models.Model):
+    field = models.ForeignKey(Field, on_delete=models.CASCADE)
+    answer = models.TextField()
+
+    def __str__(self):
+        return self.answer
+
+
+# class Response(models.Model):
+#     respondent = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+#     survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#
+#     def __str__(self):
+#         return self.respondent
