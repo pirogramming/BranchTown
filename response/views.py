@@ -1,53 +1,30 @@
-from django.http import JsonResponse
+import json
 from django.shortcuts import render
+from django.utils.safestring import mark_safe
 from django.views.generic import View
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import authentication, permissions
 from django.contrib.auth import get_user_model
 from survey.models import Survey, Field, MultipleChoice
 
 User = get_user_model()
 
 class HomeView(View):
-    def get(self, request, *args, **kwargs):
-        survey = Survey.objects.get(pk=1)
-        field = Field.objects.filter(survey=survey)
-        return render(request, 'response/charts.html', {
-            "fields": field,
-        })
+    def get(self, request, pk=1):
 
+        fields = Field.objects.filter(
+            survey__id=pk, type=1
+        )
 
-def get_data(request, *args, **kwargs):
-    data = {
-        'sales': 100,
-        'customer': 10,
-    }
-    return JsonResponse(data)
+        data = {}
+        for field in fields:
+            data[field.id] = {'question': field.question, 'labels': [], 'votes': []}
+            for choice in field.multiplechoice_set.all():
+                data[field.id]['labels'].append(choice.choice_text)
+                data[field.id]['votes'].append(choice.votes)
+        print(data)
 
+        return render(request, 'response/charts.html',
+                      context={
+                          'json_graphs': mark_safe(json.dumps(data)),
+                          'graphs': data
+                      })
 
-class ChartData(APIView):
-    authentication_classes = []
-    permission_classes = []
-
-    def get(self, request, format=None):
-
-        fields = Survey.objects.get(pk=1).field_set.all()
-
-        labels = []
-        default_items = []
-
-        choices = fields[0].multiplechoice_set.all()
-        choices_len = choices.count()
-
-        for choice in choices:
-            labels.append(choice.choice_text)
-            default_items.append(choice.votes)
-
-
-        data = {
-            "labels": labels,
-            "default": default_items,
-        }
-
-        return Response(data)
