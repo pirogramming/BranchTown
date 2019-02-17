@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from .models import Survey, Field, MultipleChoice
-from .forms import SurveyForm, FieldForm, FieldModelFormset, TextAnswerForm, ChoiceFormSet
+from .forms import SurveyForm, FieldForm, TextAnswerForm, ChoiceFormSet
 
 
 @login_required
@@ -36,19 +36,25 @@ def make_index(request, pk):
 
 def multiple_choice(request, pk):
     if request.method == "POST":
-        choiceformset = ChoiceFormSet(request.POST)
-        if choiceformset.is_valid():
+        field_form = FieldForm(request.POST)
+        formset = ChoiceFormSet(request.POST)
+
+        if field_form.is_valid() and formset.is_valid():
+            field = field_form.save(commit=False)
+            field.survey = Survey.objects.get(pk=pk)
+            field.type = '2'
+            field.save()
+            for form in formset:
+                choice = form.save(commit=False)
+                choice.field = field
+                choice.save()
             return redirect('survey:make_index', pk)
     else:
-        data = {
-            'form-TOTAL_FORMS': '1',
-            'form-INITIAL_FORMS': '1',
-            'form-MAX_NUM_FORMS': '10',
-        }
-        choiceformset = ChoiceFormSet(data)
+        field_form = FieldForm()
+        formset = ChoiceFormSet(queryset=MultipleChoice.objects.none())
     return render(request, 'survey/choice.html', {
-        'survey': Survey.objects.get(pk=pk),
-        'choiceformset': choiceformset,
+        'field_form': field_form,
+        'formset': formset,
     })
 
 

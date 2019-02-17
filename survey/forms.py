@@ -10,33 +10,31 @@ class SurveyForm(forms.ModelForm):
         fields = ['title', 'subtitle', 'tag', 'status']
 
 
-FieldModelFormset = modelformset_factory(
-    Field,
-    fields=('survey', 'type', 'question'),
-    extra=1,
-    widgets={
-        'type': forms.CharField(),
-        'question': forms.TextInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'write question'
-        })
-    }
-)
-
-
 class FieldForm(forms.ModelForm):
     class Meta:
         model = Field
-        fields = ['type', 'question']
+        fields = ['question']   # 'type',
 
 
-class MultipleChoiceForm(forms.ModelForm):
-    class Meta:
-        model = MultipleChoice
-        fields = ['choice_text']
+# class MultipleChoiceForm(forms.ModelForm):
+#     class Meta:
+#         model = MultipleChoice
+#         fields = ['choice_text']
 
 
-ChoiceFormSet = formset_factory(MultipleChoiceForm)
+ChoiceFormSet = modelformset_factory(
+    MultipleChoice,
+    fields=['choice_text'],
+    extra=1,
+    widgets={
+        'choice_text': forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter choice text',
+            }
+        )
+    }
+)
 
 
 class TextAnswerForm(forms.ModelForm):

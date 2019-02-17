@@ -24,7 +24,16 @@
                     <tr>
                         <td>숫자</td>
                         <td>{{ field.type }}</td>
-                        <td>{{ field.question }}</td>
+                        <td>
+                            {{ field.question }}
+                            {% if field.type == '2' %}
+                                <i>(선지 list
+                                    {% for choice in field.multiplechoice_set.all %}
+                                        {{ choice }}
+                                    {% endfor %})
+                                </i>
+                            {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
