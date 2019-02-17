@@ -14,3 +14,7 @@ def mainpage(request):
         'survey_interest': survey_interest,
         'survey_recent': survey_recent,
     })
+
+
+def intropage(request):
+    return render(request, 'main/introduction.html')

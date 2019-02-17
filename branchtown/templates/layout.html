@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" >서비스 <br/> 소개</a>
+                    <a class="nav-link" href="{% url 'main:intropage' %}" >서비스 <br/> 소개</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'survey:make_survey' %}" >설문 <br />폼 제작</a>
@@ -32,15 +32,16 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                        설문 <br/> 게시판
                     </a>
-                    <div class="dropdown-menu"  aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'board:main' %}">main</a>
+
+                    <div class="dropdown-menu"  aria-labelledby="navbarDropdown" >
+                        <a class="dropdown-item" href="{% url 'board:main' %}" style="font-size : 16px; margin-left :0;">main</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url 'board:survey_interest' %}">추천 설문</a>
-                        <a class="dropdown-item" href="#">참여한 설문</a>
+                        <a class="dropdown-item" href="{% url 'board:survey_interest' %}" style="font-size : 16px; margin-left :0;">추천 설문</a>
+                        <a class="dropdown-item" href="#" style="font-size : 16px; margin-left :0;">참여한 설문</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url 'board:survey_recent' %}">최신 설문</a>
-                        <a class="dropdown-item" href="{% url 'board:survey_ongoing' %}">진행 중인 설문</a>
-                        <a class="dropdown-item" href="{% url 'board:survey_complete' %}">종료된 설문</a>
+                        <a class="dropdown-item" href="{% url 'board:survey_recent' %}" style="font-size : 16px; margin-left :0;">최신 설문</a>
+                        <a class="dropdown-item" href="{% url 'board:survey_ongoing' %}" style="font-size : 16px; margin-left :0;">진행 중인 설문</a>
+                        <a class="dropdown-item" href="{% url 'board:survey_complete' %}" style="font-size : 16px; margin-left :0;">종료된 설문</a>
                     </div>
                 </li>
 
@@ -68,13 +69,17 @@
     {% block content %}
     {% endblock %}
 
+
+    <button class="to-top-btn">
+    <img src="{% static 'images/arrows.jpg' %}" width="32" height="32">
+    </button>
     <!-- footer -->
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-
+    <script src='{%  static "js/script.js" %}'></script>
 
     <div id="footer">
         <p class="text-muted">

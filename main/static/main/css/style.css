@@ -56,10 +56,11 @@
 
 }
 
+
+
 .event_2{
 
 }
-
 
 .container {
     margin: 20px auto;
@@ -67,4 +68,30 @@
 
 .card {
     margin-bottom: 30px;
+}
+
+
+#isolated-tree{
+    background :linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
+    width : 1200px;
+    display : block;
+    margin-left : auto;
+    margin-right : auto;
+
+}
+.container-bottom{
+    width : 1200px ;
+    margin-left : auto;
+    margin-right : auto;
+    height : 50px;
+    display : block;
+    margin-top : 20px;
+    padding-left : 100px;
+    padding-right : 100px;
+
+}
+.wordd {
+    margin-left : 20px;
+    font-size : 20px;
+    font-family : "배달의민족 도현";
 }
