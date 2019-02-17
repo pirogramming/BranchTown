@@ -39,7 +39,7 @@ def signup(request):
                 return redirect('../signup2/')
 
             context = {
-                'form':form,
+                'form': form,
             }
             return render(request, 'accounts/signup_form.html', context=context)
         else:

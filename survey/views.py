@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from .models import Survey, Field, MultipleChoice
-from .forms import SurveyForm, FieldForm, FieldModelFormset
+from .forms import SurveyForm, FieldForm, FieldModelFormset, TextAnswerForm, ChoiceFormSet
 
 
 @login_required
@@ -34,6 +34,41 @@ def make_index(request, pk):
     return render(request, 'survey/make_index.html', context)
 
 
+def multiple_choice(request, pk):
+    if request.method == "POST":
+        choiceformset = ChoiceFormSet(request.POST)
+        if choiceformset.is_valid():
+            return redirect('survey:make_index', pk)
+    else:
+        data = {
+            'form-TOTAL_FORMS': '1',
+            'form-INITIAL_FORMS': '1',
+            'form-MAX_NUM_FORMS': '10',
+        }
+        choiceformset = ChoiceFormSet(data)
+    return render(request, 'survey/choice.html', {
+        'survey': Survey.objects.get(pk=pk),
+        'choiceformset': choiceformset,
+    })
+
+
+def text_answer(request, pk):
+    if request.method == "POST":
+        form = TextAnswerForm(request.POST)
+        if form.is_valid():
+            answer = form.save(commit=False)
+            answer.survey = Survey.objects.get(pk=pk)
+            answer.type = '1'
+            answer.save()
+            return redirect('survey:make_index', pk)
+    else:
+        form = TextAnswerForm()
+    return render(request, 'survey/text_answer.html', {
+        'survey': Survey.objects.get(pk=pk),
+        'form': form,
+    })
+
+
 @login_required
 def make_field(request, pk):
     if request.method == "POST":
@@ -51,37 +86,20 @@ def make_field(request, pk):
     })
 
 
-def multiple_choice(request, pk):
-    field = get_object_or_404(Field, pk=pk)
-    try:
-        selected_choice = field.multiplechoice_set.get(pk=request.POST['multiple_choice'])
-    except (KeyError, MultipleChoice.DoesNotExist):
-        return render(request, 'survey/multiple_choice.html', {'field': field,
-                                                               'error_message':
-                                                               "You didn't select a choice", })
-    else:
-        selected_choice += 1
-        selected_choice.save()
-        return HttpResponseRedirect(reverse('survey:results', args=field.id,))
+# def multiple_choice(request, pk):
+#     field = get_object_or_404(Field, pk=pk)
+#     try:
+#         selected_choice = field.multiplechoice_set.get(pk=request.POST['multiple_choice'])
+#     except (KeyError, MultipleChoice.DoesNotExist):
+#         return render(request, 'survey/multiple_choice.html', {'field': field,
+#                                                                'error_message':
+#                                                                "You didn't select a choice", })
+#     else:
+#         selected_choice += 1
+#         selected_choice.save()
+#         return HttpResponseRedirect(reverse('survey:results', args=field.id,))
 
 
 def results(request, pk):
     field = get_object_or_404(Field, pk=pk)
     return render(request, 'survey/results.html', {'field': field})
-
-
-def make_field_new(request, pk):
-    if request.method == 'POST':
-        formset = FieldModelFormset(request.POST)
-        if formset.is_valid():
-            for form in formset:
-                if form.cleaned_data.get('question'):
-                    form.save(commit=False)
-                    form.survey = Survey.objects.get(pk=pk)
-                    form.save()
-            return redirect('root')
-    else:
-        formset = FieldModelFormset(queryset=Field.objects.none())
-    return render(request, 'survey/make_index.html', {
-        'formset': formset,
-    })
