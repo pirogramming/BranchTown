@@ -1,7 +1,7 @@
 from django import forms
-from django.forms import modelformset_factory
+from django.forms import modelformset_factory, formset_factory
 
-from .models import Survey, Field
+from .models import Survey, Field, MultipleChoice
 
 
 class SurveyForm(forms.ModelForm):
@@ -22,6 +22,16 @@ FieldModelFormset = modelformset_factory(
         })
     }
 )
+
+
+class ChoiceForm(forms.ModelForm):
+    class Meta:
+        model = MultipleChoice
+        fields = '__all__'
+
+
+class ChoiceIssueForm(forms.Form):
+    Issue = forms.CharField()
 
 
 class FieldForm(forms.ModelForm):
