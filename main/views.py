@@ -18,3 +18,7 @@ def mainpage(request):
 
 def intropage(request):
     return render(request, 'main/introduction.html')
+
+
+def cspage(request):
+    return render(request, 'main/cspage.html')
