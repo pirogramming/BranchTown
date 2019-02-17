@@ -53,7 +53,7 @@ def signup(request):
             'form': form,
         })
 
-
+# TODO signup1 직후에만 signup2으로 들어올 수 있게 제한 생성하기
 @login_forbidden
 def signup2(request):
     if request.method == 'POST':

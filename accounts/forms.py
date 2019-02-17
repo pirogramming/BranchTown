@@ -48,8 +48,6 @@ class CustomSignupForm(forms.ModelForm):
         fields = ('name', 'username', 'email', 'pw1', 'pw2', )  # 'region', 'phone')
 
 
-
-
 class SignupForm2(forms.ModelForm):
     class Meta:
         model = Profile
@@ -92,5 +90,24 @@ class SignupForm2(forms.ModelForm):
 
         return instance
 
+    # 소셜 로그인 후 추가 정보 입력 받아서 profile 생성
+    def signup(self, request, user):
+        print(request.POST)
+        # profile = self.save(commit=False)
+        #user = U()
+        user.email = request.POST['email']
+        user.username = request.POST['username']
+        # user.first_name = step1_form['name'][1:]
+        # user.last_name = step1_form['name'][:1]
+        # user.set_password(pw)
+        user.save()
+        profile = Profile.objects.create(user=user, address = request.POST['address'], phone_number = request.POST['phone_number'], occupation = request.POST['occupation'])
 
+        #profile.user = user
+        # profile.address = request.POST['address']
+        # profile.phone_number = request.POST['phone_number']
+        # profile.occupation = request.POST['occupation']
+        profile.save()
 
+        receive_profile = Profile.objects.get(user_id=user.id)
+        receive_profile.tag.add(*self.cleaned_data['tags'])
