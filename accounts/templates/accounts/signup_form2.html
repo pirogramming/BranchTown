@@ -1,21 +1,4 @@
-{#<!DOCTYPE html>#}
-{#<html lang="en">#}
-{#<head>#}
-{#    <meta charset="UTF-8">#}
-{#    <title>Title</title>#}
-{#</head>#}
-{#<body>#}
-{#    <form action="", method="POST" enctype="multipart/form-data">#}
-{#      {% csrf_token %}#}
-{#        user name:{{ username }}#}
-{#        <li>#}
-{#            {{ form.as_table }}#}
-{#        </li>#}
-{##}
-{#      <input type="submit" value="Submit">#}
-{#    </form>#}
-{#</body>#}
-{#</html>#}
+
 
 {% extends 'accounts/layout.html' %}
 
@@ -23,7 +6,7 @@
 
 {% bootstrap_css %}
 {% block content %}
-    <h4>step1...</h4>
+    <h4>step2...</h4>
     <div class="container">
         <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
