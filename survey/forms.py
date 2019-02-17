@@ -7,19 +7,13 @@ from .models import Survey, Field, MultipleChoice
 class SurveyForm(forms.ModelForm):
     class Meta:
         model = Survey
-        fields = ['title', 'subtitle', 'tag', 'status']
+        fields = ('title', 'subtitle', 'tag',)
 
 
 class FieldForm(forms.ModelForm):
     class Meta:
         model = Field
-        fields = ['question']   # 'type',
-
-
-# class MultipleChoiceForm(forms.ModelForm):
-#     class Meta:
-#         model = MultipleChoice
-#         fields = ['choice_text']
+        fields = ('question',)   # 'type',
 
 
 ChoiceFormSet = modelformset_factory(

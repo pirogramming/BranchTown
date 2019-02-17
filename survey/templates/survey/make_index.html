@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="container">
-        <h1>{{ survey.title }}</h1>
+        <h1>설문제목: {{ survey.title }}</h1>
 
         <a class="btn btn-primary" href="{% url 'survey:multiple_choice' survey.id %}">
             객관식문항 추가

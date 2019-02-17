@@ -13,6 +13,7 @@ def make_survey(request):
         if form.is_valid():
             survey = form.save(commit=False)
             survey.author = request.user
+            survey.status = 'o'     # TODO: 일단 'o' 로 설정, 추후에 model 에 status 추가 후 값 변경해야함
             survey.save()
             return redirect('survey:make_index', survey.pk)
     else:
@@ -26,53 +27,66 @@ def make_survey(request):
 @login_required
 def make_index(request, pk):
     survey = Survey.objects.get(pk=pk)
-    field_list = Survey.objects.get(pk=pk).field_set.all()
-    context = {
-        'survey': survey,
-        'field_list': field_list,
-    }
-    return render(request, 'survey/make_index.html', context)
+    if request.user == survey.author:
+        field_list = survey.field_set.all()
+        context = {
+            'survey': survey,
+            'field_list': field_list,
+        }
+        return render(request, 'survey/make_index.html', context)
+    else:
+        return redirect('root')
+        # TODO: 설문 작성자와 user 가 동일하지 않을 경우, 일단 root 로 redirect
 
 
 def multiple_choice(request, pk):
-    if request.method == "POST":
-        field_form = FieldForm(request.POST)
-        formset = ChoiceFormSet(request.POST)
-
-        if field_form.is_valid() and formset.is_valid():
-            field = field_form.save(commit=False)
-            field.survey = Survey.objects.get(pk=pk)
-            field.type = '2'
-            field.save()
-            for form in formset:
-                choice = form.save(commit=False)
-                choice.field = field
-                choice.save()
-            return redirect('survey:make_index', pk)
+    survey = Survey.objects.get(pk=pk)
+    if request.user == survey.author:
+        if request.method == "POST":
+            field_form = FieldForm(request.POST)
+            formset = ChoiceFormSet(request.POST)
+            if field_form.is_valid() and formset.is_valid():
+                field = field_form.save(commit=False)
+                field.survey = survey
+                field.type = '2'
+                field.save()
+                for form in formset:
+                    choice = form.save(commit=False)
+                    choice.field = field
+                    choice.save()
+                return redirect('survey:make_index', pk)
+        else:
+            field_form = FieldForm()
+            formset = ChoiceFormSet(queryset=MultipleChoice.objects.none())
+        return render(request, 'survey/make_choice.html', {
+            'field_form': field_form,
+            'formset': formset,
+        })
     else:
-        field_form = FieldForm()
-        formset = ChoiceFormSet(queryset=MultipleChoice.objects.none())
-    return render(request, 'survey/choice.html', {
-        'field_form': field_form,
-        'formset': formset,
-    })
+        return redirect('root')
+        # TODO: 설문 작성자와 user 가 동일하지 않을 경우, 일단 root 로 redirect
 
 
 def text_answer(request, pk):
-    if request.method == "POST":
-        form = TextAnswerForm(request.POST)
-        if form.is_valid():
-            answer = form.save(commit=False)
-            answer.survey = Survey.objects.get(pk=pk)
-            answer.type = '1'
-            answer.save()
-            return redirect('survey:make_index', pk)
+    survey = Survey.objects.get(pk=pk)
+    if request.user == survey.author:
+        if request.method == "POST":
+            form = TextAnswerForm(request.POST)     # TODO: Field Form 과 차이점 X,
+            if form.is_valid():
+                field = form.save(commit=False)
+                field.survey = survey
+                field.type = '1'
+                field.save()
+                return redirect('survey:make_index', pk)
+        else:
+            form = TextAnswerForm()
+        return render(request, 'survey/make_text_answer.html', {
+            'survey': survey,
+            'form': form,
+        })
     else:
-        form = TextAnswerForm()
-    return render(request, 'survey/text_answer.html', {
-        'survey': Survey.objects.get(pk=pk),
-        'form': form,
-    })
+        return redirect('root')
+        # TODO: 설문 작성자와 user 가 동일하지 않을 경우, 일단 root 로 redirect
 
 
 @login_required
