@@ -1,32 +1,37 @@
 from django import forms
-from django.forms import modelformset_factory
+from django.forms import modelformset_factory, formset_factory
 
-from .models import Survey, Field
+from .models import Survey, Field, MultipleChoice
 
 
 class SurveyForm(forms.ModelForm):
     class Meta:
         model = Survey
-        fields = ['title', 'subtitle', 'tag', 'status']
-
-
-FieldModelFormset = modelformset_factory(
-    Field,
-    fields=('survey', 'type', 'question'),
-    extra=1,
-    widgets={
-        'type': forms.CharField(),
-        'question': forms.TextInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'write question'
-        })
-    }
-)
+        fields = ('title', 'subtitle', 'tag',)
 
 
 class FieldForm(forms.ModelForm):
     class Meta:
         model = Field
-        fields = ['type', 'question']
+        fields = ('question',)   # 'type',
 
 
+ChoiceFormSet = modelformset_factory(
+    MultipleChoice,
+    fields=['choice_text'],
+    extra=1,
+    widgets={
+        'choice_text': forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter choice text',
+            }
+        )
+    }
+)
+
+
+class TextAnswerForm(forms.ModelForm):
+    class Meta:
+        model = Field
+        fields = ['question']
