@@ -4,10 +4,10 @@
     <div class="container">
         <h1>설문제목: {{ survey.title }}</h1>
 
-        <a class="btn btn-primary" href="{% url 'survey:multiple_choice' survey.id %}">
+        <a class="btn btn-primary" href="{% url 'survey:make_multiple_choice' survey.id %}">
             객관식문항 추가
         </a>
-        <a class="btn btn-primary" href="{% url 'survey:text_answer' survey.id %}">
+        <a class="btn btn-primary" href="{% url 'survey:make_text_answer' survey.id %}">
             주관식문항 추가
         </a>
 

@@ -39,7 +39,7 @@ def make_index(request, pk):
         # TODO: 설문 작성자와 user 가 동일하지 않을 경우, 일단 root 로 redirect
 
 
-def multiple_choice(request, pk):
+def make_multiple_choice(request, pk):
     survey = Survey.objects.get(pk=pk)
     if request.user == survey.author:
         if request.method == "POST":
@@ -67,7 +67,7 @@ def multiple_choice(request, pk):
         # TODO: 설문 작성자와 user 가 동일하지 않을 경우, 일단 root 로 redirect
 
 
-def text_answer(request, pk):
+def make_text_answer(request, pk):
     survey = Survey.objects.get(pk=pk)
     if request.user == survey.author:
         if request.method == "POST":
