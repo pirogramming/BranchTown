@@ -1,5 +1,5 @@
 import json
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.utils.safestring import mark_safe
 from django.views.generic import View
 from django.contrib.auth import get_user_model
@@ -27,4 +27,21 @@ class HomeView(View):
                           'json_graphs': mark_safe(json.dumps(data)),
                           'graphs': data
                       })
+
+
+def preview_survey(request, pk):
+    survey = get_object_or_404(Survey, pk=pk)
+    return render(request, 'response/preview.html', {
+        'survey': survey,
+    })
+
+
+def response_survey(request, pk):
+    survey = Survey.objects.get(pk=pk)
+    fields = survey.field_set.all()
+    return render(request, 'response/survey.html', {
+        'survey': survey,
+        'fields': fields,
+    })
+
 

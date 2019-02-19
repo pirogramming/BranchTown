@@ -48,7 +48,7 @@ def make_multiple_choice(request, pk):
             if field_form.is_valid() and formset.is_valid():
                 field = field_form.save(commit=False)
                 field.survey = survey
-                field.type = '2'
+                field.type = '1'
                 field.save()
                 for form in formset:
                     choice = form.save(commit=False)
@@ -75,7 +75,7 @@ def make_text_answer(request, pk):
             if form.is_valid():
                 field = form.save(commit=False)
                 field.survey = survey
-                field.type = '1'
+                field.type = '2'
                 field.save()
                 return redirect('survey:make_index', pk)
         else:
