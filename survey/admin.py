@@ -9,12 +9,12 @@ class SurveyAdmin(admin.ModelAdmin):
 
 @admin.register(Field)
 class FieldAdmin(admin.ModelAdmin):
-    list_display = ['type', 'question']
+    list_display = ['type', 'question', 'survey']
 
 
 @admin.register(MultipleChoice)
 class MultipleChoiceAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['field', 'choice_text']
 
 
 @admin.register(TextAnswer)

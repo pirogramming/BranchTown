@@ -8,12 +8,12 @@ from survey.models import Survey, Field, MultipleChoice
 User = get_user_model()
 
 class ResultView(View):
-    def get(self, request, pk=1):
-        survey = Survey.objects.get(pk=4)
+    def get(self, request, pk=4):
+        survey = Survey.objects.get(pk=pk)
 
         #전체를 순회할 데이터 set
         fields = Field.objects.filter(
-            survey__id=4
+            survey__id=pk
         )
 
         field_data = {}
@@ -23,7 +23,7 @@ class ResultView(View):
 
         #주/단답식 결과 출력
         txt_fields = Field.objects.filter(
-            survey__id=4, type=2|3
+            survey__id=pk, type=2|3
         )
 
         txt_data = {}
@@ -37,7 +37,7 @@ class ResultView(View):
 
         #객관식 결과 출력
         multi_fields = Field.objects.filter(
-            survey__id=4, type=1
+            survey__id=pk, type=1
         )
 
         multi_data = {}
