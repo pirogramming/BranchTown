@@ -153,6 +153,11 @@
     margin-bottom: 30px;
 }
 
+.col-md-3:hover{
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    border: 0;
+}
+
 
 .container-bottom{
     width : 1200px ;
@@ -222,7 +227,6 @@
 .fa-youtube{
     color: #bb0000
 }
-
 .fa-facebook:hover,
 .fa-instagram:hover,
 .fa-youtube:hover {
@@ -234,6 +238,7 @@ footer {
     color : #d5d5d5;
     padding-top : 2rem;
 }
+
 
 hr.light {
     border-top : 1px solid #d5d5d5;
