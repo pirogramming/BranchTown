@@ -39,6 +39,7 @@
                     </a>
 
                     <div class="dropdown-menu"  aria-labelledby="navbarDropdown" >
+
                         <a class="dropdown-item" href="{% url 'board:main' %}" style="font-size : 16px; margin-left :0;">All Survey</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{% url 'board:survey_interest' %}" style="font-size : 16px; margin-left :0;">Recommend</a>
@@ -46,6 +47,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{% url 'board:survey_ongoing' %}" style="font-size : 16px; margin-left :0;">Ongoing</a>
                         <a class="dropdown-item" href="{% url 'board:survey_complete' %}" style="font-size : 16px; margin-left :0;">Completed</a>
+
                     </div>
                 </li>
 
@@ -70,8 +72,6 @@
         </div>
     </nav>
 
-    {% block categories %}
-    {% endblock %}
 
     {%  block content %}
     {%  endblock  %}

@@ -12,11 +12,12 @@ class FieldAdmin(admin.ModelAdmin):
     list_display = ['type', 'question', 'survey']
 
 
+@admin.register(TextAnswer)
+class TextAnswerAdmin(admin.ModelAdmin):
+    pass
+
+
 @admin.register(MultipleChoice)
 class MultipleChoiceAdmin(admin.ModelAdmin):
     list_display = ['field', 'choice_text']
 
-
-@admin.register(TextAnswer)
-class TextAnswerAdmin(admin.ModelAdmin):
-    pass

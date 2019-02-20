@@ -13,6 +13,8 @@ urlpatterns = [
     path('recent/', views.survey_recent, name='survey_recent'),
 
     path('ongoing/', views.survey_ongoing, name='survey_ongoing'),
+
+    path('answer/', views.survey_participated, name='survey_participated'),
     path('complete/', views.survey_complete, name='survey_complete'),
 
     path('tag/<int:pk>/', views.survey_tag, name='survey_tag'),
