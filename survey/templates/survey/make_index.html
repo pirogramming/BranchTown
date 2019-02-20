@@ -4,17 +4,17 @@
     <div class="container">
         <h1>설문제목: {{ survey.title }}</h1>
 
-        <a class="btn btn-primary" href="{% url 'survey:multiple_choice' survey.id %}">
+        <a class="btn btn-primary" href="{% url 'survey:make_multiple_choice' survey.id %}">
             객관식문항 추가
         </a>
-        <a class="btn btn-primary" href="{% url 'survey:text_answer' survey.id %}">
+        <a class="btn btn-primary" href="{% url 'survey:make_text_answer' survey.id %}">
             주관식문항 추가
         </a>
 
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th scope="col">번호</th>
+                    <th scope="col">#</th>
                     <th scope="col">유형</th>
                     <th scope="col">문항 text</th>
                 </tr>
@@ -22,14 +22,14 @@
             <tbody>
                 {% for field in field_list %}
                     <tr>
-                        <td>숫자</td>
+                        <td>{{ forloop.counter }}번</td>
                         <td>{{ field.type }}</td>
                         <td>
                             {{ field.question }}
-                            {% if field.type == '2' %}
+                            {% if field.type == '1' %}
                                 <i>(선지 list
                                     {% for choice in field.multiplechoice_set.all %}
-                                        {{ choice }}
+                                        {{ choice }}/
                                     {% endfor %})
                                 </i>
                             {% endif %}

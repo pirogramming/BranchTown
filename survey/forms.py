@@ -29,9 +29,3 @@ ChoiceFormSet = modelformset_factory(
         )
     }
 )
-
-
-class TextAnswerForm(forms.ModelForm):
-    class Meta:
-        model = Field
-        fields = ['question']

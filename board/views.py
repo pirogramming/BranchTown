@@ -62,8 +62,13 @@ def survey_ongoing(request):
     })
 
 
-def survey_answer(request):
-    pass
+@login_required()
+def survey_participated(request):
+    surveys = Survey.objects.filter(response__respondent_id=request.user)
+    return render(request, 'board/survey_base.html', {
+        'category': 'participated',
+        'surveys': surveys,
+    })
 
 
 def survey_complete(request):

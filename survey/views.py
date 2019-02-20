@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from .models import Survey, Field, MultipleChoice
-from .forms import SurveyForm, FieldForm, TextAnswerForm, ChoiceFormSet
+from .forms import SurveyForm, FieldForm, ChoiceFormSet
 
 
 @login_required
@@ -39,7 +39,7 @@ def make_index(request, pk):
         # TODO: 설문 작성자와 user 가 동일하지 않을 경우, 일단 root 로 redirect
 
 
-def multiple_choice(request, pk):
+def make_multiple_choice(request, pk):
     survey = Survey.objects.get(pk=pk)
     if request.user == survey.author:
         if request.method == "POST":
@@ -48,7 +48,7 @@ def multiple_choice(request, pk):
             if field_form.is_valid() and formset.is_valid():
                 field = field_form.save(commit=False)
                 field.survey = survey
-                field.type = '2'
+                field.type = '1'
                 field.save()
                 for form in formset:
                     choice = form.save(commit=False)
@@ -67,19 +67,19 @@ def multiple_choice(request, pk):
         # TODO: 설문 작성자와 user 가 동일하지 않을 경우, 일단 root 로 redirect
 
 
-def text_answer(request, pk):
+def make_text_answer(request, pk):
     survey = Survey.objects.get(pk=pk)
     if request.user == survey.author:
         if request.method == "POST":
-            form = TextAnswerForm(request.POST)     # TODO: Field Form 과 차이점 X,
+            form = FieldForm(request.POST)     # TODO: Field Form 과 차이점 X,
             if form.is_valid():
                 field = form.save(commit=False)
                 field.survey = survey
-                field.type = '1'
+                field.type = '2'
                 field.save()
                 return redirect('survey:make_index', pk)
         else:
-            form = TextAnswerForm()
+            form = FieldForm()
         return render(request, 'survey/make_text_answer.html', {
             'survey': survey,
             'form': form,
@@ -123,3 +123,11 @@ def make_field(request, pk):
 def results(request, pk):
     field = get_object_or_404(Field, pk=pk)
     return render(request, 'survey/results.html', {'field': field})
+
+
+def my_survey(request):
+    user = request.user
+    surveys = Survey.objects.filter(author=user)
+    return render(request, 'survey/my_survey.html', {
+        'surveys': surveys,
+    })

@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">{{ survey.title }}</h1>
+            <p class="lead">
+                {{ survey.subtitle }}
+            </p>
+            <hr class="my-4">
+            작성자: {{ survey.author }}<br>
+            문항수: {{ survey.field_set.count }}<br>
+
+            <a href="{% url 'response:response_survey' survey.pk %}" class="btn btn-primary">참여하기</a>
+        </div>
+    </div>
+{% endblock %}
