@@ -1,22 +1,56 @@
-#start-main{
-    /*background-image : url("../images/isolated-tree.png");*/
-    /*background-size : cover;*/
-    /*background-position : center center;*/
-    /*width : 100%;*/
-    /*height : 720px;*/
-    /*line-height : 720px;*/
+
+#first-image{
+    background-image : linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url("../images/online-survey.jpg");
+    background-position : center center;
+    background-size : cover;
 }
 
-#isolated-tree{
-    background-color : black;
-}
+
 .jumbotron{
+    display : block;
     padding: 1rem;
     border-radius : 0;
 }
 
+#carousel-layer{
+    margin-top : 20px;
+    margin-left : 40px;
+    margin-right : 40px;
+}
+
+.second-layer {
+    margin-top : 40px;
+    width : 1200px;
+    margin-left : auto;
+    margin-right : auto;
+    text-align : center;
+    height : 550px;
+
+}
+
+.left-box{
+    box-sizing : border-box;
+    display : inline-block;
+    border-radius : 5px;
+    height : 500px;
+    width : 450px;
+    background-color : #fbfbfb;
+    float : left;
+}
+
+.right-box{
+    box-sizing : border-box;
+    display : inline-block;
+    border-radius : 5px;
+    height : 500px;
+    width : 450px;
+    background-color : #fbfbfb;
+    float : right;
+
+}
 .carousel {
-    width : 1000px;
+    float : right;
+    width : 700px;
     margin-left:auto;
     margin-right: auto;
     margin-top: 10px;
@@ -56,6 +90,12 @@
     background-image: url("../images/meeting.jpg");
 }
 
+.container-fluid .padding {
+    width : 1100px;
+    margin-left : auto;
+    margin-right : auto;
+}
+
 .basket {
     display : block;
     text-align : center;
@@ -66,9 +106,27 @@
     background : linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
 }
 
-.second-basket{
-    margin-top : 30px;
+#basket-0{
+    width : 500px;
+    padding-top : 150px;
+    display : block;
     text-align : center;
+    margin-left : auto;
+    margin-right : auto;
+    vertical-align : middle;
+}
+
+#slogan {
+    margin-bottom : 100px;
+    font-size : 60px;
+    font-weight : 400;
+    color : white;
+}
+
+.second-basket{
+    margin-top : 70px;
+    text-align : center;
+
 }
 
 .events{
@@ -94,14 +152,6 @@
 }
 
 
-#isolated-tree{
-    background :linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
-    width : 1200px;
-    display : block;
-    margin-left : auto;
-    margin-right : auto;
-
-}
 .container-bottom{
     width : 1200px ;
     margin-left : auto;
@@ -113,6 +163,7 @@
     padding-right : 100px;
 
 }
+
 .wordd {
     margin-left : 20px;
     font-size : 20px;
@@ -235,4 +286,34 @@ hr.light-100 {
         font-size : 2em;
         padding: .7rem;
     }
+}
+
+#title1{
+    display : block;
+    text-align : center;
+    margin-top : 60px;
+    font-weight : 700;
+    margin-left : auto;
+    margin-right : auto;
+}
+
+#title2{
+    display : block;
+    margin-top : 70px;
+    text-align : center;
+    margin-left : auto;
+    margin-right : auto;
+}
+
+.btn-lg {
+    background-color : #af8c53;
+    outline-style : none;
+}
+
+.btn-lg:hover{
+    background-color : #c0a16b;
+    color : white;
+    outline-style : none;
+
+
 }
