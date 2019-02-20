@@ -8,11 +8,12 @@
         <form action="" method="post">
             {% csrf_token %}
             {{ formset.management_form }}
+            <table>
             {% for form in formset %}
-{#                123 : {{ form.field.question }} : 123#}
                 {% bootstrap_form form %}
             {% endfor %}
-            <input type="submit">
+            </table>
+            <input type="submit" class="btn btn-success">
         </form>
     </div>
 {% endblock %}

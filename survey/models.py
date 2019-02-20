@@ -15,6 +15,7 @@ class Survey(models.Model):
     created_at = models.DateField(auto_now_add=True)
     tag = models.ManyToManyField(Tag)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
+    response_count = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title

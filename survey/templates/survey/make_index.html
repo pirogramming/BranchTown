@@ -26,7 +26,7 @@
                         <td>{{ field.type }}</td>
                         <td>
                             {{ field.question }}
-                            {% if field.type == '2' %}
+                            {% if field.type == '1' %}
                                 <i>(선지 list
                                     {% for choice in field.multiplechoice_set.all %}
                                         {{ choice }}/

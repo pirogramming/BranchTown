@@ -13,11 +13,12 @@
                 <li>{{ forloop.counter }}. {{ field }}</li>
                 {% if field.multiplechoice_set.all %}
                     {% for choice in field.multiplechoice_set.all %}
-                        <input type="radio" name="{{ field.id }}" id="{{ choice.id }}">
+                        <input type="radio" name="{{ field.id }}" id="{{ choice.id }}" value="{{ choice.id }}">
                         <label for="{{ choice.id }}">{{ choice.choice_text }}</label>
                     {% endfor %}
                 {% else %}
-                    <input type="text" id="{{ field.id }}">
+                    <input type="text" id="{{ field.id }}" name="{{ field.id }}">
+{#                    {{ field.id }}#}
                     <label for="{{ field.id }}"></label>
                 {% endif %}
             {% endfor %}
