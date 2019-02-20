@@ -1,16 +1,13 @@
-
-
-
 html{
     position: relative;
     min-height: 100%;
 }
 
+
 body {
-    padding : 0;
-    margin : 0 0 40px 0;
-    background-color : floralwhite;
-    /*font-family: NanumSquare, serif;*/
+    padding: 0;
+    margin: 0 0 40px 0;
+    background-color: #FFFFFF;
 }
 
 
@@ -20,7 +17,7 @@ body {
     left : 0px;
     bottom : 0px;
     width : 100%;
-    background-color : rgb(222, 218, 187);
+    background-color : #af8c53;
 
 }
 

@@ -36,7 +36,7 @@ def survey_interest(request):
         surveys = Survey.objects.none()
 
     return render(request, 'board/survey_base.html', {
-        'category': 'interest',
+        'category': 'Recommend',
         'surveys': surveys,
     })
 
@@ -49,9 +49,6 @@ def survey_tag(request, pk):
         'surveys': surveys,
     })
 
-
-def survey_hot(request):
-    pass
 
 
 def survey_ongoing(request):

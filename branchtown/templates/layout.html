@@ -8,15 +8,17 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}BranchTown{% endblock %}</title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
     {% block style %}{% endblock %}
 </head>
 
 
 <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light " style="padding-top: 0; padding-bottom : 0; background-color: rgb(222,218,187);">
+    <nav class="navbar navbar-expand-lg navbar-light " style="padding-top: 0; padding-bottom : 0; background-color: #FFFFFF;">
         <a class="navbar-brand" href="{% url 'root' %}"style="padding-top: 0; padding-bottom : 0;">
             <img src="{% static 'images/logo.png' %}" alt="#" width="100" class="logo">
         </a>
@@ -69,8 +71,11 @@
         </div>
     </nav>
 
-    {% block content %}
+    {% block categories %}
     {% endblock %}
+
+    {%  block content %}
+    {%  endblock  %}
 
     <button class="to-top-btn">
     <img src="{% static 'images/arrows.jpg' %}" width="32" height="32">
