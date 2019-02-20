@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% load bootstrap4 %}
+
+{% bootstrap_css %}
+{% block content %}
+    <div class="container">
+        <h1>주관식 문항 추가</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <input type="submit" class="btn btn-primary" value="문항 추가">
+        </form>
+    </div>
+{% endblock %}

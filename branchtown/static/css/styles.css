@@ -1,17 +1,63 @@
-html {
+html{
     position: relative;
     min-height: 100%;
 }
 
 body {
-    margin-bottom : 60px;
+    padding : 0;
+    margin : 0 0 40px 0;
+    background-color : floralwhite;
+
 }
 
-#page-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-    background-color: floralwhite;
+
+#footer{
+    height : 40px;
+    position : absolute;
+    left : 0px;
+    bottom : 0px;
+    width : 100%;
+    background-color : rgb(222, 218, 187);
+
+}
+
+li{
+    list-style : none;
+}
+
+.text-muted{
+    margin-left : 30px;
+    padding-top : 10px;
+    font-size : 12px;
+}
+.navbar-nav {
+    margin-left : 20px;
+}
+
+
+.navbar-nav li a{
+    font-family: '배달의민족 주아';
+    font-size : 20px;
+    margin-left : 10px;
+    text-align : center;
+}
+
+.dropdown-menu{
+    font-size : 15px;
+    text-align : center;
+}
+
+.to-top-btn {
+  background-color: white;
+  padding: 15px;
+  border: none;
+  outline: none;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.05), 0 5px 5px 0 rgba(0,0,0,0.05);
+  border-radius: 50%;
+  cursor: pointer;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1;
+  display : none;
 }

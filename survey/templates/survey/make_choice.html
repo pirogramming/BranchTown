@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% load bootstrap4 %}
+
+{% bootstrap_css %}
+{% block content %}
+    <div class="container">
+        <h1>객관식 문항 추가</h1>
+        <form class="form-horizontal" method="POST" action="">
+            {% csrf_token %}
+            {% bootstrap_form field_form %}
+
+            <div class="input-group-append">
+                <input type="button" class="btn btn-success" id="add_more" value="+">
+                <input type="button" class="btn btn-danger" id="remove" value="-">
+            </div>
+
+            {{ formset.management_form }}
+            {% for form in formset %}
+            <div class="row form-row form-horizontal" id="form_set">
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    {% bootstrap_form form %}
+                </div>
+            </div>
+            {% endfor %}
+
+            <div id="empty_form" style="display:none">
+                <div class="col-sm-6 col-lg-4 col-xl-3">
+                    {% bootstrap_form formset.empty_form %}
+        {#            {{ formset.empty_form.as_table }}#}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <button type="submit" class="btn btn-primary">문항 추가</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                crossorigin="anonymous">
+    </script>
+
+    <script type='text/javascript'>
+        $(document).ready(function() {
+            $('#add_more').click(function(){
+                var form_idx=$('#id_form-TOTAL_FORMS').val();
+                $('#form_set')
+                    .append(
+                        $('#empty_form')
+                            .html()
+                            .replace(/__prefix__/g, form_idx)
+                    );
+                $('#id_form-TOTAL_FORMS').val(parseInt(form_idx)+1);
+                {#console.log(form_idx);#}
+            });
+        });
+
+        $(document).ready(function() {
+            $('#remove').click(function(){
+                var form_idx=$('#id_form-TOTAL_FORMS').val();
+                if (form_idx > 1) {
+                    $('#form_set>div:last-child').remove();
+                    $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) - 1);
+                }
+                {#console.log(form_idx);#}
+            });
+        });
+    </script>
+{% endblock %}
+

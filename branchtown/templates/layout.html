@@ -8,14 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}BranchTown{% endblock %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     {% block style %}{% endblock %}
 </head>
 <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light " style="padding-top: 0; padding-bottom : 0;">
+    <nav class="navbar navbar-expand-lg navbar-light " style="padding-top: 0; padding-bottom : 0; background-color: rgb(222,218,187);">
         <a class="navbar-brand" href="{% url 'root' %}"style="padding-top: 0; padding-bottom : 0;">
-            <img src="{% static 'images/logo.jpg' %}" alt="#" width="150" class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="#" width="100" class="logo">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,38 +23,43 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Survey</a>
+                    <a class="nav-link" href="{% url 'main:intropage' %}" >서비스 <br/> 소개</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'survey:make_survey' %}" >설문 <br />폼 제작</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Board
+                       설문 <br/> 게시판
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'board:main' %}">main</a>
+
+                    <div class="dropdown-menu"  aria-labelledby="navbarDropdown" >
+                        <a class="dropdown-item" href="{% url 'board:main' %}" style="font-size : 16px; margin-left :0;">main</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url 'board:survey_interest' %}">추천 설문</a>
-                        <a class="dropdown-item" href="#">참여한 설문</a>
+                        <a class="dropdown-item" href="{% url 'board:survey_interest' %}" style="font-size : 16px; margin-left :0;">추천 설문</a>
+                        <a class="dropdown-item" href="#" style="font-size : 16px; margin-left :0;">참여한 설문</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url 'board:survey_recent' %}">최신 설문</a>
-                        <a class="dropdown-item" href="{% url 'board:survey_ongoing' %}">진행 중인 설문</a>
-                        <a class="dropdown-item" href="{% url 'board:survey_complete' %}">종료된 설문</a>
+                        <a class="dropdown-item" href="{% url 'board:survey_recent' %}" style="font-size : 16px; margin-left :0;">최신 설문</a>
+                        <a class="dropdown-item" href="{% url 'board:survey_ongoing' %}" style="font-size : 16px; margin-left :0;">진행 중인 설문</a>
+                        <a class="dropdown-item" href="{% url 'board:survey_complete' %}" style="font-size : 16px; margin-left :0;">종료된 설문</a>
                     </div>
                 </li>
+
             </ul>
             <ul class="navbar-nav navbar-right">
                 {% if not user.is_authenticated %}
                     <li class="nav-item">
-                        <a href="{% url 'signup' %}" class="nav-link">회원가입</a>
+                        <a href="{% url 'signup' %}" class="nav-link" >회원가입</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'login' %}?next={{ request.path }}" class="nav-link">로그인</a>
+                        <a href="{% url 'login' %}?next={{ request.path }}" class="nav-link" >로그인</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a href="{% url 'profile' %}" class="nav-link">마이페이지</a>
+                        <a href="{% url 'profile' %}" class="nav-link" >마이페이지</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'logout' %}?next={{ request.path }}" class="nav-link">로그아웃</a>
+                        <a href="{% url 'logout' %}?next={{ request.path }}" class="nav-link" >로그아웃</a>
                     </li>
                 {% endif %}
             </ul>
@@ -64,18 +69,25 @@
     {% block content %}
     {% endblock %}
 
+
+    <button class="to-top-btn">
+    <img src="{% static 'images/arrows.jpg' %}" width="32" height="32">
+    </button>
     <!-- footer -->
-    <div id="page-footer">
-        <div class="container">
-            <p class="text-muted" style="color : black">
-                &copy; BranchTown
-                대학생 설문조사 사이트
-            </p>
-        </div>
-    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src='{%  static "js/script.js" %}'></script>
+
+    <div id="footer">
+        <p class="text-muted">
+        ⓒ BranchTown
+        대학생을 위한 설문 조사 플랫폼
+        </p>
+    </div>
+
 </body>
+
 </html>

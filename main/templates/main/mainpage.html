@@ -6,102 +6,66 @@
 {% endblock %}
 
 {% block content %}
-    <!-- carousel -->
+
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active carousel_1">
-                <div class="basket">
-                    <div class="events event_1">대학생을 위한 <br>전용 설문 공유 플랫폼</div>
-                </div>
-            </div>
-            <div class="carousel-item carousel_2">
-                <div class="basket">
-                    <div class="events event_2">신학기 맞이 이벤트!!
-                        <br>3월 안에 회원가입 시 5000원 기프트 증정!!</div>
-                </div>
-            </div>
-            <div class="carousel-item carousel_3">
-                <div class="basket">
-                    <div class="events event_3">뭉치면 이득이다. <br>팀 등록시 설문 게재 기간 5일 연장!! </div>
-                </div>
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-
-    <div class="middle_title">
-        <b>◈ 추천 설문</b>
-    </div>
-    <div class="container">
-        <div class="row">
-            {% for survey in survey_interest %}
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                    <div class="card">
-                        <img src="{% static 'images/logo.jpg' %}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ survey.title }}</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <p>
-                                {% for tag in  survey.tag.all %}
-                                    <a href="{% url 'board:survey_tag' tag.id %}" style="text-decoration: none">
-                                        #{{ tag }}
-                                    </a>
-                                {% endfor %}
-                            </p>
-                            <a href="{% url 'board:survey_detail' survey.id %}" class="btn btn-primary">설문 응답하기</a>
-                            <a href="#">
-                                <img src="{% static 'images/share.png' %}" alt="" width="30">
-                            </a>
-                        </div>
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active carousel_1">
+                    <div class="basket">
+                        <div class="events event_1">대학생을 위한 <br>설문 조사 공유 플랫폼</div>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
-    </div>
-
-
-    <div class="middle_title">
-        <b>◈ 새로 올라운 설문</b>
-    </div>
-    <div class="container">
-        <div class="row">
-            {% for survey in survey_recent %}
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                    <div class="card">
-                        <img src="{% static 'images/logo.jpg' %}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ survey.title }}</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <p>
-                                {% for tag in  survey.tag.all %}
-                                    <a href="{% url 'board:survey_tag' tag.id %}" style="text-decoration: none">
-                                        #{{ tag }}
-                                    </a>
-                                {% endfor %}
-                            </p>
-                            <a href="{% url 'board:survey_detail' survey.id %}" class="btn btn-primary">설문 응답하기</a>
-                            <a href="#">
-                                <img src="{% static 'images/share.png' %}" alt="" width="30">
-                            </a>
-                        </div>
+                <div class="carousel-item carousel_2">
+                    <div class="basket">
+                        <div class="events event_2">신학기 맞이 이벤트!!
+                            <br>3월 안에 회원가입 시 3000포인트 증정</div>
                     </div>
                 </div>
-            {% endfor %}
+                <div class="carousel-item carousel_3">
+                    <div class="basket">
+                        <div class="events event_3">뭉치면 이득이다. <br>팀 등록시 설문 게재 기간 5일 연장!!</div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+    </div>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+        <script href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+{#        <form class="form-line" style="width: 300px; display : inline-block;">#}
+{#            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">#}
+{#            <button class="btn btn-light my-sm-0" type="submit">Search</button>#}
+{#        </form>#}
+        <div class="container-bottom">
+            <div class="col-xs-5 col-sm-3 pull-right" >
+                <form class="navbar-form" role="search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span>
+                    </div>
+                  </div>
+                </form>
         </div>
-    </div>
-    <div class="middle_title">
-        <b>◈ 핫한 기프티콘</b>
-    </div>
+
+            <div id="search-word" style="margin-top : 12px; float : right; font-size : 20px; ">
+                <p class="wordd">설문을 태그로 검색해보세요</p></div>
+            <div id="personalized-survey" style="margin-top : 12px; float : left; font-size : 20px;">
+                <p class="wordd">당신을 위한 오늘의 맞춤 설문</p>
+            </div>
+        </div>
+
+
+
 {% endblock %}
