@@ -10,6 +10,10 @@
 #isolated-tree{
     background-color : black;
 }
+.jumbotron{
+    padding: 1rem;
+    border-radius : 0;
+}
 
 .carousel {
     width : 1000px;
@@ -18,6 +22,22 @@
     margin-top: 10px;
 }
 
+.padding {
+    padding-bottom: 2rem;
+}
+
+.welcome {
+    width : 75%;
+    margin : 0 auto;
+    padding-top : 2rem;
+}
+
+.welcome hr{
+    border-top: 2px solid #b4b4b4;
+    width: 95%;
+    margin-top: .3rem;
+    margin-bottom : 1rem;
+}
 .carousel-item {
     background-position : center center;
     background-size: cover;
@@ -99,5 +119,120 @@
     font-family : "배달의민족 도현";
 }
 
+.fa-code {
+    color : #e54d26;
+}
 
+.fa-css3{
+    color : #2163af;
+}
 
+.fa-code, .fa-css3{
+    font-size : 4em;
+    margin: 1rem;
+
+}
+
+.social a {
+    font-size : 4.5em;
+    padding: 3rem;
+}
+
+.fa-facebook{
+    color: #3b5998;
+}
+
+.fa-github {
+    color : black;
+}
+
+.fa-instagram{
+    color : #517fa4;
+}
+
+.fa-youtube{
+    color: #bb0000
+}
+
+.fa-facebook:hover,
+.fa-instagram:hover,
+.fa-youtube:hover {
+    color: #d5d5d5;
+}
+
+footer {
+    background-color : #3f3f3f;
+    color : #d5d5d5;
+    padding-top : 2rem;
+}
+
+hr.light {
+    border-top : 1px solid #d5d5d5;
+    width : 75%;
+    margin-top : 1rem;
+}
+
+hr.light-100 {
+    border-top : 1px solid #d5d5d5;
+    width: 75%;
+    margin-top: .8rem;
+    margin-bottom: 1rem;
+    }
+
+@media (max-width: 992px) {
+    .social a{
+        font-size: 4em;
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px){
+    .carousel-caption {
+        top: 45%
+    }
+    .carousel-caption h1{
+        font-size : 350%;
+    }
+    .carousel-caption h3{
+        font-size : 140%;
+        font-weight: 400;
+        padding-bottom: .2rem;
+    }
+    .carousel-caption .btn {
+        font-size: 95%;
+        padding: 8px 14px;
+    }
+    .display-4 {
+        font-size : 200%;
+    }
+    .social a {
+        font-size : 2.5em;
+        padding: 1.2rem;
+    }
+}
+
+@media (max-width: 768px){
+    .carousel-caption {
+        top: 40%
+    }
+    .carousel-caption h1{
+        font-size : 250%;
+    }
+    .carousel-caption h3{
+        font-size : 110%;
+    }
+    .carousel-caption .btn {
+        font-size: 90%;
+        padding: 4px 8px;
+    }
+    .carousel-indicators{
+        display : none;
+    }
+    .display-4 {
+        font-size : 160%;
+    }
+    .social a {
+        font-size : 2em;
+        padding: .7rem;
+    }
+}
