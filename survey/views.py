@@ -68,6 +68,7 @@ def make_multiple_choice(request, pk):
         # TODO: 설문 작성자와 user 가 동일하지 않을 경우, 일단 root 로 redirect
 
 
+
 def make_text_answer(request, pk):
     survey = Survey.objects.get(pk=pk)
     if request.user == survey.author:
@@ -107,18 +108,40 @@ def make_field(request, pk):
     })
 
 
-# def multiple_choice(request, pk):
-#     field = get_object_or_404(Field, pk=pk)
-#     try:
-#         selected_choice = field.multiplechoice_set.get(pk=request.POST['multiple_choice'])
-#     except (KeyError, MultipleChoice.DoesNotExist):
-#         return render(request, 'survey/multiple_choice.html', {'field': field,
-#                                                                'error_message':
-#                                                                "You didn't select a choice", })
-#     else:
-#         selected_choice += 1
-#         selected_choice.save()
-#         return HttpResponseRedirect(reverse('survey:results', args=field.id,))
+def multiple_choice(request, pk):
+    if request.method == "POST":
+        choiceformset = ChoiceFormSet(request.POST)
+        if choiceformset.is_valid():
+            return redirect('survey:make_index', pk)
+    field = get_object_or_404(Field, pk=pk)
+    try:
+        selected_choice = field.multiplechoice_set.get(pk=request.POST['multiple_choice'])
+    except (KeyError, MultipleChoice.DoesNotExist):
+        return render(request, 'survey/multiple_choice.html', {'field': field,
+                                                               'error_message':
+                                                               "You didn't select a choice", })
+    else:
+        selected_choice += 1
+        selected_choice.save()
+        return HttpResponseRedirect(reverse('survey:results', args=field.id,))
+
+
+def multiple_choice(request, pk):
+    if request.method == "POST":
+        choiceformset = ChoiceFormSet(request.POST)
+        if choiceformset.is_valid():
+            return redirect('survey:make_index', pk)
+    else:
+        data = {
+            'form-TOTAL_FORMS': '1',
+            'form-INITIAL_FORMS': '1',
+            'form-MAX_NUM_FORMS': '10',
+        }
+        choiceformset = ChoiceFormSet(data)
+    return render(request, 'survey/choice.html', {
+        'survey': Survey.objects.get(pk=pk),
+        'choiceformset': choiceformset,
+    })
 
 
 def results(request, pk):

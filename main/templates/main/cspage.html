@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'main/css/style.css'%}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid padding" style="margin-bottom : 30px;">
+<div class="row welcome text-center" id="membertxt">
+    <div class="col-12">
+        <h1>Branch Members</h1>
+    </div>
+    <hr/>
+</div>
+</div>
+
+<!--- Cards -->
+<div class="container-fluid padding" id="profiles">
+<div class="row padding">
+    <div class="col-md-3">
+        <div class="card">
+            <img class="card-imd-top" src="{%  static 'main/images/ys.jpg' %}" style="height: 300px;"/>
+            <div class="card-body">
+                <h4 class="card-title">최 연 석(26)</h4>
+                <P>서울대학교 조선해양공학과</P>
+                <a href="#" class="btn btn-outline-secondary">Profile</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <img class="card-imd-top" src="{%  static 'main/images/ys.jpg' %}" style="height: 300px;"/>
+            <div class="card-body">
+                <h4 class="card-title">강 미 경(23)</h4>
+                <P>성신여자대학교 통계학과/컴퓨터공학부</P>
+                <a href="#" class="btn btn-outline-secondary">Profile</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <img class="card-imd-top" src="{% static "main/images/ys.jpg" %}" style="height: 300px;"/>
+            <div class="card-body">
+                <h4 class="card-title">문 정 원(26)</h4>
+                <P>서울대학교 의류학과/컴퓨터공학과</P>
+                <a href="#" class="btn btn-outline-secondary">Profile</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <img class="card-imd-top" src="{%  static 'main/images/ys.jpg' %}" style="height: 300px;"/>
+            <div class="card-body">
+                <h4 class="card-title">이 재 원(21)</h4>
+                <P>세종대학교 소프트웨어학과</P>
+                <a href="#" class="btn btn-outline-secondary">Profile</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+    <!--- connect -->
+<div class="container-fluid padding">
+<div class="row text-center padding">
+    <div class="col-12">
+        <h2>Connect</h2>
+    </div>
+    <div class="col-12 social padding">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+</div>
+</div>
+{% endblock %}

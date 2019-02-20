@@ -6,10 +6,60 @@
 {% endblock %}
 
 {% block content %}
+    <div class="container-fluid padding">
+        <div class="row welcome text-center">
+            <div class="col-12">
+                <h1 class="display-4">Built with ease.</h1>
+            </div>
+            <hr>
+            <div class="col-12">
+                <p class="lead">welcome to our homepage</p>
+            </div>
+        </div>
+    </div>
+{#    <div id="start-main">#}
+{#        <img src="{% static 'main/images/isolated-tree.png' %}" alt="#" id="isolated-tree" style="background : linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));">#}
+{#    </div>#}
 
-<div id="start-main">
-    <img src="{% static 'main/images/isolated-tree.png' %}" alt="#" id="isolated-tree" style="background : linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));">
+<div class="container-fluid padding">
+    <div class="row text-center padding">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <i class="fas fa-code"></i>
+            <h3>Branch</h3>
+            <p>링크를 타고 퍼지는 온라인 설문조사!</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <img src="{% static 'images/share.png' %}"/>
+            <h3>Town</h3>
+            <p>웹 보드에 게재하여 공유하는 설문 플랫폼!</p>
+        </div>
+    </div>
 </div>
+
+<div class="container-fluid padding" style="margin-top : 50px;">
+    <div class="row padding">
+        <div class="col-md-12 col-lg-6">
+            <h2>Branch Town과 함께한다면..</h2>
+            <p>the colums will automatically stack on top of each other when
+            design has become more important....</p>
+            <p>the colums will automatically stack on top of each other when
+            design has become more important....</p>
+            <p>the colums will automatically stack on top of each other when
+            design has become more important....</p>
+        </div>
+        <div class="col-lg-6">
+            <img src="{% static "main/images/purple_tree.png" %}" class='img-fluid' />
+        </div>
+    </div>
+</div>
+{#<hr class="my-4">#}
+{#    <figure>#}
+{#        <div class="fixed-wrap">#}
+{#            <div id="fixed">#}
+{#            </div>#}
+{#        </div>#}
+{#    </figure>#}
+
 
 <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
