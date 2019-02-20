@@ -10,6 +10,11 @@
     margin-bottom: 30px;
 }
 
+.card:hover {
+    box-shadow: 15px 15px 20px rgba(0,0,0,0.3);
+}
+
+
 .middle_title p{
     color: #af8c53;
     text-align: center;
@@ -37,6 +42,7 @@
 .card-title{
     font-weight: 900;
     font-size: 18px;
+    color: #8a6b3a;
 }
 
 
@@ -71,6 +77,7 @@
 
 #board_titles {
     height: 100px;
+
 }
 #board_tags {
     height: 50px;
