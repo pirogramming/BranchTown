@@ -5,16 +5,11 @@ html{
 
 
 body {
-<<<<<<< HEAD
     padding: 0;
     margin: 0 0 40px 0;
     background-color: #FFFFFF;
-=======
     padding : 0;
     margin : 0 0 40px 0;
-    background-color : floralwhite;
-
->>>>>>> f17008f429dec73ba4e8a8288f23dd69daa778c5
 }
 
 
@@ -24,11 +19,7 @@ body {
     left : 0px;
     bottom : 0px;
     width : 100%;
-<<<<<<< HEAD
     background-color : #af8c53;
-=======
-    background-color : rgb(222, 218, 187);
->>>>>>> f17008f429dec73ba4e8a8288f23dd69daa778c5
 
 }
 
@@ -47,10 +38,6 @@ li{
 
 
 .navbar-nav li a{
-<<<<<<< HEAD
-=======
-    font-family: '배달의민족 주아';
->>>>>>> f17008f429dec73ba4e8a8288f23dd69daa778c5
     font-size : 20px;
     margin-left : 10px;
     text-align : center;

@@ -12,15 +12,10 @@ from survey.models import Survey, Field, MultipleChoice, TextAnswer
 
 User = get_user_model()
 
-<<<<<<< HEAD
 class ResultView(View):
     def get(self, request, pk=4):
         survey = Survey.objects.get(pk=pk)
-=======
 
-class HomeView(View):
-    def get(self, request, pk=1):
->>>>>>> f17008f429dec73ba4e8a8288f23dd69daa778c5
 
         #전체를 순회할 데이터 set
         fields = Field.objects.filter(
