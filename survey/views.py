@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from .models import Survey, Field, MultipleChoice
-from .forms import SurveyForm, FieldForm, TextAnswerForm, ChoiceFormSet
+from .forms import SurveyForm, FieldForm, ChoiceFormSet
 
 
 @login_required
@@ -71,7 +71,7 @@ def make_text_answer(request, pk):
     survey = Survey.objects.get(pk=pk)
     if request.user == survey.author:
         if request.method == "POST":
-            form = TextAnswerForm(request.POST)     # TODO: Field Form 과 차이점 X,
+            form = FieldForm(request.POST)     # TODO: Field Form 과 차이점 X,
             if form.is_valid():
                 field = form.save(commit=False)
                 field.survey = survey
@@ -79,7 +79,7 @@ def make_text_answer(request, pk):
                 field.save()
                 return redirect('survey:make_index', pk)
         else:
-            form = TextAnswerForm()
+            form = FieldForm()
         return render(request, 'survey/make_text_answer.html', {
             'survey': survey,
             'form': form,

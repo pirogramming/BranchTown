@@ -1,11 +1,16 @@
 import json
-from django.shortcuts import render, get_object_or_404
+
+from django.forms import formset_factory
+from django.shortcuts import render, get_object_or_404, redirect
 from django.utils.safestring import mark_safe
 from django.views.generic import View
 from django.contrib.auth import get_user_model
+
+from response.forms import TextAnswerForm #, TextAnswerFormSet
 from survey.models import Survey, Field, MultipleChoice
 
 User = get_user_model()
+
 
 class HomeView(View):
     def get(self, request, pk=1):
@@ -45,3 +50,20 @@ def response_survey(request, pk):
     })
 
 
+def response_survey_text(request, pk):
+    fields = Survey.objects.get(pk=pk).field_set.all()
+    text_answer_formset = formset_factory(form=TextAnswerForm, max_num=fields.count())
+    if request.method == 'POST':
+        formset = text_answer_formset(request.POST)
+        if formset.is_valid():
+            for form in formset:
+                answer = form.save()
+            return redirect('root')
+    else:
+        formset = text_answer_formset(initial=[{
+            'field': field,
+        } for field in fields])
+    return render(request, 'response/practice_text.html', {
+        'fields': fields,
+        'formset': formset,
+    })

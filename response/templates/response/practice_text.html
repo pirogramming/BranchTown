@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% load bootstrap4 %}
+
+{% bootstrap_css %}
+{% block content %}
+    <div class="container">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ formset.management_form }}
+            {% for form in formset %}
+{#                123 : {{ form.field.question }} : 123#}
+                {% bootstrap_form form %}
+            {% endfor %}
+            <input type="submit">
+        </form>
+    </div>
+{% endblock %}
