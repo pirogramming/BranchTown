@@ -21,7 +21,7 @@
                                     </a>
                                 {% endfor %}
                             </p>
-                            <a href="{% url 'board:survey_detail' survey.id %}" class="btn btn-primary">설문 응답하기</a>
+                            <a href="{% url 'response:preview_survey' survey.id %}" class="btn btn-primary">설문 응답하기</a>
                             <a href="#">
                                 <img src="{% static 'images/share.png' %}" alt="" width="30">
                             </a>
