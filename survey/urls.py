@@ -12,4 +12,6 @@ urlpatterns = [
     # path('<int:pk>/multiple_choice/', views.multiple_choice, name='multiple_choice'),
     path('<int:pk>/results/', views.results, name='results'),
 
+    path('mysurvey/', views.my_survey, name='my_survey'),
+
 ]

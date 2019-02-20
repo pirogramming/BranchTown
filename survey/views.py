@@ -123,3 +123,11 @@ def make_field(request, pk):
 def results(request, pk):
     field = get_object_or_404(Field, pk=pk)
     return render(request, 'survey/results.html', {'field': field})
+
+
+def my_survey(request):
+    user = request.user
+    surveys = Survey.objects.filter(author=user)
+    return render(request, 'survey/my_survey.html', {
+        'surveys': surveys,
+    })
