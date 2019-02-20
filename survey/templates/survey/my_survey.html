@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <ul>
+            {% for survey in surveys %}
+                <li><a href="{% url 'survey:my_survey_detail' survey.id %}">{{ survey.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

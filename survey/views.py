@@ -131,3 +131,19 @@ def my_survey(request):
     return render(request, 'survey/my_survey.html', {
         'surveys': surveys,
     })
+
+
+def my_survey_detail(request, pk):
+    survey = get_object_or_404(Survey, pk=pk)
+    return render(request, 'survey/my_survey_detail.html', {
+        'survey': survey,
+    })
+
+
+def my_survey_complete(request, pk):
+    survey = Survey.objects.get(pk=pk)
+    survey.status = 'c'
+    survey.save()
+    return render(request, 'survey/my_survey_complete.html', {
+        'survey': survey,
+    })
