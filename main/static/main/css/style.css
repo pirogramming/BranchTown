@@ -36,6 +36,7 @@
     width : 450px;
     background-color : #fbfbfb;
     float : left;
+    line-height : 2px;
 }
 
 .right-box{
@@ -46,14 +47,15 @@
     width : 450px;
     background-color : #fbfbfb;
     float : right;
+    line-height : 2px;
 
 }
 .carousel {
-    float : right;
-    width : 700px;
+    width : 1200px;
     margin-left:auto;
     margin-right: auto;
-    margin-top: 10px;
+    margin-top: 90px;
+    margin-bottom : 70px;
 }
 
 .padding {
@@ -169,6 +171,22 @@
     font-size : 20px;
     font-family : "배달의민족 도현";
 }
+
+#recommendation {
+    display : inline-block;
+    text-align : center;
+    margin-left : auto;
+    margin-right : auto;
+
+}
+.personalized{
+    text-align : center;
+}
+
+.personalized a{
+    color : olive;
+}
+
 
 .fa-code {
     color : #e54d26;
@@ -317,3 +335,46 @@ hr.light-100 {
 
 
 }
+
+    .searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+    }
+
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 450px;
+    caret-color:red;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_icon{
+    background: white;
+    color: #e74c3c;
+    }
+
+    .search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    }
