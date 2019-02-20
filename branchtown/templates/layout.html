@@ -37,7 +37,7 @@
                         <a class="dropdown-item" href="{% url 'board:main' %}" style="font-size : 16px; margin-left :0;">main</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{% url 'board:survey_interest' %}" style="font-size : 16px; margin-left :0;">추천 설문</a>
-                        <a class="dropdown-item" href="#" style="font-size : 16px; margin-left :0;">참여한 설문</a>
+                        <a class="dropdown-item" href="{% url 'board:survey_participated' %}" style="font-size : 16px; margin-left :0;">참여한 설문</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{% url 'board:survey_recent' %}" style="font-size : 16px; margin-left :0;">최신 설문</a>
                         <a class="dropdown-item" href="{% url 'board:survey_ongoing' %}" style="font-size : 16px; margin-left :0;">진행 중인 설문</a>

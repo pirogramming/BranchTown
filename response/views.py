@@ -91,5 +91,4 @@ def join_survey(request, pk):
         respondent = Response.objects.create(respondent=request.user, survey=survey)
     survey.response_count += 1
     survey.save()
-    return redirect('root') # TODO: redirect 수정
-g
+    return redirect('root')     # TODO: redirect 수정
