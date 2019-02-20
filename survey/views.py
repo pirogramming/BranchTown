@@ -125,6 +125,7 @@ def results(request, pk):
     return render(request, 'survey/results.html', {'field': field})
 
 
+@login_required()
 def my_survey(request):
     user = request.user
     surveys = Survey.objects.filter(author=user)
@@ -133,17 +134,25 @@ def my_survey(request):
     })
 
 
+@login_required()
 def my_survey_detail(request, pk):
     survey = get_object_or_404(Survey, pk=pk)
-    return render(request, 'survey/my_survey_detail.html', {
-        'survey': survey,
-    })
+    if survey.author == request.user:
+        return render(request, 'survey/my_survey_detail.html', {
+            'survey': survey,
+        })
+    else:
+        return redirect('root')     # TODO: 일단 root 로 이동
 
 
+@login_required()
 def my_survey_complete(request, pk):
-    survey = Survey.objects.get(pk=pk)
-    survey.status = 'c'
-    survey.save()
-    return render(request, 'survey/my_survey_complete.html', {
-        'survey': survey,
-    })
+    survey = get_object_or_404(Survey, pk=pk)
+    if survey.author == request.user:
+        survey.status = 'c'
+        survey.save()
+        return render(request, 'survey/my_survey_complete.html', {
+            'survey': survey,
+        })
+    else:
+        return redirect('root')     # TODO: 일단 root 로 이동
