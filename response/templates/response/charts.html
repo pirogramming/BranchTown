@@ -1,7 +1,18 @@
-{% extends 'response/base.html' %}
+{% extends 'response/layout.html' %}
+{% load static %}
 
+{#기존에 있던 js.html, css.html, bootstrap_defaults.html을 합침.#}
+{% block style %}
+    {% include 'response/base/css.html' %}
+    {% include 'response/base/bootstrap_defaults.html' %}
+    <link rel="stylesheet" href="{% static 'response/css/style.css' %}">
+{%  endblock %}
+
+
+{% block content %}
+{% include 'response/base/js.html' %}
 <script>
-{% block jquery %}
+$(document).ready(function(){
     var defaultData = [];
     var labels = [];
 
@@ -64,18 +75,15 @@
             }
         });
     }
-
-
-{% endblock %}
+})
 </script>
 
 
-{% block content %}
 <div class='container'>
     <div class='col-sm-12'>
-        <h1 align="center">{{  survey.title }}</h1>
+        <h1 align="center">{{ survey.title }}</h1>
         <hr>
-        <p align="center">{{ survey.subtitle  }}</p>
+        <p align="center">{{ survey.subtitle }}</p>
         <hr>
         {%  for id, field in fields.items  %}
             {%  if field.type == "1" %}
@@ -95,4 +103,4 @@
 
     </div>
 </div>
-{% endblock content %}
+{% endblock %}
