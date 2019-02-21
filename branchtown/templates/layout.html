@@ -1,70 +1,96 @@
 {% load static %}
 <!doctype html>
-<html lang="en">
+<html lang="en" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}BranchTown{% endblock %}</title>
+    <script scr="https:/ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src='{%  static "js/script.js" %}'></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     {% block style %}{% endblock %}
 </head>
-<body>
+
+<body style="font-family : 나눔스퀘어;">
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light " style="padding-top: 0; padding-bottom : 0; background-color: rgb(222,218,187);">
-        <a class="navbar-brand" href="{% url 'root' %}"style="padding-top: 0; padding-bottom : 0;">
-            <img src="{% static 'images/logo.png' %}" alt="#" width="100" class="logo">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" style="padding-left : 0;">
+    <div class="container-fluid" >
+        <a class="navbar-brand" href="{% url 'root' %}" style="padding-top: 0; padding-bottom : 0;">
+            <img src="{% static 'images/logo.jpg' %}" alt="#" width="230" class="logo">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
+        <div class="collapse navbar-collapse" id="navbarResponsive" style="font-family : 나눔스퀘어;">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'main:intropage' %}" >서비스 <br/> 소개</a>
+                    <a class="nav-link" style="color: #af8c53;" href="{% url 'main:intropage' %}" >Introduction</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'survey:make_survey' %}" >설문 <br />폼 제작</a>
+                    <a class="nav-link" style=" color : #af8c53;"href="{% url 'survey:make_survey' %}" >Survey Form</a>
                 </li>
+
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                       설문 <br/> 게시판
-                    </a>
-
-                    <div class="dropdown-menu"  aria-labelledby="navbarDropdown" >
-                        <a class="dropdown-item" href="{% url 'board:main' %}" style="font-size : 16px; margin-left :0;">main</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url 'board:survey_interest' %}" style="font-size : 16px; margin-left :0;">추천 설문</a>
-                        <a class="dropdown-item" href="#" style="font-size : 16px; margin-left :0;">참여한 설문</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url 'board:survey_recent' %}" style="font-size : 16px; margin-left :0;">최신 설문</a>
-                        <a class="dropdown-item" href="{% url 'board:survey_ongoing' %}" style="font-size : 16px; margin-left :0;">진행 중인 설문</a>
-                        <a class="dropdown-item" href="{% url 'board:survey_complete' %}" style="font-size : 16px; margin-left :0;">종료된 설문</a>
-                    </div>
+                  <a href="#" class="dropdown-toggle nav-link" style=" color : #af8c53;" href="#"  data-toggle="dropdown" role="button" aria-expanded="false">Survey board <span class="caret"></span></a>
+                      <ul class="dropdown-menu" role="menu">
+                            <li><a href="{% url 'board:main' %}" style="font-size : 16px; margin-left :0; color : gray;">main</a></li>
+                            <div class="dropdown-divider"></div>
+                            <li><a href="{% url 'board:survey_interest' %}" style="font-size : 16px; margin-left :0; color : gray;">recommended</a></li>
+                            <li><a href="#" style="font-size : 16px; margin-left :0; color : gray;">participated</a></li>
+                            <li><a href="{% url 'board:survey_recent' %}" style="font-size : 16px; margin-left :0; color : gray;">recent</a></li>
+                            <li><a href="{% url 'board:survey_ongoing' %}" style="font-size : 16px; margin-left :0; color : gray;">ongoing</a></li>
+                            <div class="dropdown-divider"></div>
+                            <li><a href="{% url 'board:survey_complete' %}" style="font-size : 16px; margin-left :0; color : gray;">completed</a></li>
+                      </ul>
+                </li>
+{#                <li class="nav-item dropdown">#}
+{#                    <a class="nav-link dropdown-toggle" style=" color : #af8c53;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
+{#                       Survey Board#}
+{#                    </a>#}
+{##}
+{#                    <div class="dropdown-menu"  aria-labelledby="navbarDropdown" >#}
+{#                        <a class="dropdown-item" href="{% url 'board:main' %}" style="font-size : 16px; margin-left :0; color : gray;">main</a>#}
+{#                        <div class="dropdown-divider"></div>#}
+{#                        <a class="dropdown-item" href="{% url 'board:survey_interest' %}" style="font-size : 16px; margin-left :0; color : gray;">recommended</a>#}
+{#                        <a class="dropdown-item" href="#" style="font-size : 16px; margin-left :0; color : gray;">participated</a>#}
+{#                        <div class="dropdown-divider"></div>#}
+{#                        <a class="dropdown-item" href="{% url 'board:survey_recent' %}" style="font-size : 16px; margin-left :0; color : gray;">recent</a>#}
+{#                        <a class="dropdown-item" href="{% url 'board:survey_ongoing' %}" style="font-size : 16px; margin-left :0; color : gray;">ongoing</a>#}
+{#                        <a class="dropdown-item" href="{% url 'board:survey_complete' %}" style="font-size : 16px; margin-left :0; color : gray;">completed</a>#}
+{#                    </div>#}
+{#                </li>#}
+                <li class="nav-item">
+                    <a class="nav-link" style=" color : #af8c53;" href="{% url 'main:cspage' %}" >contact</a>
                 </li>
 
-            </ul>
-            <ul class="navbar-nav navbar-right">
                 {% if not user.is_authenticated %}
                     <li class="nav-item">
-                        <a href="{% url 'signup' %}" class="nav-link" >회원가입</a>
+                        <a href="{% url 'signup' %}" class="nav-link" style=" color : #af8c53;">Join</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'login' %}?next={{ request.path }}" class="nav-link" >로그인</a>
+                        <a href="{% url 'login' %}?next={{ request.path }}" class="nav-link" style=" color : #af8c53;">Login</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a href="{% url 'profile' %}" class="nav-link" >마이페이지</a>
+                        <a href="{% url 'profile' %}" class="nav-link" style=" color : #af8c53;">My Page</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'logout' %}?next={{ request.path }}" class="nav-link" >로그아웃</a>
+                        <a href="{% url 'logout' %}?next={{ request.path }}" class="nav-link" style=" color : #af8c53;">Logout</a>
                     </li>
                 {% endif %}
             </ul>
+
         </div>
-    </nav>
+    </div>
+</nav>
+
 
     {% block content %}
     {% endblock %}
@@ -74,20 +100,56 @@
     <img src="{% static 'images/arrows.jpg' %}" width="32" height="32">
     </button>
     <!-- footer -->
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script src='{%  static "js/script.js" %}'></script>
-
-    <div id="footer">
-        <p class="text-muted">
-        ⓒ BranchTown
-        대학생을 위한 설문 조사 플랫폼
-        </p>
+    <div id="footer" style="display :block; width : 100%; height : 200px; margin-left : auto; margin-right : auto;">
+            <p class="text-muted">
+            ⓒ BranchTown
+            대학생을 위한 설문 조사 플랫폼
+            </p>
     </div>
 
-</body>
+<script>
+    $(document).ready(function(){
+    $(".dropdown").hover(
+        function() {
+            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
+            $(this).toggleClass('open');
+        },
+        function() {
+            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
+            $(this).toggleClass('open');
+        }
+    );
+});
 
+$(document).ready(function()
+{
+    /* smooth scrolling for scroll to top */
+	$('.to-top-btn').bind('click', function()
+	{
+		$('body,html').animate({
+			scrollTop: 0},
+			2500);
+	});
+
+	//Easing Scroll replace Anchor name in URL and Offset Position
+	$(function(){
+		$('a[href*=#]:not([href=#])').click(function()
+		{
+			if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+
+				var target = $(this.hash);
+				target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+				if (target.length) {
+					$('html,body').animate({
+						scrollTop: target.offset().top -420
+					}, 800, 'easeOutBounce');
+					return false;
+				}
+			}
+		});
+	});
+});
+</script>
+
+</body>
 </html>

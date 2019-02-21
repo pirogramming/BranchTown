@@ -1,11 +1,9 @@
 from django.contrib.auth.decorators import login_required
-from django.forms import formset_factory
-from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
-from .models import Survey, Field, MultipleChoice
-from .forms import SurveyForm, FieldForm, FieldModelFormset, ChoiceForm, ChoiceIssueForm
 
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Survey, Field
+
+from .forms import SurveyForm, FieldForm, TextAnswerForm, ChoiceFormSet
 
 @login_required
 def make_survey(request):
@@ -35,6 +33,26 @@ def make_index(request, pk):
     return render(request, 'survey/make_index.html', context)
 
 
+
+
+
+def text_answer(request, pk):
+    if request.method == "POST":
+        form = TextAnswerForm(request.POST)
+        if form.is_valid():
+            answer = form.save(commit=False)
+            answer.survey = Survey.objects.get(pk=pk)
+            answer.type = '1'
+            answer.save()
+            return redirect('survey:make_index', pk)
+    else:
+        form = TextAnswerForm()
+    return render(request, 'survey/text_answer.html', {
+        'survey': Survey.objects.get(pk=pk),
+        'form': form,
+    })
+
+
 @login_required
 def make_field(request, pk):
     if request.method == "POST":
@@ -52,18 +70,24 @@ def make_field(request, pk):
     })
 
 
-def make_field_mul(request, pk):
-    field = get_object_or_404(Field, pk=pk)
-    try:
-        selected_choice = field.multiplechoice_set.get(pk=request.POST['multiple_choice'])
-    except (KeyError, MultipleChoice.DoesNotExist):
-        return render(request, 'survey/make_field_mul.html', {'field': field,
-                                                               'error_message':
-                                                               "You didn't select a choice", })
-    else:
-        selected_choice += 1
-        selected_choice.save()
-        return HttpResponseRedirect(reverse('survey:results', args=field.id,))
+
+def multiple_choice(request, pk):
+    if request.method == "POST":
+        choiceformset = ChoiceFormSet(request.POST)
+        if choiceformset.is_valid():
+            return redirect('survey:make_index', pk)
+# >>>>>>> 030893919c333c217b4815b5dd7179e044ea3329
+#     field = get_object_or_404(Field, pk=pk)
+#     try:
+#         selected_choice = field.multiplechoice_set.get(pk=request.POST['multiple_choice'])
+#     except (KeyError, MultipleChoice.DoesNotExist):
+#         return render(request, 'survey/make_field_mul.html', {'field': field,
+#                                                                'error_message':
+#                                                                "You didn't select a choice", })
+#     else:
+#         selected_choice += 1
+#         selected_choice.save()
+#         return HttpResponseRedirect(reverse('survey:results', args=field.id,))
 
 
 def make_field_txt(request, pk):
@@ -76,6 +100,24 @@ def make_field_txt(request, pk):
                                                                "You didn't write answer", })
     else:
         return redirect('survey:make_index', field.pk)
+# =======
+# def multiple_choice(request, pk):
+#     if request.method == "POST":
+#         choiceformset = ChoiceFormSet(request.POST)
+#         if choiceformset.is_valid():
+#             return redirect('survey:make_index', pk)
+#     else:
+#         data = {
+#             'form-TOTAL_FORMS': '1',
+#             'form-INITIAL_FORMS': '1',
+#             'form-MAX_NUM_FORMS': '10',
+#         }
+#         choiceformset = ChoiceFormSet(data)
+#     return render(request, 'survey/choice.html', {
+#         'survey': Survey.objects.get(pk=pk),
+#         'choiceformset': choiceformset,
+#     })
+# >>>>>>> 030893919c333c217b4815b5dd7179e044ea3329
 
 
 def results(request, pk):
@@ -98,26 +140,3 @@ def results(request, pk):
 #     return render(request, 'survey/make_index.html', {
 #         'formset': formset,
 #     })
-
-ChoiceFormSet = formset_factory(ChoiceForm, ChoiceIssueForm, can_order=True, can_delete=True, extra=0)
-def this_is_test(request):
-    if request.method == 'POST':
-        form = ChoiceForm(request.POST)
-        choiceformset = ChoiceFormSet(request.POST)
-
-        if form.is_valid() and choiceformset.is_valid():
-            form.save()
-            choiceformset.save()
-        return redirect('survey:make_index')
-    else:
-        form = ChoiceForm()
-        data = {
-            'form-TOTAL_FORMS' : '1',
-            'form-INITIAL_FORMS' : '1',
-            'form-MAX_NUM_FORMS': '10',
-        }
-        choiceformset = ChoiceFormSet(data)
-    return render(request, 'survey/test.html', {
-        'form': form,
-        'choiceformset': choiceformset,
-    })

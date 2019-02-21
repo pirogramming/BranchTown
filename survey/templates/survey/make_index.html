@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% load bootstrap4 %}
 {% bootstrap_css %}
 
@@ -163,3 +164,38 @@
 {##}
 {#</form>#}
 
+=======
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ survey.title }}</h1>
+
+        <a class="btn btn-primary" href="{% url 'survey:multiple_choice' survey.id %}">
+            객관식문항 추가
+        </a>
+        <a class="btn btn-primary" href="{% url 'survey:text_answer' survey.id %}">
+            주관식문항 추가
+        </a>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">번호</th>
+                    <th scope="col">유형</th>
+                    <th scope="col">문항 text</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for field in field_list %}
+                    <tr>
+                        <td>숫자</td>
+                        <td>{{ field.type }}</td>
+                        <td>{{ field.question }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+>>>>>>> 030893919c333c217b4815b5dd7179e044ea3329

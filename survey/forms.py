@@ -40,3 +40,16 @@ class FieldForm(forms.ModelForm):
         fields = ['type', 'question']
 
 
+class MultipleChoiceForm(forms.ModelForm):
+    class Meta:
+        model = MultipleChoice
+        fields = ['choice_text']
+
+
+ChoiceFormSet = formset_factory(MultipleChoiceForm)
+
+
+class TextAnswerForm(forms.ModelForm):
+    class Meta:
+        model = Field
+        fields = ['question']

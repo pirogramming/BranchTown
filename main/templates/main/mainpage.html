@@ -1,11 +1,87 @@
 {% extends 'layout.html' %}
 {% load static %}
 
+
+
 {% block style %}
     <link rel="stylesheet" href="{% static 'main/css/style.css'%}">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
 {% endblock %}
 
 {% block content %}
+    <script href="{% static 'main/js/script.js' %}"></script>
+    <div class="main-image" id="main">
+        <div id="first-image" style="width : 100%; height: 700px;">
+            <div id="basket-0">
+                <p id="slogan"><i>Creating <br/> Sharing <br/> Participating <br/> Survey</i></p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid padding" style="margin-top : 100px; margin-bottom : 40px;">
+    <div class="row padding">
+        <div class="col-md-12 col-lg-6">
+            <div class="left-box">
+                    <h2 id="title1">Make your own Survey <br/>Right Now!</h2>
+                <h4 id="title2"><i>You can do more things <br/>in Branch Town. <br/>Join our web site easily and <br/>be branches.</i></h4>
+            <div class="second-basket">
+                    <button type="button" class="btn btn-outline-light btn-lg">Service <br/> Intro</button>
+                    <button type="button" class="btn btn-primary btn-lg">Create <br/>SurveyForm</button>
+            </div>
+        </div>
+        </div>
+        <div class="col-lg-6">
+            <img src="{% static 'main/images/purple.jpg' %}" class='img-fluid' style="height : 500px; border-radius : 5px;"/>
+        </div>
+    </div>
+    </div>
+<!--between second-layer , third-layer -->
+    <div class="container-fluid">
+    <div class="row jumbotron">
+        <div class="personalized">
+            <p class="lead">Search the Survey using Tags..</p>
+            <div class="container h-100">
+              <div class="d-flex justify-content-center h-100">
+                <div class="searchbar">
+                  <input class="search_input" type="text" name="" placeholder="Search...">
+                  <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="container-fluid padding" style="margin-top : 100px; margin-bottom : 40px;">
+    <div class="row padding">
+        <div class="col-lg-6">
+            <img src="{% static 'main/images/purple.jpg' %}" class='img-fluid' style="height : 500px; border-radius : 5px;"/>
+        </div>
+        <div class="col-md-12 col-lg-6">
+            <div class="left-box right-box">
+                    <h2 id="title1">Share at the Survey Board!</h2>
+                <h4 id="title2"><i>You are much more  <br/>  likely to get <br/>a variety of responses.<br/><br/>Share with your friends <br/>and get more points!</i></h4>
+            <div class="second-basket">
+                    <button type="button" class="btn btn-outline-light btn-lg">Event Page</button>
+                    <button type="button" class="btn btn-primary btn-lg">Respond Survey</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <!--between third-layer, fourth-layer -->
+    <div class="container-fluid">
+    <div class="row jumbotron">
+        <div class="personalized">
+            <p class="lead">Recommendation question for you only!</p>
+            <a href="#"><button type="button" class="btn btn-outline-secondary btn-lg" id="recommendation">Go for Responding</button></a>
+        </div>
+    </div>
+    </div>
+
 
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -16,7 +92,7 @@
             <div class="carousel-inner">
                 <div class="carousel-item active carousel_1">
                     <div class="basket">
-                        <div class="events event_1">대학생을 위한 <br>설문 조사 공유 플랫폼</div>
+                        <div class="events event_1"> 본인 학교 등록하고 친구 초대하면<br> 카카오톡 이모티콘이 내손에!</div>
                     </div>
                 </div>
                 <div class="carousel-item carousel_2">
@@ -40,31 +116,50 @@
                 <span class="sr-only">Next</span>
             </a>
     </div>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-        <script href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-{#        <form class="form-line" style="width: 300px; display : inline-block;">#}
-{#            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">#}
-{#            <button class="btn btn-light my-sm-0" type="submit">Search</button>#}
-{#        </form>#}
-        <div class="container-bottom">
-            <div class="col-xs-5 col-sm-3 pull-right" >
-                <form class="navbar-form" role="search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span>
-                    </div>
-                  </div>
-                </form>
-        </div>
+    <div class="container-fluid">
+    <div class="row jumbotron">
+        <div class="personalized">
+            <p class="lead">Customer Center</p>
+            <a href="#"><button type="button" class="btn btn-outline-secondary btn-lg" id="recommendation">Q & A</button></a>
 
-            <div id="search-word" style="margin-top : 12px; float : right; font-size : 20px; ">
-                <p class="wordd">설문을 태그로 검색해보세요</p></div>
-            <div id="personalized-survey" style="margin-top : 12px; float : left; font-size : 20px;">
-                <p class="wordd">당신을 위한 오늘의 맞춤 설문</p>
-            </div>
         </div>
+    </div>
+    </div>
+
+    <script>
+    $(document).ready(function(){
+        $(window).scroll(function(){
+            $('.main-image').css("opacity", 1 - $(window).scrollTop() / 750)
+        })
+    });
+
+    var imageCounter = 0;
+    var images = $('.main-image');
+
+    $(function() {
+      swapHeaderImage(imageCounter);
+    });
+
+    function swapHeaderImage(counter) {
+      if (imageCounter == images.length) {
+        imageCounter = 0;
+        counter = 0;
+      }
+
+      $('.main-image').css({
+        opacity: 0.0,
+        'background-image': 'url(' + images[counter] + ')'
+      }).animate({
+        opacity: 1,
+      }, 1200);
+      imageCounter++;
+
+      window.setTimeout(function() {
+        swapHeaderImage(imageCounter);
+      }, 1200);
+}
+    </script>
 
 
 
