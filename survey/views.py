@@ -13,6 +13,8 @@ def make_survey(request):
             survey.author = request.user
             survey.status = 'o'     # TODO: 일단 'o' 로 설정, 추후에 model 에 status 추가 후 값 변경해야함
             survey.save()
+            survey_instance = Survey.objects.get(pk=survey.pk)
+            survey_instance.tag.add(*form.cleaned_data['tags'])
             return redirect('survey:make_index', survey.pk)
     else:
         form = SurveyForm()
@@ -20,7 +22,6 @@ def make_survey(request):
     return render(request, 'survey/make_survey.html', {
         'form': form,
     })
-
 
 @login_required
 def make_index(request, pk):

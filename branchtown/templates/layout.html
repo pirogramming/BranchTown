@@ -40,14 +40,13 @@
                 <li class="nav-item dropdown">
                   <a href="#" class="dropdown-toggle nav-link" style=" color : #af8c53;" href="#"  data-toggle="dropdown" role="button" aria-expanded="false">Survey board <span class="caret"></span></a>
                       <ul class="dropdown-menu" role="menu">
-                            <li><a href="{% url 'board:main' %}" style="font-size : 16px; margin-left :0; color : gray;">main</a></li>
+                            <li><a href="{% url 'board:main' %}" style="font-size : 16px; margin-left :0; color : gray;">All Survey</a></li>
                             <div class="dropdown-divider"></div>
-                            <li><a href="{% url 'board:survey_interest' %}" style="font-size : 16px; margin-left :0; color : gray;">recommended</a></li>
-                            <li><a href="#" style="font-size : 16px; margin-left :0; color : gray;">participated</a></li>
-                            <li><a href="{% url 'board:survey_recent' %}" style="font-size : 16px; margin-left :0; color : gray;">recent</a></li>
-                            <li><a href="{% url 'board:survey_ongoing' %}" style="font-size : 16px; margin-left :0; color : gray;">ongoing</a></li>
+                            <li><a href="{% url 'board:survey_interest' %}" style="font-size : 16px; margin-left :0; color : gray;">Recommended</a></li>
+                            <li><a href="{% url 'board:survey_participated' %}" style="font-size : 16px; margin-left :0; color : gray;">Participated</a></li>
                             <div class="dropdown-divider"></div>
-                            <li><a href="{% url 'board:survey_complete' %}" style="font-size : 16px; margin-left :0; color : gray;">completed</a></li>
+                            <li><a href="{% url 'board:survey_ongoing' %}" style="font-size : 16px; margin-left :0; color : gray;">Ongoing</a></li>
+                            <li><a href="{% url 'board:survey_complete' %}" style="font-size : 16px; margin-left :0; color : gray;">Completed</a></li>
                       </ul>
                 </li>
                 <li class="nav-item">
