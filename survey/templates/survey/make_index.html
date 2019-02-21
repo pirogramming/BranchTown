@@ -30,16 +30,17 @@
             <tbody>
                 {% for field in field_list %}
                     <tr>
-                        <td>{{ forloop.counter }}번</td>
-                        <td>{{ field.type }}</td>
                         <td>
-                            {{ field.question }}
+                            {{ forloop.counter }}번
+                        </td>
+                        <td>
+                            {{ field.type }}
+                        </td>
+                        <td>
                             {% if field.type == '1' %}
-                                <i>(선지 list
-                                    {% for choice in field.multiplechoice_set.all %}
-                                        {{ choice }}/
-                                    {% endfor %})
-                                </i>
+                                {{ field.question }}
+                            {% else %}
+                                <a href="{% url 'survey:edit_text_answer' survey.pk field.pk %}">{{ field.question }}</a>
                             {% endif %}
                         </td>
                     </tr>

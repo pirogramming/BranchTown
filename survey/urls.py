@@ -9,6 +9,8 @@ urlpatterns = [
     path('make/<int:pk>/choice/', views.make_multiple_choice, name='make_multiple_choice'),
     path('make/<int:pk>/text/', views.make_text_answer, name='make_text_answer'),
 
+    path('make/<int:pk>/text/<int:field_pk>edit/', views.edit_text_answer, name='edit_text_answer'),
+
     # path('<int:pk>/multiple_choice/', views.multiple_choice, name='multiple_choice'),
     path('<int:pk>/results/', views.results, name='results'),
 

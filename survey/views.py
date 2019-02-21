@@ -158,3 +158,24 @@ def my_survey_complete(request, pk):
         })
     else:
         return redirect('root')     # TODO: 일단 root 로 이동
+
+
+@login_required()
+def edit_text_answer(request, pk, field_pk):
+    survey = Survey.objects.get(pk=pk)
+    if request.user == survey.author:
+        field = Field.objects.get(pk=field_pk)
+        if request.method == "POST":
+            form = FieldForm(request.POST, instance=field)  # TODO: Field Form 과 차이점 X,
+            if form.is_valid():
+                field = form.save()
+                return redirect('survey:make_index', pk)
+        else:
+            form = FieldForm(instance=field)
+        return render(request, 'survey/make_text_answer.html', {
+            'survey': survey,
+            'form': form,
+        })
+    else:
+        return redirect('root')
+        # TODO: 설문 작성자와 user 가 동일하지 않을 경우, 일단 root 로 redirect
