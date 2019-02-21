@@ -77,7 +77,7 @@ def make_text_answer(request, pk):
             if form.is_valid():
                 field = form.save(commit=False)
                 field.survey = survey
-                field.type = '2'
+                field.type = '3'
                 field.save()
                 return redirect('survey:make_index', pk)
         else:

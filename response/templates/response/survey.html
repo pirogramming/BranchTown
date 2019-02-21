@@ -24,15 +24,13 @@
                     {% else %}
                         <div class="SurveyFormText" align="left">
                             <textarea cols="80" rows="4" id="{{ field.id }}" name="{{  field.id  }}"></textarea>
-{#                            <input type="text" id="{{ field.id }}" name="{{ field.id }}" size=70>#}
-        {#                    {{ field.id }}#}
                             <label for="{{ field.id }}"></label>
                         </div>
                     {% endif %}
                 {% endfor %}
             </ul>
             <div class="surveyFormSubmit" align="center" style="margin-top: 100px;">
-                <a href="{% url 'response:join_survey' survey.pk %}" style="background-color: #c4a784; padding: 15px; border-radius: 10px; color: white; display: inline-block; width: 100px; text-align: center;">Submit</a>
+                <input type="submit" style="background-color: #c4a784; padding: 15px; border-radius: 10px; color: white; display: inline-block; width: 100px; text-align: center; border:none;" value="Submit">
             </div>
         </div>
         </form>
