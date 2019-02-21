@@ -2,11 +2,7 @@
 {% load static %}
 
 {#기존에 있던 js.html, css.html, bootstrap_defaults.html을 합침.#}
-{% block style %}
-    {% include 'response/base/css.html' %}
-    {% include 'response/base/bootstrap_defaults.html' %}
-    <link rel="stylesheet" href="{% static 'response/css/style.css' %}">
-{%  endblock %}
+
 
 
 {% block content %}
@@ -29,6 +25,7 @@ $(document).ready(function(){
         }
     }
 
+
     function setList(txt_id) {
         document.getElementById("list" + txt_id).innerHTML=": "+json_txt[txt_id].answer
         console.log(json_txt[txt_id].answer)
@@ -46,30 +43,34 @@ $(document).ready(function(){
                     label: '# of Votes',
                     data: json_graph[graph_id]['votes'],
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
+                        'rgba(102, 55, 2, 0.7)',
+                        'rgba(130, 73, 7, 0.7)',
+                        'rgba(177, 109, 30, 0.7)',
+                        'rgba(220, 150, 70, 0.7)',
+                        'rgba(241, 190, 133, 0.7)',
+                        'rgba(250, 232, 212, 0.7)'
                     ],
                     borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
+                        'rgba(255, 246, 235, 1)',
+                        'rgba(255, 246, 235, 1)',
+                        'rgba(255, 246, 235, 1)',
+                        'rgba(255, 246, 235, 1)',
+                        'rgba(255, 246, 235, 1)',
+                        'rgba(255, 246, 235, 1)',
                     ],
-                    borderWidth: 1
+                    borderWidth: 0.2,
+                    hoverBorderWidth: 1.0,
                 }]
             },
             options: {
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero:true
+                            beginAtZero:true,
                         }
+                    }],
+                    xAxes: [{
+                        barPercentage: 0.6,
                     }]
                 }
             }
@@ -78,29 +79,37 @@ $(document).ready(function(){
 })
 </script>
 
+<div class="resultField" style="font-family:'나눔스퀘어 Light', serif; background-color: #eee3c8; padding: 60px 150px;">
+    <div class='container' style="background-color: white; padding: 100px; border-radius: 60px;" align='center'>
+        <div class="result_titles" style="margin-bottom: 100px;">
+            <h1 align="center" class="result_title" style="font-weight: bold; color: #3e2703">{{ survey.title }}</h1><br>
+            <hr style="border-color: #af8c53; width: 500px;">
+            <p align="center" class="result_subtitle" style="color: #80672a">{{ survey.subtitle }}</p>
+            <hr style="border-color: #af8c53; width: 500px;">
+        </div>
 
-<div class='container'>
-    <div class='col-sm-12'>
-        <h1 align="center">{{ survey.title }}</h1>
-        <hr>
-        <p align="center">{{ survey.subtitle }}</p>
-        <hr>
         {%  for id, field in fields.items  %}
             {%  if field.type == "1" %}
                 <div class="container">
-                    <h4>Q.{{ field.question }}</h4>
-                    <div class='col-sm-6'>
-                        <canvas id='chart{{ id }}' width="500" height="500"></canvas><br>
+                    <p style="font-size: 18px; color: #5b4119; margin: 40px 0px; padding-left: 30px;">ㆍ {{ field.question }} ㆍ</p>
+                    <div class="col-lg-12">
+                        <div class="row" style="height: 500px;">
+                            <div class="col-sm-2"></div>
+                            <div class='col-sm-8'>
+                                <canvas id='chart{{ id }}' width="500" height="400"></canvas><br>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
                     </div>
                 </div><hr>
             {%  else  %}
-                <div class="container">
-                    <h4>Q.{{ field.question }}</h4>
-                    <div class="col-sm-6" id="list{{ id }}"></div>
+                <div class="container" style="text-align: center;">
+                    <p style="font-size: 18px; color: #5b4119; margin: 40px 0px; padding-left: 30px;">ㆍ {{ field.question }} ㆍ</p>
+                    <div id="list{{ id }}"></div>
                 </div><hr>
             {%  endif %}
         {% endfor %}
-
     </div>
 </div>
+
 {% endblock %}

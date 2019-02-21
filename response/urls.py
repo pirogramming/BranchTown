@@ -6,7 +6,7 @@ app_name = 'response'
 
 urlpatterns = [
 
-    path('result/<int:pk>/', views.ResultView.as_view(), name="home"),
+    path('result/<int:pk>/', views.ResultView.as_view(), name="result_survey"),
     path('<int:pk>/preview/', views.preview_survey, name='preview_survey'),
     path('<int:pk>/survey/', views.response_survey, name='response_survey'),
     path('<int:pk>/join/', views.join_survey, name='join_survey'),
