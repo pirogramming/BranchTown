@@ -1,17 +1,22 @@
 {% extends 'layout.html' %}
+{%  load static %}
 
 {% block content %}
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="display-4">{{ survey.title }}</h1>
-            <p class="lead">
+    <div class="container" style="font-family: '나눔스퀘어 Light', serif; vertical-align: middle; height: 600px; line-height: 600px; text-align: center;">
+        <div class="previewTitle" style="background-color: #fbfbfb; display: inline-block; vertical-align: middle; line-height: normal; height: 450px; width: 750px; padding: 50px;">
+            <div class="previewImage" style="margin-bottom: 20px;"><img src="{% static 'response/images/quotation.png' %}" width="30" height="30"></div>
+            <h1 class="previewTitle" style="margin-bottom: 10px;">{{ survey.title }}</h1>
+            <hr style="width: 500px; margin-bottom: 50px;">
+            <p class="previewSubtitle" style="color: #333333; margin-bottom: 50px; font-size: 18px;">
                 {{ survey.subtitle }}
             </p>
-            <hr class="my-4">
-            작성자: {{ survey.author }}<br>
-            문항수: {{ survey.field_set.count }}<br>
-
-            <a href="{% url 'response:response_survey' survey.pk %}" class="btn btn-primary">참여하기</a>
+            <p class="previewInfo" style="margin-bottom: 30px; font-size: 14px;">
+            작성자: {{ survey.author }}<br><br>
+            문항수: {{ survey.field_set.count }}<br></p>
+            <div class="previewButton">
+                <a href="{% url 'response:response_survey' survey.pk %}" style="background-color: #c4a784; padding: 15px; border-radius: 10px; color: white;">Response</a>
+                <a href="{% url 'board:main' %}" style="background-color: #c4a784; padding: 15px; border-radius: 10px; color: white; display: inline-block; width: 100px;">Back</a>
+            </div>
         </div>
     </div>
 {% endblock %}

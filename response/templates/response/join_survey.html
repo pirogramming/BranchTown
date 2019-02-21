@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{%  load static  %}
+{% block content %}
+    <div class="container" style="font-family: '나눔스퀘어 Light', serif; vertical-align: middle; height: 600px; line-height: 600px; text-align: center;">
+        <div class="SurveyComplete" style="background-color: #fbfbfb; display: inline-block; vertical-align: middle; line-height: normal; height: 450px; width: 750px; padding: 50px;">
+            <div class="JoinInfo" style="margin-bottom: 30px; font-size: 14px;; padding: 50px 70px 30px 70px;">
+                <div class="previewImage" style="margin-bottom: 30px;"><img src="{% static 'response/images/quotation.png' %}" width="30" height="30"></div>
+                <h2>{{ survey.title }}</h2>
+                <h2> 에 참여해주셔서 감사합니다.</h2>
+            </div>
+            <div class="JoinButton">
+                <a href="{% url 'root' %}" style="background-color: #c4a784; padding: 15px; border-radius: 10px; color: white;">Go Home</a>
+                <a href="{% url 'response:result_survey' survey.pk %}" style="background-color: #c4a784; padding: 15px; border-radius: 10px; color: white; display: inline-block; width: 100px;">Result</a>
+            </div>
+        </div>
+{% endblock %}

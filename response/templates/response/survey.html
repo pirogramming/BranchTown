@@ -3,25 +3,35 @@
 
 {% bootstrap_css %}
 {% block content %}
-    <div class="container">
-        <h1>{{ survey.title }}</h1>
+    <div class="container SurveyForm" style="font-family: '나눔스퀘어 Light', serif; margin: auto; margin-top: 80px; margin-bottom: 100px; padding-top: 30px; padding-bottom: 30px; text-align: center; width: 900px; border: 1px solid #d7d7d7; box-shadow: 10px 10px 10px rgba(0,0,0,0.3);">
+        <div class="SurveyFormTitleSet" style="display: inline-block;">
+            <h1 align="center" style="margin-bottom: 20px; margin-top: 50px;">{{ survey.title }}</h1>
+            <hr style="margin-bottom: 50px; width: 400px;">
+        </div>
         <form action="" method="post">
         {% csrf_token %}
-        <ul>
-            {% for field in fields %}
-                <li>{{ forloop.counter }}. {{ field }}</li>
-                {% if field.multiplechoice_set.all %}
-                    {% for choice in field.multiplechoice_set.all %}
-                        <input type="radio" name="{{ field.id }}" id="{{ choice.id }}" value="{{ choice.id }}">
-                        <label for="{{ choice.id }}">{{ choice.choice_text }}</label>
-                    {% endfor %}
-                {% else %}
-                    <input type="text" id="{{ field.id }}" name="{{ field.id }}">
-{#                    {{ field.id }}#}
-                    <label for="{{ field.id }}"></label>
-                {% endif %}
-            {% endfor %}
-        </ul>
-        <input type="submit" style="background-color: #c4a784; padding: 15px; border-radius: 10px; color: white; display: inline-block; width: 100px; text-align: center; border:none;" value="Submit">        </form>
+        <div id="surveyFormFieldSet" style="display: inline-block; width: 900px; padding: 10px 50px;">
+            <ul class="surveyFormField">
+                {% for field in fields %}
+                    <li style="margin-top: 50px; margin-bottom: 20px; font-size: 18px; text-align: left;">{{ forloop.counter }}. {{ field }}</li>
+                    {% if field.multiplechoice_set.all %}
+                        {% for choice in field.multiplechoice_set.all %}
+                            <div class="SurveyFormChoice" style="margin-bottom: 15px; text-align: left;">
+                            <input type="radio" name="{{ field.id }}" id="{{ choice.id }}" value="{{ choice.id }}">
+                            <label for="{{ choice.id }}">{{ choice.choice_text }}</label></div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="SurveyFormText" align="left">
+                            <textarea cols="80" rows="4" id="{{ field.id }}" name="{{  field.id  }}"></textarea>
+                            <label for="{{ field.id }}"></label>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <div class="surveyFormSubmit" align="center" style="margin-top: 100px;">
+                <input type="submit" style="background-color: #c4a784; padding: 15px; border-radius: 10px; color: white; display: inline-block; width: 100px; text-align: center; border:none;" value="Submit">
+            </div>
+        </div>
+        </form>
     </div>
 {% endblock %}
