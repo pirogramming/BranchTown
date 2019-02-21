@@ -6,8 +6,6 @@
 {% block style %}
     <link rel="stylesheet" href="{% static 'main/css/style.css'%}">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
 {% endblock %}
 
 {% block content %}
@@ -34,7 +32,7 @@
         </div>
         </div>
         <div class="col-lg-6">
-            <img src="{% static 'main/images/purple.jpg' %}" class='img-fluid' style="height : 500px; border-radius : 5px;"/>
+            <img src="{% static 'main/images/creating-survey.jpg' %}" class='img-ex' style="height : 500px; width : 600px; border-radius : 5px;"/>
         </div>
     </div>
     </div>
@@ -57,12 +55,12 @@
     <div class="container-fluid padding" style="margin-top : 100px; margin-bottom : 40px;">
     <div class="row padding">
         <div class="col-lg-6">
-            <img src="{% static 'main/images/purple.jpg' %}" class='img-fluid' style="height : 500px; border-radius : 5px;"/>
+            <img src="{% static 'main/images/brain.png' %}" class='img-ex' style="height : 500px; border-radius : 5px;"/>
         </div>
         <div class="col-md-12 col-lg-6">
             <div class="left-box right-box">
                     <h2 id="title1">Share at the Survey Board!</h2>
-                <h4 id="title2"><i>You are much more  <br/>  likely to get <br/>a variety of responses.<br/><br/>Share with your friends <br/>and get more points!</i></h4>
+                <h4 id="title2"><i>You are much more  <br/>  likely to get <br/>a variety of responses.<br/>Share with your friends <br/>and get more points!</i></h4>
             <div class="second-basket">
                     <button type="button" class="btn btn-outline-light btn-lg">Event Page</button>
                     <button type="button" class="btn btn-primary btn-lg">Respond Survey</button>
@@ -76,7 +74,7 @@
     <div class="container-fluid">
     <div class="row jumbotron">
         <div class="personalized">
-            <p class="lead">Recommendation question for you only!</p>
+            <p class="lead">Recommended question for you only!</p>
             <a href="#"><button type="button" class="btn btn-outline-secondary btn-lg" id="recommendation">Go for Responding</button></a>
         </div>
     </div>
@@ -116,7 +114,6 @@
                 <span class="sr-only">Next</span>
             </a>
     </div>
-
     <div class="container-fluid">
     <div class="row jumbotron">
         <div class="personalized">
@@ -127,6 +124,19 @@
     </div>
     </div>
 
+    <div class="container-fluid padding" style="margin-top : 100px;">
+    <div class="row text-center padding">
+        <div class="col-12">
+            <h2>Connect</h2>
+        </div>
+        <div class="col-12 social padding">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+    </div>
     <script>
     $(document).ready(function(){
         $(window).scroll(function(){

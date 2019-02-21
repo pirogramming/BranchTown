@@ -50,22 +50,6 @@
                             <li><a href="{% url 'board:survey_complete' %}" style="font-size : 16px; margin-left :0; color : gray;">completed</a></li>
                       </ul>
                 </li>
-{#                <li class="nav-item dropdown">#}
-{#                    <a class="nav-link dropdown-toggle" style=" color : #af8c53;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
-{#                       Survey Board#}
-{#                    </a>#}
-{##}
-{#                    <div class="dropdown-menu"  aria-labelledby="navbarDropdown" >#}
-{#                        <a class="dropdown-item" href="{% url 'board:main' %}" style="font-size : 16px; margin-left :0; color : gray;">main</a>#}
-{#                        <div class="dropdown-divider"></div>#}
-{#                        <a class="dropdown-item" href="{% url 'board:survey_interest' %}" style="font-size : 16px; margin-left :0; color : gray;">recommended</a>#}
-{#                        <a class="dropdown-item" href="#" style="font-size : 16px; margin-left :0; color : gray;">participated</a>#}
-{#                        <div class="dropdown-divider"></div>#}
-{#                        <a class="dropdown-item" href="{% url 'board:survey_recent' %}" style="font-size : 16px; margin-left :0; color : gray;">recent</a>#}
-{#                        <a class="dropdown-item" href="{% url 'board:survey_ongoing' %}" style="font-size : 16px; margin-left :0; color : gray;">ongoing</a>#}
-{#                        <a class="dropdown-item" href="{% url 'board:survey_complete' %}" style="font-size : 16px; margin-left :0; color : gray;">completed</a>#}
-{#                    </div>#}
-{#                </li>#}
                 <li class="nav-item">
                     <a class="nav-link" style=" color : #af8c53;" href="{% url 'main:cspage' %}" >contact</a>
                 </li>
@@ -100,7 +84,7 @@
     <img src="{% static 'images/arrows.jpg' %}" width="32" height="32">
     </button>
     <!-- footer -->
-    <div id="footer" style="display :block; width : 100%; height : 200px; margin-left : auto; margin-right : auto;">
+    <div id="footer" style="display :block; width : 100%; height : 100px; margin-left : auto; margin-right : auto;">
             <p class="text-muted">
             ⓒ BranchTown
             대학생을 위한 설문 조사 플랫폼
@@ -127,7 +111,7 @@ $(document).ready(function()
 	{
 		$('body,html').animate({
 			scrollTop: 0},
-			2500);
+			1000);
 	});
 	//Easing Scroll replace Anchor name in URL and Offset Position
 	$(function(){
@@ -139,7 +123,7 @@ $(document).ready(function()
 				if (target.length) {
 					$('html,body').animate({
 						scrollTop: target.offset().top -420
-					}, 800, 'easeOutBounce');
+					}, 2500, 'easeOutBounce');
 					return false;
 				}
 			}

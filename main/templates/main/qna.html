@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'main/css/style.css'%}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid padding">
+        <div class="row welcome text-center">
+            <div class="col-12">
+                <h1 class="display-4" style="margin-top:10px;">Q & A</h1>
+            </div>
+            <hr>
+            <div class="col-12">
+                <p class="lead">solve your problem</p>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

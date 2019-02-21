@@ -1,215 +1,26 @@
-<<<<<<< HEAD
-{% load bootstrap4 %}
-{% bootstrap_css %}
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
-        <script src=https://code.jquery.com/jquery-3.3.1.min.js integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
-
-    </head>
-    <body>
-
-        <div class="container" style="margin-top:100px;">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h1> Create Your Own Survey Form!</h1>
-
-                    {% if field_list %}
-                        <ul>
-                            {%  for field in field_list %}
-                                <li><a href="/survey/{{ field.id }}/">{{ field.id }}{{ field.question }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    {% else %}
-                        <p>No surveys are available</p>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-
-        <div class="container" style="margin-top : 50px;">
-            <div class="row">
-                <div class="col-sm-12">
-                    <input type="submit" value = "설문 폼 작성 완료" id="create-form" class="btn btn-success mt-5 mb-5">
-                    <input type="button" value = "객관식 문항 추가" id="multi-choice" class="btn btn-primary">
-                    <input type="button" value = "주관식 문항 추가" id="essay-question" class="btn btn-primary">
-                    <hr/>
-
-                    <form class="form-horizontal" method="POST" action="" id ="form_set">
-                    {% csrf_token %}
-                    {{ formset.management_form }}
-                    {% for form in formset %}
-                    <div class="row form-row spacer">
-                        <div class="col-2">
-                            <label>{{ form.survey }}</label>
-                        </div>
-                        <div class="col-4">
-                            <div class="input-group">
-                                {{form.question}}
-                                <div class="input-group-append">
-                                    <button class="btn btn-success add-form-row">+</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-
-                    </form>
-
-                <div id="empty_form" style="display:none">
-                    <div class="table">
-                        <table class="no_error">
-                            {{ formset.as_table }}
-                        </table>
-                        <input id="delete-card-__prefix__" type="button" value="삭제"/>
-                    </div>
-                </div>
-                <div class="row spacer">
-                    <div class="col-4 offset-2">
-                        <button type="submit" class="save btn btn-default">저장</button>
-                    </div>
-                </div>
-
-{#                <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}"></script>#}
-{#                <script>#}
-{#                    $(document).ready(function() {#}
-{#                        $('#add_more').click(function(){#}
-{#                            var form_idx=$('#id_form-TOTAL_FORMS').val();#}
-{#                            $('#form_set')#}
-{#                                .append(#}
-{#                                    $('#empty_form')#}
-{#                                        .html()#}
-{#                                        .replace(/__prefix__/g, form_idx)#}
-{#                                        .replace('image', `img-card-${form_idx}`)#}
-{#                                );#}
-{#                            $('#id_form-TOTAL_FORMS').val(parseInt(form_idx)+1);#}
-{#                        });#}
-{#                    });#}
-{##}
-{#                </script>#}
-                </div>
-            </div>
-        </div>
-
-    </body>
-</html>
-
-
-{#{% load static %}#}
-{#<script src=https://code.jquery.com/jquery-3.3.1.min.js integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>#}
-{#<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>#}
-{#<form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">#}
-{#    {% csrf_token %}#}
-{#    {{ formset.management_form }}#}
-{#        {% for form in formset %}#}
-{#            <div class="row spacer">#}
-{#                <div class="col-4">#}
-{#                    <p>설문 : {{ form.survey }}</p>#}
-{#                    <p>문항종류 : {{ form.type }}</p>#}
-{#                    ㅛㅛㅛㅛ{{ formset }}#}
-{#                    <p>질문 : {{ form.qeustion }}</p>#}
-{#                </div>#}
-{#            </div>#}
-{#        {% endfor %}#}
-{##}
-{#    {{ formset.management_form }}#}
-{#    {% for form in formset.forms %}#}
-{#        <div id="form_set">#}
-{#            <div class="table">#}
-{#                <input type="hidden" name="form-TOTAL_FORMS" value="1" id="id_form-TOTAL_FORMS"/>#}
-{#                <input type="hidden" name="form-INITIAL_FORMS" value="0" id="id_form-INITIAL_FORMS"/>#}
-{#                <input type="hidden" name="form-MAX_NUM_FORMS" id="id_form-MAX_NUM_FORMS"/>#}
-{#                <table class="no_error">#}
-{#                    {{ formset.as_table }}#}
-{#                </table>#}
-{#            </div>#}
-{#        </div>#}
-{#    {% endfor %}#}
-{#    <input type="button" value="문항 추가" id="add_more" class="btn btn-primary">#}
-{##}
-{#    <div id="empty_form" style="display:none">#}
-{#        <div class="table">#}
-{#            <table class="no_error">#}
-{#                {{ formset.as_table }}#}
-{#            </table>#}
-{#            <input id="delete-card-__prefix__" type="button" value="삭제"/>#}
-{#        </div>#}
-{#    </div>#}
-{#    <div class="row spacer">#}
-{#        <div class="col-4 offset-2">#}
-{#            <button type="submit" class="save btn btn-default">설문지 완료</button>#}
-{#        </div>#}
-{#    </div>#}
-
-{##}
-{#    <script>#}
-{#        $(document).ready(function() {#}
-{#            $('#add_more').click(function(){#}
-{#                var form_idx=$('#id_form-TOTAL_FORMS').val();#}
-{#                $('#form_set')#}
-{#                    .append(#}
-{#                        $('#empty_form')#}
-{#                            .html()#}
-{#                            .replace(/__prefix__/g, form_idx)#}
-{#                            .replace('image', `img-card-${form_idx}`)#}
-{#                    );#}
-{#                $('#id_form-TOTAL_FORMS').val(parseInt(form_idx)+1);#}
-{#            });#}
-{#        });#}
-{##}
-{#    </script>#}
-{##}
-{#</form>#}
-
-=======
 {% extends 'layout.html' %}
 
 {% block content %}
     <div class="container">
         <h1>설문제목: {{ survey.title }}</h1>
-
-<<<<<<< HEAD
-        <a class="btn btn-primary" href="{% url 'survey:multiple_choice' survey.id %}">
-            객관식문항 추가
-        </a>
-        <a class="btn btn-primary" href="{% url 'survey:text_answer' survey.id %}">
-=======
         <a class="btn btn-primary" href="{% url 'survey:make_multiple_choice' survey.id %}">
             객관식문항 추가
         </a>
         <a class="btn btn-primary" href="{% url 'survey:make_text_answer' survey.id %}">
->>>>>>> f17008f429dec73ba4e8a8288f23dd69daa778c5
             주관식문항 추가
         </a>
 
         <table class="table table-bordered">
             <thead>
                 <tr>
-<<<<<<< HEAD
-                    <th scope="col">번호</th>
-=======
                     <th scope="col">#</th>
->>>>>>> f17008f429dec73ba4e8a8288f23dd69daa778c5
                     <th scope="col">유형</th>
                     <th scope="col">문항 text</th>
                 </tr>
             </thead>
-            <tbody>
+             <tbody>
                 {% for field in field_list %}
                     <tr>
-<<<<<<< HEAD
-                        <td>숫자</td>
-                        <td>{{ field.type }}</td>
-                        <td>
-                            {{ field.question }}
-                            {% if field.type == '2' %}
-                                <i>(선지 list
-                                    {% for choice in field.multiplechoice_set.all %}
-                                        {{ choice }}
-=======
                         <td>{{ forloop.counter }}번</td>
                         <td>{{ field.type }}</td>
                         <td>
@@ -218,7 +29,6 @@
                                 <i>(선지 list
                                     {% for choice in field.multiplechoice_set.all %}
                                         {{ choice }}/
->>>>>>> f17008f429dec73ba4e8a8288f23dd69daa778c5
                                     {% endfor %})
                                 </i>
                             {% endif %}
@@ -230,4 +40,3 @@
         <a href="{% url 'board:survey_recent' %}" class="btn btn-success text-right">완료</a>
     </div>
 {% endblock %}
->>>>>>> 030893919c333c217b4815b5dd7179e044ea3329
