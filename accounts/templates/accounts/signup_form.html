@@ -4,12 +4,20 @@
 
 {% bootstrap_css %}
 {% block content %}
-    <h4>step1...</h4>
     <div class="container">
-        <form action="" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {% bootstrap_form form %}
-            <button type="submit" class="btn btn-primary">Next</button>
-        </form>
+            <div class="SignupMiddleTitle"><p>Sign Up</p></div>
+            <div class="container SignupFieldSet">
+                <form action="" method="post" enctype="multipart/form-data">
+                    <div class="SignupField">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                    </div>
+                    <div class="SignupButtonSet">
+                        <button type="submit" class="SignupButton1">Next</button>
+                        <button type="reset" class="SignupButton1">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 {% endblock %}

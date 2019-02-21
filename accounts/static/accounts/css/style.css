@@ -2,3 +2,48 @@
     margin-left : auto;
     margin-right : auto;
 }
+
+.SignupTotalField {
+    width: 600px;
+    margin: auto;
+    height: 600px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.SignupMiddleTitle p{
+    color: #af8c53;
+    text-align: center;
+    font-family: "나눔스퀘어 Light", serif;
+    letter-spacing: 3px;
+    font-size: 35px;
+    margin-bottom: 50px;
+    margin-top: 100px;
+}
+
+
+.SignupButton1 {
+    background-color: #c4a784;
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    width: 80px;
+    height: 50px;
+}
+
+
+.SignupButtonSet {
+    text-align: center;
+}
+
+
+.SignupFieldSet {
+    text-align: center;
+}
+
+.SignupField {
+    margin-bottom: 50px;
+    display: inline-block;
+    width: 500px;
+}
