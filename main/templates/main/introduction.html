@@ -3,13 +3,17 @@
 
 {% block style %}
     <link rel="stylesheet" href="{% static 'main/css/style.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
 {% endblock %}
 
 {% block content %}
     <div class="container-fluid padding">
         <div class="row welcome text-center">
             <div class="col-12">
-                <h1 class="display-4" style="margin-top:10px;">Why Branch Town?</h1>
+                <h1 class="display-4" style="margin-top:10px;">What is Branch Town?</h1>
             </div>
             <hr>
             <div class="col-12">
@@ -24,28 +28,34 @@
 <div class="container-fluid padding">
     <div class="row text-center padding">
         <div class="col-xs-12 col-sm-6 col-md-6">
-            <i class="fas fa-code"></i>
-            <h3>Branch</h3>
-            <p>링크를 타고 퍼지는 온라인 설문조사!</p>
+            <img src="{% static 'main/images/paper-survey.jpg' %}" class="img-ex" width="400" height="300" />
+            <div class="container-ex">
+                <h3>"Branch"</h3>
+                <p>Survey spread through its Links</p>
+            </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6">
-            <img src="{% static 'images/share.png' %}"/>
-            <h3>Town</h3>
-            <p>웹 보드에 게재하여 공유하는 설문 플랫폼!</p>
+            <img src="{% static 'main/images/connected.jpg' %}" class="img-ex" width="400" height="300" />
+            <div class="container-ex">
+                <h3>"Town"</h3>
+                <p>Creating, Sharing, Participating survey platform</p>
+            </div>
         </div>
     </div>
 </div>
 
 <div class="container-fluid padding" style="margin-top : 50px;">
     <div class="row padding">
-        <div class="col-md-12 col-lg-6">
-            <h2>Branch Town과 함께한다면..</h2>
-            <p>the colums will automatically stack on top of each other when
-            design has become more important....</p>
-            <p>the colums will automatically stack on top of each other when
-            design has become more important....</p>
-            <p>the colums will automatically stack on top of each other when
-            design has become more important....</p>
+        <div class="col-md-12 col-lg-6" style="margin-top : auto; margin-bottom: auto;">
+            <h1 style="font-weight : 700;">With Branch Town...</h1>
+            <br/>
+            <br/>
+            <p>you can easily create survey form</p>
+            <p>you don't need to pay lots of money for creating your survey anymore.</p>
+            <p>it will be perfect for college students to do survey.</p>
+            <p>you will be able to help each other and complete team projects or individual studies</p>
+            <p>also if you response someone's survey, you will get points which can be refunded in cash.</p>
+            <p>we pursue shared value and virtuous cycle structure of BranchTown. Thank you</p>
         </div>
         <div class="col-lg-6">
             <img src="{% static "main/images/purple_tree.png" %}" class='img-fluid' />

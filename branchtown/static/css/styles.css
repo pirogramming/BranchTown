@@ -5,34 +5,35 @@ html{
     min-height: 100%;
     width : 100%;
     color : #222;
-
 }
 
 body {
     padding : 0;
-    margin : 0 0 40px 0;
+    margin : 0 0 220px 0;
     background-color : white;
 }
 
 
 #footer{
-    height : 40px;
+     display : inline-block;
+    margin-left : auto;
+    margin-right : auto;
+    height : 200px;
     position : absolute;
-    left : 0;
     bottom : 0;
-    width : 100%;
+    width : 70%;
     background-color : #f8f9fa!important;
-
 }
-
 
 .navbar {
     padding: .8rem;
 }
-
+a:hover{
+    text-decoration : none;
+}
 
 .navbar-nav li{
-    padding-right : 20px;
+    padding-right : 10px;
 }
 
 .nav-link {
@@ -100,7 +101,7 @@ li{
 
 .to-top-btn {
   background-color: white;
-  padding: 15px;
+  padding: 6.3px;
   border: none;
   outline: none;
   box-shadow: 0 0 5px 0 rgba(0,0,0,0.05), 0 5px 5px 0 rgba(0,0,0,0.05);
@@ -110,5 +111,4 @@ li{
   bottom: 30px;
   right: 30px;
   z-index: 1;
-  display : none;
 }

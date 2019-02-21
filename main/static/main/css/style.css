@@ -5,7 +5,22 @@
     background-size : cover;
 }
 
-
+.carousel .carousel-inner .carousel-item .basket {
+    opacity: 0;
+    -webkit-transition: 2s all ease-in-out .1s;
+       -moz-transition: 2s all ease-in-out .1s;
+        -ms-transition: 2s all ease-in-out .1s;
+         -o-transition: 2s all ease-in-out .1s;
+            transition: 2s all ease-in-out .1s;
+}
+.carousel .carousel-inner .carousel-item.active .basket {
+    opacity: 1;
+    -webkit-transition: 2s all ease-in-out .1s;
+       -moz-transition: 2s all ease-in-out .1s;
+        -ms-transition: 2s all ease-in-out .1s;
+         -o-transition: 2s all ease-in-out .1s;
+            transition: 2s all ease-in-out .1s;
+}
 .jumbotron{
     display : block;
     padding: 1rem;
@@ -50,6 +65,8 @@
     line-height : 2px;
 
 }
+
+
 .carousel {
     width : 1200px;
     margin-left:auto;
@@ -96,6 +113,7 @@
     width : 1100px;
     margin-left : auto;
     margin-right : auto;
+    margin-top : 40px;
 }
 
 .basket {
@@ -158,6 +176,18 @@
     border: 0;
 }
 
+.container-ex{
+    margin-top : 20px;
+}
+
+.container-ex h3{
+    font-size : 45px;
+}
+
+.container-ex p{
+    margin-top : 20px;
+    font-size : 20px;
+}
 
 .container-bottom{
     width : 1200px ;
@@ -232,6 +262,8 @@
 .fa-youtube:hover {
     color: #d5d5d5;
 }
+
+
 
 footer {
     background-color : #3f3f3f;
