@@ -1,5 +1,16 @@
 {% extends 'layout.html' %}
-{%  load static %}
+
+{% block content %}
+    <div class="container" style="font-family: '나눔스퀘어 Light', serif; vertical-align: middle; height: 600px; line-height: 600px; text-align: center;">
+        <div class="SurveyComplete" style="background-color: #fbfbfb; display: inline-block; vertical-align: middle; line-height: normal; height: 450px; width: 750px; padding: 50px;">
+            {{ user }}님 <br>
+            {{ survey.title }} 에 참여해주셔서 감사합니다.
+
+        <a href="{% url 'root' %}" class="btn btn-primary">Go home</a>
+        <a href="{% url 'response:result_survey' survey.pk %}" class="btn btn-success">Reuslt</a>
+    </div>
+{% endblock %}
+
 
 {% block content %}
     <div class="container" style="font-family: '나눔스퀘어 Light', serif; vertical-align: middle; height: 600px; line-height: 600px; text-align: center;">
