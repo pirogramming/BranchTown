@@ -1,0 +1,115 @@
+{% extends 'response/layout.html' %}
+{% load static %}
+
+{#기존에 있던 js.html, css.html, bootstrap_defaults.html을 합침.#}
+
+
+
+{% block content %}
+{% include 'response/base/js.html' %}
+<script>
+$(document).ready(function(){
+    var defaultData = [];
+    var labels = [];
+
+    var json_fields = {{  json_fields }};
+    var json_txt = {{ json_txt }};
+    var json_graph = {{  json_graphs }};
+
+
+    for (var id in json_fields) {
+        if (json_fields[id].type==1){
+            setChart(id);
+        }else {
+            setList(id);
+        }
+    }
+
+
+    function setList(txt_id) {
+        document.getElementById("list" + txt_id).innerHTML=": "+json_txt[txt_id].answer
+        console.log(json_txt[txt_id].answer)
+
+    }
+
+
+    function  setChart(graph_id) {
+        var ctx= document.getElementById("chart"+graph_id);
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: json_graph[graph_id]['labels'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: json_graph[graph_id]['votes'],
+                    backgroundColor: [
+                        'rgba(102, 55, 2, 0.7)',
+                        'rgba(130, 73, 7, 0.7)',
+                        'rgba(177, 109, 30, 0.7)',
+                        'rgba(220, 150, 70, 0.7)',
+                        'rgba(241, 190, 133, 0.7)',
+                        'rgba(250, 232, 212, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 246, 235, 1)',
+                        'rgba(255, 246, 235, 1)',
+                        'rgba(255, 246, 235, 1)',
+                        'rgba(255, 246, 235, 1)',
+                        'rgba(255, 246, 235, 1)',
+                        'rgba(255, 246, 235, 1)',
+                    ],
+                    borderWidth: 0.2,
+                    hoverBorderWidth: 1.0,
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true,
+                        }
+                    }],
+                    xAxes: [{
+                        barPercentage: 0.6,
+                    }]
+                }
+            }
+        });
+    }
+})
+</script>
+
+<div class="resultField" style="font-family:'나눔스퀘어 Light', serif; background-color: #eee3c8; padding: 60px 150px;">
+    <div class='container' style="background-color: white; padding: 100px; border-radius: 60px;" align='center'>
+        <div class="result_titles" style="margin-bottom: 100px;">
+            <h1 align="center" class="result_title" style="font-weight: bold; color: #3e2703">{{ survey.title }}</h1><br>
+            <hr style="border-color: #af8c53; width: 500px;">
+            <p align="center" class="result_subtitle" style="color: #80672a">{{ survey.subtitle }}</p>
+            <hr style="border-color: #af8c53; width: 500px;">
+        </div>
+
+        {%  for id, field in fields.items  %}
+            {%  if field.type == "1" %}
+                <div class="container">
+                    <p style="font-size: 18px; color: #5b4119; margin: 40px 0px; padding-left: 30px;">ㆍ {{ field.question }} ㆍ</p>
+                    <div class="col-lg-12">
+                        <div class="row" style="height: 500px;">
+                            <div class="col-sm-2"></div>
+                            <div class='col-sm-8'>
+                                <canvas id='chart{{ id }}' width="500" height="400"></canvas><br>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
+                    </div>
+                </div><hr>
+            {%  else  %}
+                <div class="container" style="text-align: center;">
+                    <p style="font-size: 18px; color: #5b4119; margin: 40px 0px; padding-left: 30px;">ㆍ {{ field.question }} ㆍ</p>
+                    <div id="list{{ id }}"></div>
+                </div><hr>
+            {%  endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

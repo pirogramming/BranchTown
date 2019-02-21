@@ -24,7 +24,11 @@ def survey_detail(request, pk):
 
 
 def main(request):
-    return render(request, 'board/main.html')
+    surveys = Survey.objects.all()
+    return render(request, 'board/survey_base.html', {
+        'category': 'All Survey',
+        'surveys': surveys,
+    })
 
 
 @login_required
@@ -36,7 +40,7 @@ def survey_interest(request):
         surveys = Survey.objects.none()
 
     return render(request, 'board/survey_base.html', {
-        'category': 'interest',
+        'category': 'Recommend',
         'surveys': surveys,
     })
 
@@ -50,26 +54,28 @@ def survey_tag(request, pk):
     })
 
 
-def survey_hot(request):
-    pass
-
 
 def survey_ongoing(request):
     surveys = Survey.objects.filter(status='o')
     return render(request, 'board/survey_base.html', {
-        'category': 'ongoing',
+        'category': 'Ongoing',
         'surveys': surveys,
     })
 
 
-def survey_answer(request):
-    pass
+@login_required()
+def survey_participated(request):
+    surveys = Survey.objects.filter(response__respondent_id=request.user)
+    return render(request, 'board/survey_base.html', {
+        'category': 'participated',
+        'surveys': surveys,
+    })
 
 
 def survey_complete(request):
     surveys = Survey.objects.filter(status='c')
     return render(request, 'board/survey_base.html', {
-        'category': 'complete',
+        'category': 'Completed',
         'surveys': surveys,
     })
 
@@ -77,6 +83,6 @@ def survey_complete(request):
 def survey_recent(request):
     surveys = Survey.objects.all().order_by('-id')  # TODO 너무 많아지면 slicing
     return render(request, 'board/survey_base.html', {
-        'category': 'recent',
+        'category': 'Recent',
         'surveys': surveys,
     })

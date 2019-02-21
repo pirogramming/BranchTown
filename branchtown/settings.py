@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django_extensions',
     'bootstrap4',
+    'rest_framework',
 
     # app
     'accounts',
@@ -163,3 +165,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 INTERNAL_IPS = ['127.0.0.1']
 
+
+# 소셜 로그인 후 추가 정보 입력 받아서 profile 생성
+SOCIALACCOUNT_AUTO_SIGNUP=False
+ACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.SignupForm2'

@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <ul>
+            <li>제목 : {{ survey.title }}</li>
+            <li>내용 : {{ survey.subtitle }}</li>
+            <li>작성자 : {{ survey.author }}</li>
+            <li>태그 :
+                {% for tag in survey.tag.all %}
+                    #{{ tag }}
+                {% endfor %}
+            </li>
+            <li>상태 :
+                {% if survey.status == 'o' %}
+                    진행중
+                {% else %}
+                    종료
+                {% endif %}
+            </li>
+            <li>응답수 : {{ survey.response_count }}</li>
+        </ul>
+        <a href="{% url 'survey:my_survey_complete' survey.id %}" class="btn btn-danger">설문 종료</a>
+    </div>
+{% endblock %}

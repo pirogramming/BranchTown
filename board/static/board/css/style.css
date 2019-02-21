@@ -1,0 +1,95 @@
+.card{
+    background-color: #fbfbfb;
+    border: 0;
+    color: #af8c53;
+    font-family: "나눔스퀘어 Light", serif;
+    text-align: center;
+    display: block;
+    width: 250px;
+    height: 450px;
+    margin-bottom: 30px;
+}
+
+.card:hover {
+    box-shadow: 15px 15px 20px rgba(0,0,0,0.3);
+}
+
+
+.middle_title p{
+    color: #af8c53;
+    text-align: center;
+    font-family: "나눔스퀘어 Light", serif;
+    letter-spacing: 3px;
+    font-size: 35px;
+    margin-bottom: 50px;
+    margin-top: 100px;
+}
+
+
+.card > img {
+    width: 170px;
+    height: 170px;
+    border-radius: 100px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+
+.card-body {
+    font-family: "나눔스퀘어 Light", serif;
+}
+
+.card-title{
+    font-weight: 900;
+    font-size: 18px;
+    color: #8a6b3a;
+}
+
+
+.card-text {
+    font-size: 13px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+}
+
+
+.response_button {
+    background-color: #e2d1b6;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+}
+
+.result_button {
+    background-color: #e2d1b6;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+}
+
+.result_button:hover, .response_button:hover {
+    text-decoration: none;
+    background-color: #fbfbfb;
+    color: black;
+}
+
+
+#board_titles {
+    height: 100px;
+
+}
+#board_tags {
+    height: 50px;
+}
+
+#board_tags a {
+    font-style: italic;
+    color: #c7ae87;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+#board_tags a:hover{
+    color: black;
+}

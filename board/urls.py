@@ -8,11 +8,15 @@ urlpatterns = [
     path('<int:pk>/', views.survey_detail, name='survey_detail'),
 
     path('', views.main, name='main'),
+
     path('interest/', views.survey_interest, name='survey_interest'),
-    path('tag/<int:pk>/', views.survey_tag, name='survey_tag'),
-    path('hot/', views.survey_hot, name='survey_hot'),
-    path('ongoing/', views.survey_ongoing, name='survey_ongoing'),
-    path('answer/', views.survey_answer, name='survey_answer'),
-    path('complete/', views.survey_complete, name='survey_complete'),
     path('recent/', views.survey_recent, name='survey_recent'),
+
+    path('ongoing/', views.survey_ongoing, name='survey_ongoing'),
+
+    path('answer/', views.survey_participated, name='survey_participated'),
+    path('complete/', views.survey_complete, name='survey_complete'),
+
+    path('tag/<int:pk>/', views.survey_tag, name='survey_tag'),
+
 ]

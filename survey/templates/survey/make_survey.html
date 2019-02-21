@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>Create Your Own Survey Form!_step1</h1>
-    <form action="" method="post">
-        {%  csrf_token %}
-        <table>
-            {{  form.as_table  }}
-        </table>
-        <input type="submit">
-    </form>
-</body>
-</html>
+{% extends 'layout.html' %}
+
+{% load bootstrap4 %}
+
+{% bootstrap_css %}
+{% block content %}
+    <div class="container">
+        <h1>Create Your Own Survey Form!_step1</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <input type="submit" class="btn btn-primary" value="만들기">
+        </form>
+    </div>
+{% endblock %}
