@@ -10,6 +10,14 @@
         <a class="btn btn-primary" href="{% url 'survey:make_text_answer' survey.id %}">
             주관식문항 추가
         </a>
+{#        <a class="btn btn-primary" href="{% url 'survey:make_multiple_choice' survey.id %}"#}
+{#           onclick="popup(this.href, '', 800, 600);">#}
+{#            객관식문항 추가 popup#}
+{#        </a>#}
+{#        <button type="button" class="btn btn-primary"#}
+{#                onclick="popup('{% url 'survey:make_text_answer' survey.id %}', '', 800, 600);">#}
+{#            주관식문항 추가 popup2#}
+{#        </button>#}
 
         <table class="table table-bordered">
             <thead>
@@ -40,4 +48,26 @@
         </table>
         <a href="{% url 'board:survey_recent' %}" class="btn btn-success text-right">완료</a>
     </div>
+{##}
+{#    <script>#}
+{#        function popup(url, title, width, height) {#}
+{#            var left = (screen.width / 2) - (width / 2);#}
+{#            var top = (screen.height / 2) - (height / 2);#}
+{#            var options = '';#}
+{#            options += ',width=' + width;#}
+{#            options += ',height=' + height;#}
+{#            options += ',top=' + top;#}
+{#            options += ',left=' + left;#}
+{#            return window.open(url, title, options);#}
+{#            <!-- "window.open(this.href,'popUpWindow','height=400,width=600,left=10,top=10,,scrollbars=yes,menubar=no'); return false;" -->#}
+{#        }#}
+{##}
+{#        function setData(data) {#}
+{#            console.log(data);#}
+{#            var strData = JSON.stringify(data);#}
+{#            document.getElementsByClassName('.add_class').innerHTML = strData;#}
+{#            var requestBinUrl = 'http://requestb.in/18u87g81';#}
+{#            window.location.href = requestBinUrl + '?data=' + strData;#}
+{#        }#}
+{#    </script>#}
 {% endblock %}

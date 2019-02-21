@@ -4,12 +4,28 @@
 
 {% bootstrap_css %}
 {% block content %}
+{#    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>#}
     <div class="container">
         <h1>주관식 문항 추가</h1>
-        <form action="" method="post">
+        <form action="" method="post" id="popupForm">
             {% csrf_token %}
             {% bootstrap_form form %}
             <input type="submit" class="btn btn-primary" value="문항 추가">
         </form>
     </div>
+{##}
+{#    <script>#}
+{#        $('#popupForm').submit(function(e) {#}
+{#            e.preventDefault();#}
+{#            var url = $('.form-control').val();#}
+{#            console.log(url);#}
+{#            $.ajax({#}
+{#                url: url#}
+{#            }).then(function(data) {#}
+{#                console.log(JSON.stringify(data));#}
+{#                window.opener.setData(data);#}
+{#                window.close();#}
+{#            });#}
+{#        });#}
+{#    </script>#}
 {% endblock %}

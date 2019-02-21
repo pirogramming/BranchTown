@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        {{ user }}님 <br>
+        {{ survey.title }} 에 참여해주셔서 감사합니다.
+
+        <a href="{% url 'root' %}" class="btn btn-primary">홈으로</a>
+        <a href="{% url 'response:home' survey.pk %}" class="btn btn-success">결과 보기</a>
+    </div>
+{% endblock %}
