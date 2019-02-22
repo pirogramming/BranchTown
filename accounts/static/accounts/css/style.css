@@ -119,8 +119,9 @@
 
 label {
     color : floralwhite;
-    margin-right : 500px;
-    width : 200px;
+    padding-right : 300px;
+    width : 500px;
+    text-align : left;
 }
 
 

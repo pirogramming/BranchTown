@@ -19,10 +19,21 @@
                 {% bootstrap_form form %}
             </div>
             <div class="SignupButtonSet">
-                <button type="submit" class="btn btn-primary btn-lg">Next</button>
+                <button type="submit" id="create-account" class="btn btn-primary btn-lg">Next</button>
             </div>
         </form>
         </div>
     </div>
+
+<script>
+    $(function() {
+        $("#create-account").on('click', function () {
+            alert("Congratulation!! Welcome to Branch Town!")
+        });
+    });
+</script>
+
+
 </body>
+
 {% endblock %}
