@@ -22,15 +22,6 @@
         }
     </style>
 
-
-    <h4>step2...</h4>
-    <div class="container">
-        <form action="" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {% bootstrap_form form %}
-            <hr/>
-            <button type="submit" class="btn btn-primary">Next</button>
-
 <body class="signup-back">
     <div class="container animated bounceInDown">
         <div class="SignupMiddleTitle"><p>Sign Up</p></div>
@@ -47,7 +38,6 @@
         </div>
     </div>
 
-<<<<<<< HEAD
 <script>
     $(function() {
         $("#create-account").on('click', function () {
@@ -58,7 +48,7 @@
 $('label').on('change', changeColor);
     function changeColor(){
         if(this.childNodes[0].checked === false){//unchecked
-            this.style.backgroundColor = 'lightgreen';
+            this.style.backgroundColor = 'lightgray';
         } else{//checked
             this.style.backgroundColor = 'lightblue';
         }

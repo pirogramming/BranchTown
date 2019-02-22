@@ -165,3 +165,33 @@ label {
     margin-left : auto;
     margin-right : auto;
 }
+
+.form-group #sample4_postcode{
+    text-align : left;
+    float : left;
+    width : 250px;
+    height : 38px;
+    margin-bottom : 15px;
+    border-radius : 3px;
+    border: none;
+    padding : 10px;
+}
+.form-group #sample4_jibunAddress{
+    text-align : left;
+    float : left;
+    width : 176px;
+    height : 38px;
+    margin-bottom : 15px;
+    border-radius : 3px;
+    border: none;
+    padding : 10px;
+}
+
+.form-group #sample4_roadAddress{
+    width : 176px;
+    height : 38px;
+    margin-bottom : 15px;
+    border-radius : 3px;
+    border: none;
+    padding : 10px;
+}
