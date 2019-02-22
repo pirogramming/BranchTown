@@ -5,7 +5,7 @@ from tag.models import Tag
 
 
 def main(request):
-    surveys = Survey.objects.all()
+    surveys = Survey.objects.all().order_by('-id')
     return render(request, 'board/survey_base.html', {
         'category': 'All Survey',
         'surveys': surveys,

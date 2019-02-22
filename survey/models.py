@@ -25,6 +25,7 @@ class Field(models.Model):
     FIELD_TYPE = (
         ('1', '객관식'),
         ('2', '주관식'),
+        ('3', '단답식'),
     )
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
     type = models.CharField(max_length=10, choices=FIELD_TYPE)

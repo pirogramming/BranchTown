@@ -81,7 +81,6 @@ def response_survey(request, pk):
     survey = Survey.objects.get(pk=pk)
     fields = survey.field_set.all()
     if request.method == 'POST':
-        print(1)
         for field in fields:
             if field.type == '3':
                 if request.POST.get('%d' % field.id):
