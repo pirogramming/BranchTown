@@ -1,5 +1,4 @@
 
-
 {% extends 'accounts/layout.html' %}
 
 {% load bootstrap4 %}
@@ -20,7 +19,6 @@
         }
     </style>
 
-
     <h4>step2...</h4>
     <div class="container">
         <form action="" method="post" enctype="multipart/form-data">
@@ -32,24 +30,6 @@
     </div>
 
     <script>
-    {#$('label').on('click', check);#}
-    {##}
-    {#    function check(event) {#}
-    {##}
-    {#        console.log($(this));#}
-    {#        console.log('------');#}
-    {#        console.log($(this).children(".tagLabels"));#}
-    {#        console.log($(this).children(".tagLabels").is(':checked'));#}
-    {#        if ($(this).children(".tagLabels").is(':checked')) {#}
-    {#            this.style.backgroundColor = 'gold';#}
-    {#            $('this').children(".tagLabels").prop('checked', false);#}
-    {#        } else {#}
-    {#            this.style.backgroundColor = 'pink';#}
-    {#            $('this').children(".tagLabels").prop('checked', true);#}
-    {##}
-    {#        }#}
-    {#    }#}
-    {#----------------------------------------#}
     $('label').on('change', changeColor);
     function changeColor(){
         if(this.childNodes[0].checked === false){//unchecked
@@ -58,28 +38,7 @@
             this.style.backgroundColor = 'lightblue';
         }
     }
-
-
-
-
-     {#$('label').on('click', check);#}
-     {##}
-     {#   function check(event) {#}
-     {##}
-     {#       console.log($(this));#}
-     {#       console.log('------');#}
-     {#       console.log($(this).children(".tagLabels"));#}
-     {#       console.log($(this).children(".tagLabels").is(':checked'));#}
-     {#       if ($(this).children(".tagLabels").is(':checked')) {#}
-     {#           this.style.backgroundColor = 'gold';#}
-     {#           $('this').children(".tagLabels").prop('checked', false);#}
-     {#       } else {#}
-     {#           this.style.backgroundColor = 'pink';#}
-     {#           $('this').children(".tagLabels").prop('checked', true);#}
-     {##}
-     {#       }#}
-     {#   }#}
-        $(function(){ // this is a shortcut for "on document ready"
+    $(function(){ // this is a shortcut for "on document ready"
             // For each element with the class thumb we find:
             var i = 0;
             var colors = ["#ce87a3","#006887","#00916f", "#f2858a", "#f8a96b"];

@@ -169,3 +169,8 @@ INTERNAL_IPS = ['127.0.0.1']
 # 소셜 로그인 후 추가 정보 입력 받아서 profile 생성
 SOCIALACCOUNT_AUTO_SIGNUP=False
 ACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.SignupForm2'
+# SOCIALACCOUNT_FORMS = {
+#     'signup': 'accounts.forms.SignupForm2'
+# }
+
+#SOCIALACCOUNT_ADAPTER = 'accounts.adapter.AccountAdapter'

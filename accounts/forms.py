@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+from accounts.widgets.daum_address_widget import DaumAddressWidget
+
 from tag.models import Tag
 from .models import Profile
 
@@ -54,12 +56,30 @@ class SignupForm2(forms.ModelForm):
     class Meta:
         model = Profile
         fields= ['phone_number', 'address', 'occupation']
+        # widgets={
+        #     'phone_number': form.TextInput(
+        #         attrs = {
+        #             'placeholder':'phone number'
+        #         }
+        #     )
+        # }
+    address = forms.CharField(
+        label=('Address'),
+        required=True,
+        widget=DaumAddressWidget()
+    )
+    tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(), widget=forms.CheckboxSelectMultiple(attrs={'class':'tagLabels'}), )
 
-    tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(), widget=forms.CheckboxSelectMultiple(), )
+
+    # def __init__(self, sociallogin=None, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     print('init for SIGNUPFORM2')
+    #     #self.signup(kwargs.pop)
 
     def __init__(self, *args, **kwargs):
         # Only in case we build the form from an instance
         # (otherwise, 'toppings' list should be empty)
+        print('init for SIGNUPFORM2')
         if kwargs.get('instance'):
             # We get the 'initial' keyword argument or initialize it
             # as a dict if it didn't exist.
@@ -94,6 +114,7 @@ class SignupForm2(forms.ModelForm):
 
     # 소셜 로그인 후 추가 정보 입력 받아서 profile 생성
     def signup(self, request, user):
+        print(request)
         print(request.POST)
         # profile = self.save(commit=False)
         #user = U()
@@ -113,6 +134,7 @@ class SignupForm2(forms.ModelForm):
 
         receive_profile = Profile.objects.get(user_id=user.id)
         receive_profile.tag.add(*self.cleaned_data['tags'])
+
 
 
 
