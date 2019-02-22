@@ -7,18 +7,21 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}BranchTown{% endblock %}</title>
+
     <script src="https:/ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <script src='{%  static "js/script.js" %}'></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="{% static 'js/script.js' %}"></script>
+
+
     {% block style %}{% endblock %}
 </head>
 
-<body style="font-family : 나눔스퀘어;">
+<body style="font-family : '나눔스퀘어';">
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" style="padding-left : 0;">
     <div class="container-fluid" >
@@ -80,56 +83,18 @@
 
 
     <button class="to-top-btn">
-    <img src="{% static 'images/arrows.jpg' %}" width="32" height="32">
+        <img src="{% static 'images/arrows.jpg' %}" width="32" height="32">
     </button>
     <!-- footer -->
-    <div id="footer" style="display :block; width : 100%; height : 100px; margin-left : auto; margin-right : auto;">
+    <div id="footer" style="display :block; width : 100%; height : 80px; margin-left : auto; margin-right : auto;">
             <p class="text-muted">
-            ⓒ BranchTown
-            대학생을 위한 설문 조사 플랫폼
+            <br/>
+            ⓒ BranchTown 2019<br/>
+              Survey platform for college students
             </p>
     </div>
 
-<script>
-    $(document).ready(function(){
-    $(".dropdown").hover(
-        function() {
-            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
-            $(this).toggleClass('open');
-        },
-        function() {
-            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
-            $(this).toggleClass('open');
-        }
-    );
-});
-$(document).ready(function()
-{
-    /* smooth scrolling for scroll to top */
-	$('.to-top-btn').bind('click', function()
-	{
-		$('body,html').animate({
-			scrollTop: 0},
-			1000);
-	});
-	//Easing Scroll replace Anchor name in URL and Offset Position
-	$(function(){
-		$('a[href*=#]:not([href=#])').click(function()
-		{
-			if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-				var target = $(this.hash);
-				target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-				if (target.length) {
-					$('html,body').animate({
-						scrollTop: target.offset().top -420
-					}, 2500, 'easeOutBounce');
-					return false;
-				}
-			}
-		});
-	});
-});
-</script>
+
 
 </body>
 </html>

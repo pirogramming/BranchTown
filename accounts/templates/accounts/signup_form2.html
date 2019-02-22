@@ -1,13 +1,16 @@
 
 
 {% extends 'accounts/layout.html' %}
-
+{% load static %}
 {% load bootstrap4 %}
-
+{% block style %}
+    <link rel="stylesheet" href="{% static 'accounts/css/style.css'%}">
+    <script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
 {% bootstrap_css %}
 {% block content %}
-    <h4>step2...</h4>
-    <div class="container">
+
+    <div class="container animated bounceInDown">
         <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% bootstrap_form form %}

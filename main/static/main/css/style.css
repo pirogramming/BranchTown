@@ -137,6 +137,7 @@
 }
 
 #slogan {
+    font-family : "나눔스퀘어 Light";
     margin-bottom : 100px;
     font-size : 60px;
     font-weight : 400;
@@ -152,7 +153,7 @@
 .events{
     margin-left : auto ;
     margin-right : auto;
-    font-family : "배달의민족 도현";
+    font-family : "나눔스퀘어 Light";
     font-size : 40px;
     font-weight : 900;
     color : floralwhite;
@@ -204,7 +205,7 @@
 .wordd {
     margin-left : 20px;
     font-size : 20px;
-    font-family : "배달의민족 도현";
+    font-family : "나눔스퀘어 Light";
 }
 
 #recommendation {
@@ -362,13 +363,14 @@ hr.light-100 {
 
 .btn-lg {
     background-color : #af8c53;
-    outline-style : none;
+    color : white;
+    border : none;
 }
 
 .btn-lg:hover{
     background-color : #c0a16b;
     color : white;
-    outline-style : none;
+    border : none;
 }
 
     .searchbar{
@@ -399,17 +401,43 @@ hr.light-100 {
     }
 
     .searchbar:hover > .search_icon{
-    background: white;
+    background: navy;
     color: #e74c3c;
     }
 
+
+    .personalized input{
+        margin-top : 5px;
+        vertical-align : middle;
+        line-height : 30px;
+    }
     .search_icon{
+    margin-left : 20px;
     height: 40px;
-    width: 40px;
+    width: 100px;
     float: right;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
-    color:white;
+    border-radius: 80%;
+    background-color : #c0a16b;
+    color: white;
+    margin-top : 0;
+    margin-bottom : 10px;
+    }
+
+    .middle_title {
+        margin-left : auto;
+        margin-right : auto;
+        text-align : center;
+        font-family : "나눔스퀘어 Light";
+        font-size : 40px;
+        margin-top : 80px;
+        margin-bottom : 100px;
+        color : #af8c53;
+
+    }
+
+    .padding {
+        padding-bottom : 0;
     }

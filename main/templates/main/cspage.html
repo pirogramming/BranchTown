@@ -2,16 +2,13 @@
 {% load static %}
 {% block style %}
     <link rel="stylesheet" href="{% static 'main/css/style.css'%}">
+    <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid padding" style="margin-bottom : 30px; margin-top : 30px;">
-<div class="row welcome text-center" id="membertxt">
-    <div class="col-12">
-        <h1>Branch Members</h1>
-    </div>
-    <hr/>
-</div>
+
+<div class="middle_title">
+    <p>Branch Members</p>
 </div>
 
 <!--- Cards -->

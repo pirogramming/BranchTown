@@ -5,7 +5,10 @@
 
 {% block style %}
     <link rel="stylesheet" href="{% static 'main/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'main/css/search-bar.css'%}">
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -43,13 +46,14 @@
             <p class="lead">Search the Survey using Tags..</p>
             <div class="container h-100">
               <div class="d-flex justify-content-center h-100">
-                <div class="searchbar">
-                    <form action="" method="get">
+{#                <div class="searchbar">#}
+{#                    <a href="#" class="search_icon"><i class="fas fa-search"></i></a>#}
+                        <form action="" method="get">
                         <input class="" type="text" name="tag" placeholder="Search...">
 {#                        <a href="#" class="search_icon"><i class="fas fa-search"></i></a>#}
-                        <input type="submit" class="fas fa-search">
+                        <input type="submit" class="search_icon" value="search">
                     </form>
-                </div>
+{#                </div>#}
               </div>
             </div>
         </div>
@@ -93,18 +97,19 @@
             <div class="carousel-inner">
                 <div class="carousel-item active carousel_1">
                     <div class="basket">
-                        <div class="events event_1"> 본인 학교 등록하고 친구 초대하면<br> 카카오톡 이모티콘이 내손에!</div>
+                        <div class="events event_1"> Register your college <br> and get kakao emoticons </div>
                     </div>
                 </div>
                 <div class="carousel-item carousel_2">
                     <div class="basket">
-                        <div class="events event_2">신학기 맞이 이벤트!!
-                            <br>3월 안에 회원가입 시 3000포인트 증정</div>
+                        <div class="events event_2">Welcome New Semester!
+                            <br>3000points awarded<br/>when you join in March</div>
                     </div>
                 </div>
                 <div class="carousel-item carousel_3">
                     <div class="basket">
-                        <div class="events event_3">뭉치면 이득이다. <br>팀 등록시 설문 게재 기간 5일 연장!!</div>
+                        <div class="events event_3">
+                            5 days extension of survey period<br/> when team registration!</div>
                     </div>
                 </div>
             </div>

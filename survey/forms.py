@@ -1,6 +1,5 @@
 from django import forms
-from django.forms import modelformset_factory, formset_factory
-
+from django.forms import modelformset_factory
 from tag.models import Tag
 from .models import Survey, Field, MultipleChoice
 

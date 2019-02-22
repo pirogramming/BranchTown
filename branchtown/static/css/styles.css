@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Poopins:400,500,700');
 
 html{
     position: relative;
     min-height: 100%;
     width : 100%;
     color : #222;
+    font-family : "나눔스퀘어 Light";
 }
 
 
@@ -13,8 +13,9 @@ body {
     margin: 0 0 40px 0;
     background-color: #FFFFFF;
     padding : 0;
-    margin : 0 0 120px 0;
+    margin : 0 0 100px 0;
     background-color : white;
+    font-family : "나눔스퀘어 Light";
 }
 
 
@@ -22,11 +23,18 @@ body {
      display : inline-block;
     margin-left : auto;
     margin-right : auto;
-    height : 200px;
+    height : 80px;
     position : absolute;
     bottom : 0;
     width : 70%;
     background-color : #f8f9fa!important;
+}
+
+.text-muted{
+    display : block;
+    text-align: center;
+    margin-left : auto;
+    margin-right : auto;
 }
 
 .navbar {

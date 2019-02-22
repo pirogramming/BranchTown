@@ -9,7 +9,6 @@
         <h1 class="survey-title" style="font-family : '나눔스퀘어'; margin-top : 80px;">{{ survey.title }}</h1>
         <hr style="width : 300px; margin-bottom : 50px;"/>
 
-        <p id="exp"><i>해당 문제를 누르면 작성된 내용을 수정하실 수 있습니다.</i></p>
         <a class="btn btn-primary btn-lg add-button" href="{% url 'survey:make_multiple_choice' survey.id %}">
             multi-choice
         </a>
@@ -19,10 +18,10 @@
         <hr>
         <table class="table table-bordered">
             <thead>
-                <tr>
+                <tr class="cont">
                     <th scope="col">#</th>
                     <th scope="col">Type</th>
-                    <th scope="col">Question text</th>
+                    <th scope="col">Question</th>
                 </tr>
             </thead>
              <tbody>
@@ -32,19 +31,19 @@
                         <td>{{ field.type }}</td>
                         <td>
                             {{ field.question }}
-                            {% if field.type == '1' %}
-                                <i>(선지 list
-                                    {% for choice in field.multiplechoice_set.all %}
-                                        {{ choice }}/
-                                    {% endfor %})
-                                </i>
-                            {% endif %}
+{#                            {% if field.type == '1' %}#}
+{#                                <i>(선지 list#}
+{#                                    {% for choice in field.multiplechoice_set.all %}#}
+{#                                        {{ choice }}/#}
+{#                                    {% endfor %})#}
+{#                                </i>#}
+{#                            {% endif %}#}
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <a href="{% url 'board:survey_recent' %}" id="submit-survey" class="btn btn-success btn-lg">완료</a>
+        <a href="{% url 'board:main' %}" id="submit-survey" class="btn btn-success btn-lg">Create</a>
     </div>
 
     <script>
