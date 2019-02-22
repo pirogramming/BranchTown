@@ -20,8 +20,8 @@
             <table class="table table-bordered">
                 <thead>
                     <tr class="cont">
-                        <th scope="col">#</th>
-                        <th scope="col">Type</th>
+                        <th scope="col" width="150">#</th>
+                        <th scope="col" width="150">Type</th>
                         <th scope="col">Question</th>
                     </tr>
                 </thead>
@@ -29,7 +29,13 @@
                     {% for field in field_list %}
                         <tr>
                             <td>{{ forloop.counter }}번</td>
-                            <td>{{ field.type }}</td>
+                            <td>
+                                {% if field.type == '1' %}
+                                    multiple choice
+                                {% else %}
+                                    text answer
+                                {% endif %}
+                            </td>
                             <td>
                                 {{ field.question }}
     {#                            {% if field.type == '1' %}#}
