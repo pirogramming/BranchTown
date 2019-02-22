@@ -1,11 +1,8 @@
 
 {% extends 'accounts/layout.html' %}
-{% load static %}
+
 {% load bootstrap4 %}
-{% block style %}
-    <link rel="stylesheet" href="{% static 'accounts/css/style.css'%}">
-    <script src="{% static 'js/script.js' %}"></script>
-{% endblock %}
+
 {% bootstrap_css %}
 {% block content %}
     <script  src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -22,7 +19,6 @@
         }
     </style>
 
-
     <h4>step2...</h4>
     <div class="container">
         <form action="" method="post" enctype="multipart/form-data">
@@ -30,32 +26,11 @@
             {% bootstrap_form form %}
             <hr/>
             <button type="submit" class="btn btn-primary">Next</button>
-
-<body class="signup-back">
-    <div class="container animated bounceInDown">
-        <div class="SignupMiddleTitle"><p>Sign Up</p></div>
-        <div class="container SignupFieldSet">
-        <form action="" method="post" enctype="multipart/form-data">
-            <div class="SignupField">
-                {% csrf_token %}
-                {% bootstrap_form form %}
-            </div>
-            <div class="SignupButtonSet">
-                <button type="submit" id="create-account" class="btn btn-primary btn-lg">Next</button>
-            </div>
         </form>
-        </div>
     </div>
 
-<<<<<<< HEAD
-<script>
-    $(function() {
-        $("#create-account").on('click', function () {
-            alert("Congratulation!! Welcome to Branch Town!")
-        });
-    });
-
-$('label').on('change', changeColor);
+    <script>
+    $('label').on('change', changeColor);
     function changeColor(){
         if(this.childNodes[0].checked === false){//unchecked
             this.style.backgroundColor = 'lightgreen';
@@ -63,8 +38,7 @@ $('label').on('change', changeColor);
             this.style.backgroundColor = 'lightblue';
         }
     }
-
-$(function(){ // this is a shortcut for "on document ready"
+    $(function(){ // this is a shortcut for "on document ready"
             // For each element with the class thumb we find:
             var i = 0;
             var colors = ["#ce87a3","#006887","#00916f", "#f2858a", "#f8a96b"];
@@ -85,8 +59,5 @@ $(function(){ // this is a shortcut for "on document ready"
                 }
             });
         })
-</script>
-
-</body>
-
+    </script>
 {% endblock %}

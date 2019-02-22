@@ -61,6 +61,7 @@ def signup2(request):
         form = SignupForm2(request.POST,)  # instance=init_profile)
 
         print('is it valid?')
+        print(request.session.get('step1_form'))
         if form.is_valid():
             print('step2 form is valid.')
             # step1에서 받아온 정보 처
