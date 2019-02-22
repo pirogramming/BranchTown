@@ -1,3 +1,5 @@
+{% load static}
+
 .container{
     margin-left : auto;
     margin-right : auto;
@@ -140,6 +142,7 @@ label {
     width: 500px;
 }
 
+<<<<<<< HEAD
 .signup-back{
     background-image : linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url("../images/tree3.jpg");
     background-size : cover;
@@ -194,4 +197,59 @@ label {
     border-radius : 3px;
     border: none;
     padding : 10px;
+}
+
+
+
+.Profile {
+    font-family: "나눔스퀘어 Light", serif;
+    width: 550px;
+    padding: 20px;
+    margin-top: 30px;
+    background-color: #fbfbfb;
+    border: 1px solid #d5ba8c;
+}
+
+
+#ProfileTitle {
+    color: #af8c53;
+    text-align: center;
+    font-family: "나눔스퀘어 Light", serif;
+    letter-spacing: 4px;
+    font-size: 35px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+#ProfileHr {
+    width: 250px;
+    border-color: #d5ba8c;
+    margin-bottom: 30px;
+}
+
+.ProfileList {
+    width: 300px;
+    text-align: center;
+    padding: 0px;
+    margin: auto;
+
+}
+
+
+.ProfileList tr, td {
+    border: none;
+    text-align: center;
+}
+
+
+.ProfileCategory {
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: #af8c53;
+    display: inline-block;
+}
+
+.ProfileInfo {
+    margin-bottom: 30px;
+
 }
