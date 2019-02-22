@@ -1,11 +1,42 @@
 {% extends 'layout.html' %}
+{%  load static %}
+{%  block style %}
+    <link rel="stylesheet" href="{% static 'survey/css/mysurvey.css' %}">
+{%  endblock %}
 
 {% block content %}
+    <div class="MySurveyTitle">
+        <p> My Survey</p>
+    </div>
     <div class="container">
-        <ul>
+        <div class="row">
             {% for survey in surveys %}
-                <li><a href="{% url 'survey:my_survey_detail' survey.id %}">{{ survey.title }}</a></li>
+                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+                    <div class="card">
+                        <img src="{% static 'board/images/test5.jpg' %}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <div id="board_titles">
+                                <p class="card-title">{{ survey.title }}</p>
+                                <p class="card-text">Status : {{  survey.status  }}</p>
+                            </div>
+                            <div id="board_tags">
+                            <p>
+                                {% for tag in  survey.tag.all %}
+                                    <a href="{% url 'board:survey_tag' tag.id %}" style="text-decoration: none">
+                                        #{{ tag }}
+                                    </a>
+                                {% endfor %}
+                            </p>
+                            </div>
+                            <div class="board_buttons">
+                            <a href="{% url 'survey:my_survey_complete' survey.id %}" class="complete_button">Complete</a>
+                            <a href="{% url 'response:result_survey' survey.id %}" class="result_button">View Results</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
-        </ul>
+        </div>
     </div>
 {% endblock %}

@@ -142,7 +142,7 @@ label {
     width: 500px;
 }
 
-<<<<<<< HEAD
+
 .signup-back{
     background-image : linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url("../images/tree3.jpg");
     background-size : cover;
@@ -200,7 +200,6 @@ label {
 }
 
 
-
 .Profile {
     font-family: "나눔스퀘어 Light", serif;
     width: 550px;
@@ -253,3 +252,8 @@ label {
     margin-bottom: 30px;
 
 }
+
+#ProfileMysurvey {
+    color: #af8c53;
+}
+

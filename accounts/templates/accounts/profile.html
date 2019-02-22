@@ -23,6 +23,10 @@
                     {% for tag in user.profile.tag.all %}
                         <li class="ProfileInfo"><a href="{% url 'board:survey_tag' tag.id %}">#{{ tag }}</a></li>
                     {% endfor %}
+                        <li class="list-group-item">
+             <a id="ProfileMysurvey" href="{% url 'survey:my_survey' %}">My Survey</a>
+                        </li>
+
             </ul>
     </div>
     <img src="{{ user.socialaccount_set.all.first.get_avatar_url }}" style="width:200px; margin-left:207px; margin-top : 20px;"/>

@@ -1,8 +1,76 @@
+{##}
+{#{% extends 'accounts/layout.html' %}#}
+{##}
+{#{% load bootstrap4 %}#}
+{##}
+{#{% bootstrap_css %}#}
+{#{% block content %}#}
+{#    <script  src="https://code.jquery.com/jquery-3.3.1.min.js"#}
+{#			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="#}
+{#			  crossorigin="anonymous">#}
+{#    </script>#}
+{#    <style>#}
+{#         label input {#}
+{#          position: absolute;#}
+{#          opacity: 0;#}
+{#          cursor: pointer;#}
+{#          height: 0;#}
+{#          width: 0;#}
+{#        }#}
+{#    </style>#}
+{##}
+{#    <h4>step2...</h4>#}
+{#    <div class="container">#}
+{#        <form action="" method="post" enctype="multipart/form-data">#}
+{#            {% csrf_token %}#}
+{#            {% bootstrap_form form %}#}
+{#            <hr/>#}
+{#            <button type="submit" class="btn btn-primary">Next</button>#}
+{#        </form>#}
+{#    </div>#}
+{##}
+{#    <script>#}
+{#    $('label').on('change', changeColor);#}
+{#    function changeColor(){#}
+{#        if(this.childNodes[0].checked === false){//unchecked#}
+{#            this.style.backgroundColor = 'lightgreen';#}
+{#        } else{//checked#}
+{#            this.style.backgroundColor = 'lightblue';#}
+{#        }#}
+{#    }#}
+{#    $(function(){ // this is a shortcut for "on document ready"#}
+{#            // For each element with the class thumb we find:#}
+{#            var i = 0;#}
+{#            var colors = ["#ce87a3","#006887","#00916f", "#f2858a", "#f8a96b"];#}
+{#            $('label').each(function(){#}
+{#                // add random class to assign the color#}
+{#                console.log('is it checked?');#}
+{#                console.log($(this));#}
+{#                console.log($(this).children(".tagLabels").is(':checked'));#}
+{#                if (this.childNodes[0].type === "checkbox") {#}
+{#                    this.style.backgroundColor = colors[i];#}
+{#                    i = (i + 1) % colors.length;#}
+{#                    this.style.padding = "10px 45px";#}
+{#                    this.style.borderRadius = "12px";#}
+{#                    this.style.display = "block-content";#}
+{#                    this.style.width =#}
+{#                    this.style.border = "1px solid #ccc";#}
+{#                    this.style.cursor = "pointer";#}
+{#                }#}
+{#            });#}
+{#        })#}
+{#    </script>#}
+{#{% endblock %}#}
+
+
 
 {% extends 'accounts/layout.html' %}
-
+{% load static %}
 {% load bootstrap4 %}
-
+{% block style %}
+    <link rel="stylesheet" href="{% static 'accounts/css/style.css'%}">
+    <script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
 {% bootstrap_css %}
 {% block content %}
     <script  src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -19,26 +87,39 @@
         }
     </style>
 
-    <h4>step2...</h4>
-    <div class="container">
+<body class="signup-back">
+    <div class="container animated bounceInDown">
+        <div class="SignupMiddleTitle"><p>Sign Up</p></div>
+        <div class="container SignupFieldSet">
         <form action="" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {% bootstrap_form form %}
-            <hr/>
-            <button type="submit" class="btn btn-primary">Next</button>
+            <div class="SignupField">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+            </div>
+            <div class="SignupButtonSet">
+                <button type="submit" id="create-account" class="btn btn-primary btn-lg">Next</button>
+            </div>
         </form>
+        </div>
     </div>
 
-    <script>
-    $('label').on('change', changeColor);
+<script>
+    $(function() {
+        $("#create-account").on('click', function () {
+            alert("Congratulation!! Welcome to Branch Town!")
+        });
+    });
+
+$('label').on('change', changeColor);
     function changeColor(){
         if(this.childNodes[0].checked === false){//unchecked
-            this.style.backgroundColor = 'lightgreen';
+            this.style.backgroundColor = 'lightgray';
         } else{//checked
             this.style.backgroundColor = 'lightblue';
         }
     }
-    $(function(){ // this is a shortcut for "on document ready"
+
+$(function(){ // this is a shortcut for "on document ready"
             // For each element with the class thumb we find:
             var i = 0;
             var colors = ["#ce87a3","#006887","#00916f", "#f2858a", "#f8a96b"];
@@ -59,5 +140,8 @@
                 }
             });
         })
-    </script>
+</script>
+
+</body>
+
 {% endblock %}

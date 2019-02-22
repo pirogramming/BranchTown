@@ -39,6 +39,20 @@ label{
     margin-bottom : 100px;
 }
 
+.btn {
+    background-color : #af8c53;
+    border : none;
+    width : 100px;
+    height : 50px;
+}
+
+.btn:hover {
+    background-color : #c0a16b;
+    color : white;
+    border : none;
+}
+
+
 .btn-lg {
     background-color : #af8c53;
     border : none;
@@ -63,6 +77,12 @@ label{
     margin-bottom : 15px;
     margin-top : 25px;
 }
+
+.add-button a{
+    font-family : '나눔스퀘어 Light';
+    color : white;
+}
+
 
 .input-group-append{
     margin-top : 30px;
@@ -100,6 +120,13 @@ label{
 #submit-survey{
     margin-top : 40px;
     margin-bottom : 60px;
+    margin-left : 340px;
+    background-color : forestgreen;
+}
+
+#submit-survey:hover{
+
+    background-color : limegreen;
 }
 
 .add-question {
@@ -109,6 +136,17 @@ label{
     width : 150px;
     margin-top : 20px;
     margin-bottom: 40px;
+    background-color : #af8c53;
+}
+
+.add-question:hover {
+    display : block;
+    margin-left : auto;
+    margin-right : auto;
+    width : 150px;
+    margin-top : 20px;
+    margin-bottom: 40px;
+    background-color : #c0a16b;
 }
 
 .cont-center{

@@ -1,8 +1,20 @@
 {% extends 'layout.html' %}
+{%  load static %}
+{%  block style  %}
+    <link rel="stylesheet" href="{% static 'survey/css/mysurvey.css' %}">
+{%  endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1>{{ survey.title }} 설문이 종료되었습니다.</h1>
-        <a href="{% url 'survey:my_survey' %}">확인</a>
+    <div class="container" style="font-family: '나눔스퀘어 Light', serif; vertical-align: middle; height: 600px; line-height: 600px; text-align: center;">
+        <div class="previewTitle" style="background-color: #fbfbfb; display: inline-block; vertical-align: middle; line-height: normal; height: 450px; width: 750px; padding: 50px;">
+            <div class="previewImage" style="margin-bottom: 20px;"><img src="{% static 'response/images/quotation.png' %}" width="30" height="30"></div>
+            <h1 class="previewTitle" style="margin-bottom: 10px;">{{ survey.title }}</h1>
+            <h1> 설문이 종료되었습니다. </h1>
+            <hr style="width: 500px; margin-bottom: 50px;">
+            <div class="previewButton">
+                <a href="{% url 'survey:my_survey' %}" style="background-color: #c4a784; padding: 15px; border-radius: 10px; color: white;">Confirm</a>
+                <a href="{% url 'survey:my_survey' %}" style="background-color: #c4a784; padding: 15px; border-radius: 10px; color: white; display: inline-block; width: 100px;">Cancel</a>
+            </div>
+        </div>
     </div>
 {% endblock %}
