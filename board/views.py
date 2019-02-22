@@ -1,26 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
-from survey.models import Survey, Field
+from django.shortcuts import render
+from survey.models import Survey
 from tag.models import Tag
-
-
-def survey_list(request):
-    qs = Survey.objects.all()
-    q = request.GET.get('q', '')
-    if q:
-        qs = qs.filter(title__icontains=q)
-    return render(request, 'board/survey_list.html', {
-        'form_list': qs,
-    })
-
-
-def survey_detail(request, pk):
-    survey = get_object_or_404(Survey, pk=pk)
-    field = survey.field_set.all()
-    return render(request, 'board/survey_detail.html', {
-        'survey': survey,
-        'fields': field,
-    })
 
 
 def main(request):
@@ -40,7 +21,7 @@ def survey_interest(request):
         surveys = Survey.objects.none()
 
     return render(request, 'board/survey_base.html', {
-        'category': 'Recommend',
+        'category': 'Recommended',
         'surveys': surveys,
     })
 
@@ -52,7 +33,6 @@ def survey_tag(request, pk):
         'category': tag.name,
         'surveys': surveys,
     })
-
 
 
 def survey_ongoing(request):
@@ -67,7 +47,7 @@ def survey_ongoing(request):
 def survey_participated(request):
     surveys = Survey.objects.filter(response__respondent_id=request.user)
     return render(request, 'board/survey_base.html', {
-        'category': 'participated',
+        'category': 'Participated',
         'surveys': surveys,
     })
 
@@ -76,13 +56,5 @@ def survey_complete(request):
     surveys = Survey.objects.filter(status='c')
     return render(request, 'board/survey_base.html', {
         'category': 'Completed',
-        'surveys': surveys,
-    })
-
-
-def survey_recent(request):
-    surveys = Survey.objects.all().order_by('-id')  # TODO 너무 많아지면 slicing
-    return render(request, 'board/survey_base.html', {
-        'category': 'Recent',
         'surveys': surveys,
     })

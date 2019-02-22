@@ -8,4 +8,5 @@ urlpatterns = [
     path('/intro/', views.intropage, name='intropage'),
     path('/cs/', views.cspage, name='cspage'),
 
+
 ]

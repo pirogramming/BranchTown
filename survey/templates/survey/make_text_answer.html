@@ -1,15 +1,18 @@
 {% extends 'layout.html' %}
-
+{% load static %}
 {% load bootstrap4 %}
-
+{% block style %}
+    <link rel="stylesheet" href="{% static 'survey/css/style.css'%}">
+{% endblock %}
 {% bootstrap_css %}
 {% block content %}
     <div class="container">
-        <h1>주관식 문항 추가</h1>
+        <h1 class="survey-title" style="margin-top : 80px;">TextAnswer Question</h1>
+        <hr style="width : 300px; margin-bottom : 50px;"/>
         <form action="" method="post">
             {% csrf_token %}
             {% bootstrap_form form %}
-            <input type="submit" class="btn btn-primary" value="문항 추가">
+            <input type="submit" class="btn btn-primary btn-lg add-question" value="Add Question">
         </form>
     </div>
 {% endblock %}

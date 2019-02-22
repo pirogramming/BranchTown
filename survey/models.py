@@ -25,7 +25,6 @@ class Field(models.Model):
     FIELD_TYPE = (
         ('1', '객관식'),
         ('2', '주관식'),
-        ('3', '단답식'),
     )
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
     type = models.CharField(max_length=10, choices=FIELD_TYPE)
@@ -50,4 +49,14 @@ class TextAnswer(models.Model):
 
     def __str__(self):
         return self.answer
+
+#
+#
+# class Response(models.Model):
+#     respondent = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+#     survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#
+#     def __str__(self):
+#         return self.respondent
 

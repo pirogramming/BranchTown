@@ -4,18 +4,27 @@
 {% load static %}
 {% bootstrap_css %}
 {% block content %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'accounts/css/style.css'%}">
+{% endblock %}
+
+<body class="signup-back" style="height : 100%;">
+    <div class="container animated bounceInDown">
+        <div class="SignupMiddleTitle"><p>Login</p></div>
+        <div class="container SignupFieldSet">
+            <form action="" method="post" style="margin-top : 50px;">
+                <div class="SignupField">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                </div>
+                <div class="SignupButtonSet">
+                    <button type="submit" class="btn btn-outline-primary btn-lg" style="margin-bottom: 15px;"><p style="color:floralwhite;">Login</p></button>
+                </div>
+            </form>
+        </div>
 
 
-<body style="height : 100%;">
-    <div class="container">
-        <form action="" method="post" style="margin-top : 50px;">
-            {% csrf_token %}
-            {% bootstrap_form form %}
-            <button type="submit" class="btn btn-outline-primary" style="margin-top : 15px;margin-bottom: 15px;">로그인</button>
-        </form>
-    </div>
-
-    <ul class="external" style="text-align: center; list-style:none; margin-bottom: 100px;">
+    <ul class="external" style="text-align: center; list-style:none; margin-bottom: 120px; padding-left : 0;">
             <li class="social-login-list" style="margin: 15px 15px 0 0; display : block; width : 400px; margin-left: auto; margin-right: auto;">
                 {% if providers.0.social_app %}
                      <a href="{% provider_login_url providers.0.id %}">
@@ -50,5 +59,6 @@
                 {% endif %}
             </li>
     </ul>
+</div>
 </body>
 {% endblock %}

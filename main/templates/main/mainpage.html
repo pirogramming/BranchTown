@@ -5,63 +5,72 @@
 
 {% block style %}
     <link rel="stylesheet" href="{% static 'main/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'main/css/search-bar.css'%}">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
 
 {% block content %}
-
-
-    <div class="main-image">
+    <script href="{% static 'main/js/script.js' %}"></script>
+    <div class="main-image" id="main">
         <div id="first-image" style="width : 100%; height: 700px;">
             <div id="basket-0">
                 <p id="slogan"><i>Creating <br/> Sharing <br/> Participating <br/> Survey</i></p>
             </div>
         </div>
-{#        <img src="{% static "main/images/online-survey.jpg" %}" id="first-image" style="width : 100%;" />#}
     </div>
 
 
-
-    <div class="container-fluid padding" style="margin-top : 50px;">
+    <div class="container-fluid padding" style="margin-top : 100px; margin-bottom : 40px;">
     <div class="row padding">
         <div class="col-md-12 col-lg-6">
             <div class="left-box">
                     <h2 id="title1">Make your own Survey <br/>Right Now!</h2>
-                    <h4 id="title2">You can do more things <br/>in Branch Town. <br/>Join our web site easily and <br/>be branches.</h4>
+                <h4 id="title2"><i>You can do more things <br/>in Branch Town. <br/>Join our web site easily and <br/>be branches.</i></h4>
             <div class="second-basket">
-                    <button type="button" class="btn btn-outline-light btn-lg">Service <br/> Intro</button>
-                    <button type="button" class="btn btn-primary btn-lg">Create <br/>SurveyForm</button>
+                    <a href="{% url 'main:intropage' %}"><button type="button" class="btn btn-outline-light btn-lg">Service <br/> Introduction</button></a>
+                    <a href="{% url 'survey:make_survey' %}"><button type="button" class="btn btn-primary btn-lg">Create <br/>SurveyForm</button></a>
             </div>
         </div>
         </div>
         <div class="col-lg-6">
-            <img src="{% static 'main/images/purple.jpg' %}" class='img-fluid' style="height : 500px; border-radius : 5px;"/>
+            <img src="{% static 'main/images/creating-survey.jpg' %}" class='img-ex' style="height : 500px; width : 600px; border-radius : 5px;"/>
         </div>
     </div>
     </div>
 <!--between second-layer , third-layer -->
     <div class="container-fluid">
     <div class="row jumbotron">
-        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
-            <p class="lead">포인트 충전소</p>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
-            <a href="#"><button type="button" class="btn btn-outline-secondary btn-lg">충전하기</button></a>
-        </div>
+        <div class="personalized">
+            <p class="lead">Search the Survey using Tags..</p>
+            <div class="container h-100">
+              <div class="d-flex justify-content-center h-100">
+{#                <div class="searchbar">#}
+{#                    <a href="#" class="search_icon"><i class="fas fa-search"></i></a>#}
+                        <form action="" method="get">
+                        <input class="" type="text" name="tag" placeholder="Search...">
+{#                        <a href="#" class="search_icon"><i class="fas fa-search"></i></a>#}
+                        <input type="submit" class="search_icon" value="search">
+                    </form>
+{#                </div>#}
+              </div>
+            </div>
         </div>
     </div>
-
-    <div class="container-fluid padding" style="margin-top : 50px;">
+    </div>
+    <div class="container-fluid padding" style="margin-top : 100px; margin-bottom : 40px;">
     <div class="row padding">
         <div class="col-lg-6">
-            <img src="{% static 'main/images/purple.jpg' %}" class='img-fluid' style="height : 500px; border-radius : 5px;"/>
+            <img src="{% static 'main/images/brain.png' %}" class='img-ex' style="height : 500px; border-radius : 5px;"/>
         </div>
         <div class="col-md-12 col-lg-6">
             <div class="left-box right-box">
-                    <h2 id="title1">Make your own Survey <br/>Right Now!</h2>
-                    <h4 id="title2">You can do more things <br/>in Branch Town. <br/>Join our web site easily and <br/>be branches.</h4>
+                    <h2 id="title1">Share at the Survey Board!</h2>
+                <h4 id="title2"><i>You are much more  <br/>  likely to get <br/>a variety of responses.<br/>Share with your friends <br/>and get more points!</i></h4>
             <div class="second-basket">
-                    <button type="button" class="btn btn-outline-light btn-lg">Service <br/> Intro</button>
-                    <button type="button" class="btn btn-primary btn-lg">Create <br/>SurveyForm</button>
+                    <button type="button" class="btn btn-outline-light btn-lg">Event Page</button>
+                    <a href="{% url 'board:main' %}"><button type="button" class="btn btn-primary btn-lg">Respond Survey</button></a>
             </div>
         </div>
         </div>
@@ -71,59 +80,105 @@
     <!--between third-layer, fourth-layer -->
     <div class="container-fluid">
     <div class="row jumbotron">
-        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
-            <p class="lead">포인트 충전소</p>
+        <div class="personalized">
+            <p class="lead">Recommended question for you only!</p>
+            <a href="{% url 'board:survey_interest' %}"><button type="button" class="btn btn-outline-secondary btn-lg" id="recommendation">Go for Responding</button></a>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
-            <a href="#"><button type="button" class="btn btn-outline-secondary btn-lg">충전하기</button></a>
-        </div>
-        </div>
+    </div>
     </div>
 
 
-
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active carousel_1">
-                        <div class="basket">
-                            <div class="events event_1">대학생을 위한 <br>설문 조사 공유 플랫폼</div>
-                        </div>
-                        <div class="second-basket">
-                            <button type="button" class="btn btn-outline-light btn-lg">서비스 소개</button>
-                            <button type="button" class="btn btn-primary btn-lg">나만의 설문폼 만들기</button>
-                        </div>
-                    </div>
-                    <div class="carousel-item carousel_2">
-                        <div class="basket">
-                            <div class="events event_2">신학기 맞이 이벤트!!
-                                <br>3월 안에 회원가입 시 3000포인트 증정</div>
-                        </div>
-                    </div>
-                    <div class="carousel-item carousel_3">
-                        <div class="basket">
-                            <div class="events event_3">뭉치면 이득이다. <br>팀 등록시 설문 게재 기간 5일 연장!!</div>
-                        </div>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active carousel_1">
+                    <div class="basket">
+                        <div class="events event_1"> Register your college <br> and get kakao emoticons </div>
                     </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+                <div class="carousel-item carousel_2">
+                    <div class="basket">
+                        <div class="events event_2">Welcome New Semester!
+                            <br>3000points awarded<br/>when you join in March</div>
+                    </div>
+                </div>
+                <div class="carousel-item carousel_3">
+                    <div class="basket">
+                        <div class="events event_3">
+                            5 days extension of survey period<br/> when team registration!</div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+    </div>
+    <div class="container-fluid">
+    <div class="row jumbotron">
+        <div class="personalized">
+            <p class="lead">Customer Center</p>
+            <a href="#"><button type="button" class="btn btn-outline-secondary btn-lg" id="recommendation">Q & A</button></a>
+
         </div>
+    </div>
+    </div>
 
+    <div class="container-fluid padding" style="margin-top : 100px;">
+    <div class="row text-center padding">
+        <div class="col-12">
+            <h2>Connect</h2>
+        </div>
+        <div class="col-12 social padding">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href='https://github.com/choiyeonseok/BranchTown'><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+    </div>
+    <script>
+    $(document).ready(function(){
+        $(window).scroll(function(){
+            $('.main-image').css("opacity", 1 - $(window).scrollTop() / 750)
+        })
+    });
 
-{#    <div class="personalized">#}
-{#        당신을 위한 추천 설문 조사#}
-{#    </div>#}
+    var imageCounter = 0;
+    var images = $('.main-image');
+
+    $(function() {
+      swapHeaderImage(imageCounter);
+    });
+
+    function swapHeaderImage(counter) {
+      if (imageCounter == images.length) {
+        imageCounter = 0;
+        counter = 0;
+      }
+
+      $('.main-image').css({
+        opacity: 0.0,
+        'background-image': 'url(' + images[counter] + ')'
+      }).animate({
+        opacity: 1,
+      }, 1200);
+      imageCounter++;
+
+      window.setTimeout(function() {
+        swapHeaderImage(imageCounter);
+      }, 1200);
+}
+    </script>
+
 
 
 {% endblock %}

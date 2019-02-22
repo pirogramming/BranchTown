@@ -5,7 +5,22 @@
     background-size : cover;
 }
 
-
+.carousel .carousel-inner .carousel-item .basket {
+    opacity: 0;
+    -webkit-transition: 2s all ease-in-out .1s;
+       -moz-transition: 2s all ease-in-out .1s;
+        -ms-transition: 2s all ease-in-out .1s;
+         -o-transition: 2s all ease-in-out .1s;
+            transition: 2s all ease-in-out .1s;
+}
+.carousel .carousel-inner .carousel-item.active .basket {
+    opacity: 1;
+    -webkit-transition: 2s all ease-in-out .1s;
+       -moz-transition: 2s all ease-in-out .1s;
+        -ms-transition: 2s all ease-in-out .1s;
+         -o-transition: 2s all ease-in-out .1s;
+            transition: 2s all ease-in-out .1s;
+}
 .jumbotron{
     display : block;
     padding: 1rem;
@@ -33,9 +48,10 @@
     display : inline-block;
     border-radius : 5px;
     height : 500px;
-    width : 450px;
+    width : 400px;
     background-color : #fbfbfb;
     float : left;
+    line-height : 2px;
 }
 
 .right-box{
@@ -43,17 +59,20 @@
     display : inline-block;
     border-radius : 5px;
     height : 500px;
-    width : 450px;
+    width : 400px;
     background-color : #fbfbfb;
     float : right;
+    line-height : 2px;
 
 }
+
+
 .carousel {
-    float : right;
-    width : 700px;
+    width : 1200px;
     margin-left:auto;
     margin-right: auto;
-    margin-top: 10px;
+    margin-top: 90px;
+    margin-bottom : 70px;
 }
 
 .padding {
@@ -94,6 +113,7 @@
     width : 1100px;
     margin-left : auto;
     margin-right : auto;
+    margin-top : 40px;
 }
 
 .basket {
@@ -117,6 +137,7 @@
 }
 
 #slogan {
+    font-family : "나눔스퀘어 Light";
     margin-bottom : 100px;
     font-size : 60px;
     font-weight : 400;
@@ -132,7 +153,7 @@
 .events{
     margin-left : auto ;
     margin-right : auto;
-    font-family : "배달의민족 도현";
+    font-family : "나눔스퀘어 Light";
     font-size : 40px;
     font-weight : 900;
     color : floralwhite;
@@ -151,6 +172,23 @@
     margin-bottom: 30px;
 }
 
+.col-md-3:hover{
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    border: 0;
+}
+
+.container-ex{
+    margin-top : 20px;
+}
+
+.container-ex h3{
+    font-size : 45px;
+}
+
+.container-ex p{
+    margin-top : 20px;
+    font-size : 20px;
+}
 
 .container-bottom{
     width : 1200px ;
@@ -167,8 +205,24 @@
 .wordd {
     margin-left : 20px;
     font-size : 20px;
-    font-family : "배달의민족 도현";
+    font-family : "나눔스퀘어 Light";
 }
+
+#recommendation {
+    display : inline-block;
+    text-align : center;
+    margin-left : auto;
+    margin-right : auto;
+
+}
+.personalized{
+    text-align : center;
+}
+
+.personalized a{
+    color : olive;
+}
+
 
 .fa-code {
     color : #e54d26;
@@ -204,18 +258,20 @@
 .fa-youtube{
     color: #bb0000
 }
-
 .fa-facebook:hover,
 .fa-instagram:hover,
 .fa-youtube:hover {
     color: #d5d5d5;
 }
 
+
+
 footer {
     background-color : #3f3f3f;
     color : #d5d5d5;
     padding-top : 2rem;
 }
+
 
 hr.light {
     border-top : 1px solid #d5d5d5;
@@ -307,13 +363,81 @@ hr.light-100 {
 
 .btn-lg {
     background-color : #af8c53;
-    outline-style : none;
+    color : white;
+    border : none;
 }
 
 .btn-lg:hover{
     background-color : #c0a16b;
     color : white;
-    outline-style : none;
-
-
+    border : none;
 }
+
+    .searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+    }
+
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 450px;
+    caret-color:red;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_icon{
+    background: navy;
+    color: #e74c3c;
+    }
+
+
+    .personalized input{
+        margin-top : 5px;
+        vertical-align : middle;
+        line-height : 30px;
+    }
+    .search_icon{
+    margin-left : 20px;
+    height: 40px;
+    width: 100px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 80%;
+    background-color : #c0a16b;
+    color: white;
+    margin-top : 0;
+    margin-bottom : 10px;
+    }
+
+    .middle_title {
+        margin-left : auto;
+        margin-right : auto;
+        text-align : center;
+        font-family : "나눔스퀘어 Light";
+        font-size : 40px;
+        margin-top : 80px;
+        margin-bottom : 100px;
+        color : #af8c53;
+
+    }
+
+    .padding {
+        padding-bottom : 0;
+    }

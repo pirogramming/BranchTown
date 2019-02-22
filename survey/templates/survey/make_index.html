@@ -1,42 +1,58 @@
 {% extends 'layout.html' %}
-
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'survey/css/style.css'%}">
+{% endblock %}
 {% block content %}
-    <div class="container">
-        <h1>설문제목: {{ survey.title }}</h1>
-        <a class="btn btn-primary" href="{% url 'survey:make_multiple_choice' survey.id %}">
-            객관식문항 추가
-        </a>
-        <a class="btn btn-primary" href="{% url 'survey:make_text_answer' survey.id %}">
-            주관식문항 추가
-        </a>
 
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">유형</th>
-                    <th scope="col">문항 text</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for field in field_list %}
-                    <tr>
-                        <td>{{ forloop.counter }}번</td>
-                        <td>{{ field.type }}</td>
-                        <td>
-                            {{ field.question }}
-                            {% if field.type == '1' %}
-                                <i>(선지 list
-                                    {% for choice in field.multiplechoice_set.all %}
-                                        {{ choice }}/
-                                    {% endfor %})
-                                </i>
-                            {% endif %}
-                        </td>
+    <div class="container">
+        <h1 class="survey-title" style="margin-top : 80px;">{{ survey.title }}</h1>
+        <hr style="width : 300px; margin-bottom : 50px;"/>
+
+        <div class="cont-center">
+            <a class="btn btn-primary btn-lg add-button" href="{% url 'survey:make_multiple_choice' survey.id %}">
+                multi-choice
+            </a>
+            <a class="btn btn-primary btn-lg add-button" href="{% url 'survey:make_text_answer' survey.id %}">
+                text-answer
+            </a>
+            <hr>
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="cont">
+                        <th scope="col">#</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Question</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <a href="{% url 'board:survey_recent' %}" class="btn btn-success text-right">완료</a>
+                </thead>
+                 <tbody>
+                    {% for field in field_list %}
+                        <tr>
+                            <td>{{ forloop.counter }}번</td>
+                            <td>{{ field.type }}</td>
+                            <td>
+                                {{ field.question }}
+    {#                            {% if field.type == '1' %}#}
+    {#                                <i>(선지 list#}
+    {#                                    {% for choice in field.multiplechoice_set.all %}#}
+    {#                                        {{ choice }}/#}
+    {#                                    {% endfor %})#}
+    {#                                </i>#}
+    {#                            {% endif %}#}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <a href="{% url 'board:main' %}" id="submit-survey" class="btn btn-success btn-lg">Create</a>
     </div>
+
+    <script>
+    $(function() {
+        $("#submit-survey").on('click', function () {
+            alert("Survey was successfully created!")
+        });
+    });
+    </script>
 {% endblock %}
