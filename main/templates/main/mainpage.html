@@ -29,8 +29,8 @@
                     <h2 id="title1">Make your own Survey <br/>Right Now!</h2>
                 <h4 id="title2"><i>You can do more things <br/>in Branch Town. <br/>Join our web site easily and <br/>be branches.</i></h4>
             <div class="second-basket">
-                    <button type="button" class="btn btn-outline-light btn-lg">Service <br/> Intro</button>
-                    <button type="button" class="btn btn-primary btn-lg">Create <br/>SurveyForm</button>
+                    <a href="{% url 'main:intropage' %}"><button type="button" class="btn btn-outline-light btn-lg">Service <br/> Introduction</button></a>
+                    <a href="{% url 'survey:make_survey' %}"><button type="button" class="btn btn-primary btn-lg">Create <br/>SurveyForm</button></a>
             </div>
         </div>
         </div>
@@ -70,7 +70,7 @@
                 <h4 id="title2"><i>You are much more  <br/>  likely to get <br/>a variety of responses.<br/>Share with your friends <br/>and get more points!</i></h4>
             <div class="second-basket">
                     <button type="button" class="btn btn-outline-light btn-lg">Event Page</button>
-                    <button type="button" class="btn btn-primary btn-lg">Respond Survey</button>
+                    <a href="{% url 'board:main' %}"><button type="button" class="btn btn-primary btn-lg">Respond Survey</button></a>
             </div>
         </div>
         </div>
@@ -82,7 +82,7 @@
     <div class="row jumbotron">
         <div class="personalized">
             <p class="lead">Recommended question for you only!</p>
-            <a href="#"><button type="button" class="btn btn-outline-secondary btn-lg" id="recommendation">Go for Responding</button></a>
+            <a href="{% url 'board:survey_interest' %}"><button type="button" class="btn btn-outline-secondary btn-lg" id="recommendation">Go for Responding</button></a>
         </div>
     </div>
     </div>
@@ -140,7 +140,7 @@
         <div class="col-12 social padding">
             <a href="#"><i class="fab fa-facebook"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
+            <a href='https://github.com/choiyeonseok/BranchTown'><i class="fab fa-github"></i></a>
             <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
     </div>

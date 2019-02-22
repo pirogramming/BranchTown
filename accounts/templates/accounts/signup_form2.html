@@ -1,5 +1,4 @@
 
-
 {% extends 'accounts/layout.html' %}
 {% load static %}
 {% load bootstrap4 %}
@@ -10,11 +9,20 @@
 {% bootstrap_css %}
 {% block content %}
 
+<body class="signup-back">
     <div class="container animated bounceInDown">
+        <div class="SignupMiddleTitle"><p>Sign Up</p></div>
+        <div class="container SignupFieldSet">
         <form action="" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {% bootstrap_form form %}
-            <button type="submit" class="btn btn-primary">Next</button>
+            <div class="SignupField">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+            </div>
+            <div class="SignupButtonSet">
+                <button type="submit" class="btn btn-primary btn-lg">Next</button>
+            </div>
         </form>
+        </div>
     </div>
+</body>
 {% endblock %}
