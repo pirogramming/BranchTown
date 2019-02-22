@@ -16,6 +16,9 @@
                     <a href="{% url 'board:survey_tag' tag.id %}">#{{ tag }}</a>
                 {% endfor %}
             </li>
+            <li class="list-group-item">
+                <a href="{% url 'survey:my_survey' %}">My Survey</a>
+            </li>
         </ul>
     </div>
 

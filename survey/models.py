@@ -15,6 +15,7 @@ class Survey(models.Model):
     created_at = models.DateField(auto_now_add=True)
     tag = models.ManyToManyField(Tag)
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
+    response_count = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
@@ -24,7 +25,6 @@ class Field(models.Model):
     FIELD_TYPE = (
         ('1', '객관식'),
         ('2', '주관식'),
-        ('3', '단답식'),
     )
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
     type = models.CharField(max_length=10, choices=FIELD_TYPE)
@@ -50,7 +50,8 @@ class TextAnswer(models.Model):
     def __str__(self):
         return self.answer
 
-
+#
+#
 # class Response(models.Model):
 #     respondent = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 #     survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
@@ -58,3 +59,4 @@ class TextAnswer(models.Model):
 #
 #     def __str__(self):
 #         return self.respondent
+

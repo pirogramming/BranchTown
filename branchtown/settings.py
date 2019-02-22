@@ -56,14 +56,14 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.kakao',
     'allauth.socialaccount.providers.naver',
+    'allauth.socialaccount.providers.google',
 ]
 
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"
 
-SITE_ID = 2
+SITE_ID = 1
 
 SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
 

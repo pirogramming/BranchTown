@@ -50,8 +50,6 @@ class CustomSignupForm(forms.ModelForm):
         fields = ('name', 'username', 'email', 'pw1', 'pw2', )  # 'region', 'phone')
 
 
-
-
 class SignupForm2(forms.ModelForm):
     class Meta:
         model = Profile
@@ -134,7 +132,3 @@ class SignupForm2(forms.ModelForm):
 
         receive_profile = Profile.objects.get(user_id=user.id)
         receive_profile.tag.add(*self.cleaned_data['tags'])
-
-
-
-

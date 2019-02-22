@@ -1,19 +1,22 @@
-{% extends 'layout.html' %}
+{% extends 'board/main.html' %}
 {% load static %}
 
 {% block content %}
     <div class="middle_title">
-        <b>◈ {{ category }} 설문</b>
+        <p> {{ category }}</p>
     </div>
     <div class="container">
         <div class="row">
             {% for survey in surveys %}
                 <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                     <div class="card">
-                        <img src="{% static 'images/logo.jpg' %}" class="card-img-top" alt="...">
+                        <img src="{% static 'board/images/test2.jpg' %}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{ survey.title }}</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <div id="board_titles">
+                                <p class="card-title">{{ survey.title }}</p>
+                                <p class="card-text">{{  survey.subtitle  }}</p>
+                            </div>
+                            <div id="board_tags">
                             <p>
                                 {% for tag in  survey.tag.all %}
                                     <a href="{% url 'board:survey_tag' tag.id %}" style="text-decoration: none">
@@ -21,10 +24,12 @@
                                     </a>
                                 {% endfor %}
                             </p>
-                            <a href="{% url 'board:survey_detail' survey.id %}" class="btn btn-primary">설문 응답하기</a>
-                            <a href="#">
-                                <img src="{% static 'images/share.png' %}" alt="" width="30">
-                            </a>
+                            </div>
+                            <div class="board_buttons">
+                            <a href="{% url 'response:preview_survey' survey.id %}" class="response_button">Respond</a>
+                            <a href="{% url 'response:result_survey' survey.id %}" class="result_button">View Results</a>
+                            </div>
+
                         </div>
                     </div>
                 </div>

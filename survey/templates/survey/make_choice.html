@@ -1,0 +1,78 @@
+{#{% extends 'layout.html' %}#}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'survey/css/style.css'%}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="survey-title" style="font-family : '나눔스퀘어'; margin-top : 80px;">Multiple Choice Question</h1>
+        <hr style="width : 300px; margin-bottom : 50px;"/>
+
+        <form class="form-horizontal" method="POST" action="">
+            {% csrf_token %}
+            {% bootstrap_form field_form %}
+
+            <div class="input-group-append">
+                <input type="button" class="btn btn-success btn-lg" id="add_more" value="+add">
+                <input type="button" class="btn btn-danger btn-lg" id="remove" value="-remove">
+            </div>
+
+            {{ formset.management_form }}
+            {% for form in formset %}
+            <div class="row form-row form-horizontal" id="form_set">
+                <div class="col-12 choice-text">
+                    {% bootstrap_form form %}
+                </div>
+            </div>
+            {% endfor %}
+
+            <div id="empty_form" style="display:none">
+                <div class="col-12 choice-text">
+                    {% bootstrap_form formset.empty_form %}
+        {#            {{ formset.empty_form.as_table }}#}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary btn-lg add-question">Add Question</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                crossorigin="anonymous">
+    </script>
+
+    <script type='text/javascript'>
+        $(document).ready(function() {
+            $('#add_more').click(function(){
+                var form_idx=$('#id_form-TOTAL_FORMS').val();
+                $('#form_set')
+                    .append(
+                        $('#empty_form')
+                            .html()
+                            .replace(/__prefix__/g, form_idx)
+                    );
+                $('#id_form-TOTAL_FORMS').val(parseInt(form_idx)+1);
+                {#console.log(form_idx);#}
+            });
+        });
+
+        $(document).ready(function() {
+            $('#remove').click(function(){
+                var form_idx=$('#id_form-TOTAL_FORMS').val();
+                if (form_idx > 1) {
+                    $('#form_set>div:last-child').remove();
+                    $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) - 1);
+                }
+                {#console.log(form_idx);#}
+            });
+        });
+    </script>
+{% endblock %}
+

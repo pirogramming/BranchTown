@@ -1,11 +1,6 @@
 {% extends 'layout.html' %}
+{% load static %}
 
-{% block content %}
-    <ul>
-        <li><a href="{% url 'board:survey_interest' %}">추천설문</a></li>
-        <li><a href="{% url 'board:survey_recent' %}">최신설문</a></li>
-        <li><a href="#">진행중인 설문</a></li>
-        <li><a href="#">종료된 설문</a></li>
-        <li><a href="#">참여한 설문</a></li>
-    </ul>
-{% endblock %}
+{%  block style  %}
+    <link rel="stylesheet" href="{% static 'board/css/style.css' %}">
+{%  endblock %}

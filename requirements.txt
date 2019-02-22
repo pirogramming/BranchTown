@@ -4,3 +4,4 @@ django-allauth==0.38.0
 django-extensions
 Werkzeug
 pyOpenSSL
+django-rest-framework
