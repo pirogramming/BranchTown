@@ -9,6 +9,7 @@ survey platform service with python django
 #### 4) Visualize survey results
 
 ## ScreenShots
+<img src="https://user-images.githubusercontent.com/42382027/64787614-efc06c80-d5ab-11e9-9460-3cd1a31eb7e7.png" width="60%"/>
 <div>
 <img src="https://user-images.githubusercontent.com/42382027/64786736-141b4980-d5aa-11e9-84a0-dfb7de3a79cf.png" width="200"/>
 <img src="https://user-images.githubusercontent.com/42382027/64786828-50e74080-d5aa-11e9-9e85-f217dcbed885.png" width="250"/>
